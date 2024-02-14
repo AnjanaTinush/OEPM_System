@@ -1,14 +1,21 @@
 import { BrowserRouter , Route, Routes } from "react-router-dom";
+import Navbar from "./Component/Navbar";
+import Looginscreen from "./Screens/Login/Looginscreen";
+
+
+
 
 function App() {
   return (
     <div className="App">
-     <h1 className="text-6xl text-center">sdsd</h1>
-    
+
+     <Navbar/>    
+
     <BrowserRouter>
-   
+          
       <Routes>
       
+      <Route path="/login" exact Component={Looginscreen}/>
        
       </Routes>
    
