@@ -49,8 +49,9 @@
     border-radius: 6px;
 }
 
-.input img{
-
+.icon{
+      margin-left: 10px;
+      margin: 10px;
 }
 
 .input input{
@@ -65,8 +66,8 @@
 
 .forgot-password{
     justify-content: center;
-    
-    margin-top: 5px;
+    margin-left: 40px;
+    margin-top: 0px;
     color: #797979;
     font-size: 15px;
 }
@@ -78,7 +79,7 @@
 .submit-container{
     display: flex;
     gap :10px;
-    
+    margin: 0;
     justify-content: center;
 }
 
@@ -86,7 +87,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
+    width: 150px;
     height: 49px;
     color: #fff;
     background: green;
@@ -94,7 +95,7 @@
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
-    margin: 40px;
+    margin: 50px;
     margin-top: 5px ;
 }
 
@@ -105,7 +106,8 @@
 }
 
 .newuser{
-    margin-top: -40px;
+    margin-top: -70px;
+    margin-left: 40px;
     color: #797979;
     font-size: 15px;
 }
