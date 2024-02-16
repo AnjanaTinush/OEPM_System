@@ -33,7 +33,7 @@ function Looginscreen() {
         
         <div className= "submit" >Login</div>
       </div>
-      <div className="newuser">New user ? <span><Link to={`#`}>Sign up</Link></span></div>     
+      <div className="newuser">New user ? <span><Link to={`/register`}>Sign up</Link></span></div>     
       </div>       
   </div>
   )
