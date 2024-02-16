@@ -4,6 +4,7 @@
     margin: auto;
     margin-top: 50px;
     width: 450px;
+    height: 450px;
     background: #fff;
     padding-bottom: 30px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2)
@@ -87,7 +88,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 250px;
     height: 49px;
     color: #fff;
     background: green;
@@ -106,7 +107,7 @@
 }
 
 .newuser{
-    margin-top: -70px;
+    margin-top: -40px;
     margin-left: 40px;
     color: #797979;
     font-size: 15px;

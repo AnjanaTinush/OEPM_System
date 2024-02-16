@@ -1,9 +1,10 @@
-.container{
+.containe{
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 450px;
+    height: 550px;
     background: #fff;
     padding-bottom:0px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2)
@@ -48,8 +49,9 @@
     border-radius: 6px;
 }
 
-.input img{
-
+.icon{
+    margin-left: 10px;
+    margin: 10px;
 }
 
 .input input{
@@ -85,7 +87,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
+    width: 180px;
     height: 49px;
     color: #fff;
     background: green;
@@ -93,7 +95,7 @@
     font-size: 19px;
     font-weight: 700;
     cursor: pointer;
-    margin: 40px;
+    margin: 30px;
     margin-top: 5px ;
 }
 
