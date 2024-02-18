@@ -11,6 +11,7 @@ import Curiorservisedashboard from "./Screens/Curiorservice/Curiorservisedashboa
 import C_displayitem from "./Screens/Customerorder/C_displayitem";
 import Financialdasgboard from "./Screens/Financial/Financialdasgboard";
 import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
+import Userprofile from "./Screens/User/Userprofile";
 
 
 
@@ -37,6 +38,7 @@ function App() {
       <Route path="/c_displayitem" element={<C_displayitem/>}/>
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
+      <Route path="/userprofile" element={<Userprofile/>}/>
       
       </Routes>
    

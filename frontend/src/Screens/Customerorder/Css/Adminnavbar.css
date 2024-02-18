@@ -1,0 +1,70 @@
+/* Davbar.css */
+
+
+ul li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0px;
+  width: 100%; /* Set the initial width to 100% */
+}
+
+ul li a {
+  color: #132A13;
+  text-decoration: none !important; /* Remove underline */
+  border: none;
+  font-size: 20px;
+  margin: 0px;
+  width: 100%; /* Set the initial width to 100% */
+  display: block; /* Make the anchor tag a block element */
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  
+}
+
+ul li:hover {
+  background-color: #4bc649;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #f5fcf4 !important;
+
+}
+
+.img2 {
+  margin-left: 1300px;
+  margin-top: -340px !important;
+  border-radius: 10%;
+  width: 50px;
+  cursor: pointer;
+  border-radius: 50%; /* Makes the image circular */
+  border: 2px solid  #4bc649; /* Adds a thick green border */
+ 
+}
+
+.dropdown {
+  margin-top: -10px;
+  margin-left: 1317px;
+}
+
+.dropdown-toggle {
+  font-size: 30px;
+}
+
+.dropdown-item {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-item {
+  margin-right: 5px;
+}
+
+.profile-gap {
+  margin-right: 10px;
+}
+.bg{
+  background-color: #f5fcf4;
+}

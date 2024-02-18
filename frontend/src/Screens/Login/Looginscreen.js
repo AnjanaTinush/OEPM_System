@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import './Css/Loginscreen.css'
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri"
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Navbar from '../../Component/Navbar';
+
+AOS.init({
+  duration:'500'
+});
 
 function Looginscreen() {
 
@@ -10,7 +17,10 @@ function Looginscreen() {
   const[password , setpassword]=useState('')
 
   return (
-    <div className='container'>
+
+    
+<div><Navbar/>
+    <div className='container' data-aos='zoom-out'>
     <div className="header">
       <div className="text">Login</div>
       <div className="underline"></div>
@@ -35,6 +45,7 @@ function Looginscreen() {
       </div>
       <div className="newuser">New user ? <span><Link to={`/register`}>Sign up</Link></span></div>     
       </div>       
+  </div>
   </div>
   )
 }
