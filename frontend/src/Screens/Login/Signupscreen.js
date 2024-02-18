@@ -4,6 +4,13 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import Navbar from '../../Component/Navbar';
+
+AOS.init({
+  duration:'500'
+});
 
 
 
@@ -22,7 +29,10 @@ function Signupscreen() {
 
   return (
     <div>
-    <div className='containe'>
+      
+     <Navbar/>
+
+    <div className='containe'data-aos='zoom-out'>
 <div className="header">
  <div className="text">Sign up</div>
  <div className="underline"></div>

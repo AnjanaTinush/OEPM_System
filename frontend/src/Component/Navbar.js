@@ -3,7 +3,7 @@ import React from "react";
 function Navbar() {
   return (
     <div>
-      <header class="bg-white">
+      <header class="bg-white border-b border-gray-300 shadow-md">
         <nav
           class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
           aria-label="Global"
@@ -36,9 +36,7 @@ function Navbar() {
             </a>
           </div>
         </nav>
-        <div class="lg:hidden" role="dialog" aria-modal="true">
-          <div class="fixed inset-0 z-10"></div>
-        </div>
+        
       </header>
     </div>
   );
