@@ -8,6 +8,12 @@ module.exports = {
         "wight-green": "#f5fcf4",
         "black-green": "#132A13",
       },
+     
+  fontFamily: {
+  custom: ['Poppins'],
+  
+},
+
         
     },
   },

@@ -12,6 +12,7 @@ import C_displayitem from "./Screens/Customerorder/C_displayitem";
 import Financialdasgboard from "./Screens/Financial/Financialdasgboard";
 import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
+import Allusers from "./Screens/Employee/Allusers";
 
 
 
@@ -39,6 +40,7 @@ function App() {
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
       <Route path="/userprofile" element={<Userprofile/>}/>
+      <Route path="/e_allusers" element={<Allusers/>}/>
       
       </Routes>
    
