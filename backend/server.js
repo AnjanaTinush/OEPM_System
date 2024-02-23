@@ -4,10 +4,13 @@ const bodyParser = require("body-parser");
 const app =express(); 
 
 
-const dbcongfig = require('./db')
+const dbconfig = require('./db');
+
+const usersRoutes = require("./Routes/usersRoute")
 
 app.use(express.json())
 
+app.use("/api/users", usersRoutes);
 
 
 const port =process.env.PORT || 5000;
