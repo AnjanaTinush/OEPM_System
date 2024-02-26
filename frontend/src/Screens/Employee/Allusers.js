@@ -41,7 +41,7 @@ useEffect(()=>{
         
         <div className="flex justify-center items-center h-full">
         
-        <div className="overflow-x-auto shadow-2xl sm:rounded-lg">
+        <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
           <tr>
@@ -89,11 +89,11 @@ useEffect(()=>{
             </td>
             <td className="px-6 py-4 text-right text-green-900">
             <Link to={`#`}>
-                      <button className="btn1"><GrUpdate    className="mr-5 text-lg" />
+                      <button className="btn1 mr-3"><GrUpdate    className="mr-5 text-lg" />
             </button>
             </Link> 
             <Link to={`#`}>
-                      <button className="btn1"><MdDeleteForever   className="mr-5 text-lg" />
+                      <button className="btn1  "><MdDeleteForever   className="mr-5 text-lg" />
             </button>
             </Link>  
           </td>
