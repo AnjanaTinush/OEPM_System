@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router();
 const Users = require("../models/usersModel")
 
+//sign up
 router.post("/register" , async(req,res)=>{
 
     const newuser = new Users({
@@ -21,6 +22,7 @@ router.post("/register" , async(req,res)=>{
     }
 })
 
+//get all users
 router.get("/getallusers",async(req,res)=>{
 
     try {
@@ -30,5 +32,23 @@ router.get("/getallusers",async(req,res)=>{
         return res.status(400).json({massage : error})
     }
 });
+
+
+
+
+//delete user
+router.route('/delete/:id').delete(async(req,res)=>{
+
+    const id = req.params.id;
+
+    try {
+        await Users.findByIdAndDelete(id);
+        return res.status(200).json({status : "User deleted"});
+    } catch (error) {
+        return res.status(400).json({status : "Error with delete user", massage : error})
+    }
+
+})
+
 
 module.exports=router;
