@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from "axios";
+import axios, { Axios } from "axios";
 import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
@@ -24,6 +24,19 @@ useEffect(()=>{
   fetchData();
 },[]);
 
+
+
+async function deleteuser(id){
+
+  try {
+    const response = (await axios.delete(`http://localhost:5000/api/users/delete/${id}`)).data
+    console.log(response)
+    window.location.reload()
+  } catch (error) {
+    console.log(error)
+  }
+
+}
 
   return (
     <div className='bg-wight-green'>
@@ -93,7 +106,7 @@ useEffect(()=>{
             </button>
             </Link> 
             <Link to={`#`}>
-                      <button className="btn1  "><MdDeleteForever   className="mr-5 text-lg" />
+                      <button className="btn1" onClick={(e)=>deleteuser(users._id)}><MdDeleteForever   className="mr-5 text-lg" />
             </button>
             </Link>  
           </td>
