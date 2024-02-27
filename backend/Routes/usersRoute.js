@@ -33,7 +33,28 @@ router.get("/getallusers",async(req,res)=>{
     }
 });
 
+//update user
+router.route('/updateuser/:id').put(async(req,res)=>{
 
+    const userid = req.params.id;
+    const{name,email,role,imageurl} = req.body;
+
+    const updateuser={
+        name,
+        email,
+        role,
+        imageurl
+    };
+
+    try {
+        await Users.findByIdAndUpdate(userid,updateuser);
+        return res.status(200).json({status : "User updated"});
+    } catch (error) {
+
+        return res.status(400).json({status : "Error with update user",massage : error})
+        
+    }
+})
 
 
 //delete user
