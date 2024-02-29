@@ -13,6 +13,7 @@ import Financialdasgboard from "./Screens/Financial/Financialdasgboard";
 import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
+import Userupdate from "./Screens/Employee/Userupdate";
 
 
 
@@ -41,6 +42,7 @@ function App() {
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
       <Route path="/userprofile" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
+      <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       
       </Routes>
    

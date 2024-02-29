@@ -6,9 +6,12 @@ import { FaEdit } from "react-icons/fa";
 import Adminnavbar from './Component/Adminnavbar'
 import Navbar from './Component/Navbar'
 import Loader from '../../Component/Loader';
+import Userupdate from './Userupdate';
 
 function Allusers() {
+ 
 
+  //Add users popup form
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef(null);
 
@@ -44,7 +47,7 @@ function Allusers() {
     };
   }, []);
 
-
+//add users 
   const[name , setname]=useState('')
   const[email , setemail]=useState('')
   const[phone , setphone]=useState('')
@@ -53,7 +56,7 @@ function Allusers() {
 
 const [Loading,setLoading] = useState(false)
 
-//add users 
+
  async function adduser(event){
   event.preventDefault();
 
@@ -283,10 +286,15 @@ async function deleteuser(id){
               {users.role}
             </td>
             <td className="px-6 py-4 text-right text-green-900">
-            <Link to={`#`}>
-                      <button className="btn1 mr-3"><FaEdit    className="mr-5 text-xl" />
-            </button>
-            </Link> 
+            <Link to={`/e_updates/${users._id}`}>
+  <button className="btn1 mr-3"  >
+    <FaEdit className="mr-5 text-xl"  />
+  
+
+  </button>
+</Link>
+
+
             <Link to={`#`}> 
                       <button className="btn1" onClick={(e)=>deleteuser(users._id)}><MdDeleteForever   className="mr-5 text-2xl " />
             </button>
@@ -312,6 +320,8 @@ async function deleteuser(id){
       
     </div>
     </div>
+
+
     </div>
   )
 }

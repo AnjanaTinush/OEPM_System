@@ -8,10 +8,12 @@ const dbconfig = require('./db');
 
 const usersRoutes = require("./Routes/usersRoute")
 
+
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json())
 
 app.use("/api/users", usersRoutes);
+
 
 
 const port =process.env.PORT || 5000;
