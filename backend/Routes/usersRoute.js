@@ -33,6 +33,21 @@ router.get("/getallusers",async(req,res)=>{
     }
 });
 
+//getuser
+router.route('/getuser/:id').post(async(req,res) => {
+
+    const userid = req.params.id;
+  
+    try {
+      const user = await Users.findById(userid);
+      return res.status(200).json({status : "Employee is fatched",user});
+    } catch (error) {
+      return res.status(400).json({status : "Error with fatch employee", message : error});
+    }
+  })
+  
+
+
 //update user
 router.route('/updateuser/:id').put(async(req,res)=>{
 
