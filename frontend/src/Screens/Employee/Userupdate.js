@@ -7,6 +7,12 @@ import { useParams } from "react-router-dom";
 
 const Userupdate =() => {
 
+
+  const handleRoleChange = (e) => {
+    setroll(e.target.value);
+  };
+
+  
 const { userid } = useParams();
 
 const [name,setname]=useState('');
@@ -87,16 +93,31 @@ async function Updateuser(e){
               }}
             />
           </div>
-          <div className="mt-4">
-            <input
-              type="text"
-              value={role}
-              className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
-              onChange={(e)=>{
-                setroll(e.target.value)
-              }}
-            />
-          </div>
+
+     
+          <select
+          id="countries"
+          value={role} // set the selected value
+          onChange={handleRoleChange} // handle the change event
+          className="mt-3 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
+        >
+          <option value="user">user</option>
+          <option value="employee manegar">employee manegar</option>
+          <option value="tunel maneger">tunel maneger</option>
+          <option value="financial manager">financial manager</option>
+          <option value="targets manager">targets manager</option>
+          <option value="curior servise">curior servise</option>
+          <option value="inventary maneger">inventary maneger</option>
+        </select>
+
+ 
+
+
+
+
+
+
+          
           
           <div className="mt-8 mb-2">
             <button
