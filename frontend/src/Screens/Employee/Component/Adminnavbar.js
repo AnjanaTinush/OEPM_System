@@ -10,7 +10,7 @@ function Adminnavbar() {
   const location = useLocation();
 
   return (
-    <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col justify-between shadow-xl">
+    <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col  justify-between shadow-xl">
       <div className="p-4">
         <br></br>
         <br></br>
@@ -42,7 +42,7 @@ function Adminnavbar() {
         </div>
         <p className="text-gray-400 ml-6">&copy; 2024 PolyCrop </p>
       </div>
-    </div>
+    </div> 
   );
 }
 
