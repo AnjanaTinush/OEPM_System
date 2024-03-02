@@ -20,7 +20,7 @@ const usersSchema = mongoose.Schema({
     },
     role :{
         type : String,
-        default : 'user'
+        default : 'User'
     },
 
     imageurl :{

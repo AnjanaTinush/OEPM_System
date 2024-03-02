@@ -3,7 +3,7 @@ import axios from 'axios';
 import Adminnavbar from './Component/Adminnavbar'
 import Navbar from './Component/Navbar'
 import { useParams } from "react-router-dom";
-
+import Loader from '../../Component/Loader'
 
 const Userupdate =() => {
 
@@ -19,10 +19,16 @@ const [name,setname]=useState('');
 const [email,setemail]=useState('');
 const [role,setroll]=useState('');
    
+const [Loading,setLoading] = useState(false)
+
+
 useEffect(() => {
   async function getUser() {
     try {
+
+      setLoading(true)
       const response = (await axios.post(`http://localhost:5000/api/users/getuser/${userid}`)).data;
+      setLoading(false)
       console.log(response.user);
 
       setname(response.user.name);
@@ -30,6 +36,7 @@ useEffect(() => {
       setroll(response.user.role);
 
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   }
@@ -48,11 +55,14 @@ async function Updateuser(e){
   }
 
   try {
+    setLoading(true)
     const response = (await axios.put(`http://localhost:5000/api/users/updateuser/${userid}`,updateuser)).data;
     console.log(response);
+    setLoading(false)
     window.location.href='/e_allusers';
 
   } catch (error) {
+    setLoading(false)
     console.log(error);
   }
 }
@@ -67,7 +77,7 @@ async function Updateuser(e){
       <div className="flex flex-col w-full">
         {/* Top Navigation */}
         <Navbar />
-
+        {Loading && <Loader/>}
         <div className="max-w-sm mx-auto bg-white shadow-xl rounded-3xl mt-28 p-6">
       <h2 className="text-xl font-semibold text-dark font-custom  ">
                     Update user details
@@ -101,13 +111,14 @@ async function Updateuser(e){
           onChange={handleRoleChange} // handle the change event
           className="mt-3 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
         >
-          <option value="user">user</option>
-          <option value="employee manegar">employee manegar</option>
-          <option value="tunel maneger">tunel maneger</option>
-          <option value="financial manager">financial manager</option>
-          <option value="targets manager">targets manager</option>
-          <option value="curior servise">curior servise</option>
-          <option value="inventary maneger">inventary maneger</option>
+          <option value="User">User</option>
+          <option value="Employee manager">Employee manager</option>
+          <option value="Tunnel manager">Tunnel manager</option>
+          <option value="Financial manager">Financial manager</option>
+          <option value="Target manager">Target manager</option>
+          <option value="Courior servise">Courior servise</option>
+          <option value="Inventory manager">Inventory manager</option>
+          <option value="Machine manager">Machine manager</option>
         </select>
 
  

@@ -14,7 +14,7 @@ import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
-
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -26,6 +26,11 @@ function App() {
     
 
     <BrowserRouter>
+
+    <Toaster
+  position="top-center"
+  reverseOrder={false}
+/>
           
       <Routes>
       

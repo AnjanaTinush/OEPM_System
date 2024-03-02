@@ -9,6 +9,9 @@ import Loader from '../../Component/Loader';
 import Userupdate from './Userupdate';
 
 function Allusers() {
+
+  const [duplicateusers, setduplicateusers] = useState([]);
+  const [searchkey , setsearchkey] = useState();
  
 
   //Add users popup form
@@ -130,6 +133,16 @@ async function deleteuser(id){
 
 
 
+function filterBySearch() {
+  const tempUsers = users.filter(user => user.name.toLowerCase().includes(searchkey.toLowerCase()));
+  setusers(tempUsers);
+
+  
+}
+
+
+
+
 
 
   return (
@@ -157,8 +170,10 @@ async function deleteuser(id){
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
             </svg>
         </div>
-        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm border border-whatsapp-green rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search user" required />
-        <button type="submit" class="text-white absolute end-2.5 bottom-2.5  hover:bg-Buttongreen focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 dark:bg-dark dark:hover:hover:bg-Buttongreen dark:focus:ring-blue-800">Search</button>
+        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm border border-whatsapp-green rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search user" required 
+        value={searchkey} onChange={(e)=>{setsearchkey(e.target.value)}} onKeyUp={filterBySearch}
+        />
+        {/* <button type="submit" class="text-white absolute end-2.5 bottom-2.5  hover:bg-Buttongreen focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 dark:bg-dark dark:hover:hover:bg-Buttongreen dark:focus:ring-blue-800">Search</button> */}
     </div>
 </form>
 

@@ -9,9 +9,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Navbar from '../../Component/Navbar';
 import Loader from '../../Component/Loader';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 AOS.init({
-  duration:'500'
+  duration:'5000'
 });
 
 
@@ -24,6 +26,7 @@ function Signupscreen() {
     const [cpassword, setcpassword] = useState('');
 
     const [Loading,setLoading] = useState(false)
+    const navigate=useNavigate();
 
    
     async function registeruser(event) {
@@ -44,9 +47,17 @@ function Signupscreen() {
         const result = await axios.post("http://localhost:5000/api/users/register", user);
         setLoading(false)
         console.log(result.data);
+        if(result.data.success){
+             toast.success(result.data.massage)
+             toast("Redirecting to Login page.")
+             navigate("/login");
+        }else{
+            toast.error(result.data.massage)
+        }
       } catch (error) {
         console.log(error)
         setLoading(false)
+        toast.error("Something went wrong")
       }
     
     }else{
