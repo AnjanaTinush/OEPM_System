@@ -14,13 +14,49 @@ router.post("/register" , async(req,res)=>{
     })
 
     try {
+
+        const userExsist = await Users.findOne({ email : req.body.email})
+        if(userExsist){
+            return res.status(200).json({massage : "user  already exist",sussess : false});
+            
+        }
         const user = await newuser.save();
-        res.send("User Register Successfully!");
+        res.send({massage :"User Registered Successfully!" ,success : true});
 
     } catch (error) {
         return res.status(400).json({error});
     }
 })
+
+
+// Login
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+      const user = await Users.findOne({ email, password });
+  
+      if (user) {
+        // Creating a simplified user object to send in the response
+        const temp = {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          imageurl:user.imageurl,
+          _id: user._id,
+        };
+        return res.status(200).json({ success: true, user: temp, message: "User login successful" });
+      } else {
+        // If no user is found with the provided credentials
+        return res.status(401).json({ success: false, message: "Invalid credentials" });
+      }
+    } catch (error) {
+      // If an error occurs during the database query
+      return res.status(500).json({ success: false, message: "Something went wrong", error });
+    }
+  });
+  
+
 
 //get all users
 router.get("/getallusers",async(req,res)=>{
