@@ -1,7 +1,6 @@
 import React ,{useState,useEffect} from 'react'
 import { Link, json } from "react-router-dom";
 import axios from 'axios';
-import './Css/Loginscreen.css'
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri"
 import AOS from 'aos';
@@ -9,6 +8,7 @@ import 'aos/dist/aos.css';
 import Navbar from '../../Component/Navbar';
 import toast from 'react-hot-toast';
 import Loader from '../../Component/Loader';
+import bgimg1 from './Componenet/bgimg1.png';
 
 AOS.init({
   duration:'500'
@@ -39,21 +39,23 @@ function Looginscreen() {
         // Update the user state and redirect
         const role = result.data.user.role;
 
-        if (role == 'User') {
+        if (role === 'User') {
           window.location.href = '/';
-        } else if (role == 'Employee manager') {
+          
+        } else if (role ==='Employee manager') {
           window.location.href = '/employeeDashboard';
-        }else if (role == 'Tunnel manager') {
+         
+        }else if (role === 'Tunnel manager') {
           window.location.href = '/tunneldashboard';
-        } else if (role == 'Courior servise') {
+        } else if (role === 'Courior servise') {
           window.location.href = '/curiorservisedashboard';
-        }else if (role == 'Target manager') {
+        }else if (role === 'Target manager') {
           window.location.href = '/targetsdashboard';
-        } else if (role =='Inventory manager') {
+        } else if (role ==='Inventory manager') {
           window.location.href = '/inventorydasgboard';
-        } else if (role == 'Financial manager') {
+        } else if (role === 'Financial manager') {
           window.location.href = '/financialdashboard';
-        } else if (role == 'Machine manager') {
+        } else if (role === 'Machine manager') {
           window.location.href = '/machinedashboard';
         } else {
           // Handle other roles or scenarios as needed
@@ -65,45 +67,55 @@ function Looginscreen() {
     } catch (error) {
       console.log(error);
       setloading(false);
-      toast.error('Something went wrong');
+      toast.error(' Invalid credintial');
     }
   };
   
  
  return (
 
-    
-<div><Navbar/>
-     {loading && <Loader/>}
-    <form className='container' data-aos='zoom-out'>
-    <div className="header">
-      <div className="text">Login</div>
-      <div className="underline"></div>
+  <div
+  className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${bgimg1})` }}
+>
+  <Navbar/>
+  {loading && <Loader />}
+
+
+  <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/30 border border-white rounded-xl p-10 text-white w-1/3">
+    <h1 className="text-3xl font-bold tracking-widest text-center mb-8">LOGIN</h1>
+    <div className="flex flex-col space-y-6 mb-4">
+      <input
+       type="email"
+          placeholder='Email'
+          required
+          value={email}
+          onChange={(e) => { setemail(e.target.value) }}
+        className="w-full px-4 py-3 rounded-full bg-white/20 border border-gray-300 placeholder-white placeholder-opacity-50 focus:ring-white/50"
+      />
+      <input
+        type="password"
+        placeholder='Password'
+        required
+        value={password}
+        onChange={(e) => { setpassword(e.target.value) }}
+        className="w-full px-4 py-3 rounded-full bg-white/20 border border-gray-300 placeholder-white placeholder-opacity-50 focus:ring-white/50"
+      />
     </div>
-   
-    <div className="inputs">
-      <div className="input">
-
-       <div className="icon"> <MdEmail /></div>
-         
-        <input  type="email" placeholder='Email' required  value={email} onChange={(e)=>{setemail(e.target.value)}} />
-      </div>
-
-      <div className="input">
-        <div className="icon"> <RiLockPasswordFill /></div>
-
-        <input type="password" placeholder='Password' required  value={password} onChange={(e)=>{setpassword(e.target.value)}}/>
-      </div>
-      <div className="forgot-password">Lost password?<span>Click here</span></div>
-      <div className="submit-container">
+    <div className="text-sm text-center cursor-pointer hover:text-white/70 mb-6"
         
-        <div className= "submit" onClick={Login}>Login</div>
-      </div>
-     
-      <div className="newuser">New user ? <span><Link to={`/register`}>Sign up</Link></span></div>     
-      </div>       
-  </form>
+    >
+      Lost Password? <span className="font-semibold">Click Here</span>
+    </div>
+    <button
+      className="w-full py-3 rounded-full border border-white font-light text-lg tracking-wider hover:bg-white/20"
+      onClick={Login}
+    >
+      Login
+    </button>
   </div>
+</div>
+
+  
   )
 }
 
