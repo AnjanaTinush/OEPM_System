@@ -1,7 +1,7 @@
 import React, { useState,useRef, useEffect } from 'react';
 import axios from 'axios';
 import Adminnavbar from './Component/Adminnavbar'
-import Navbar from './Component/Navbar'
+import Navbar from '../Component/Navbar'
 import { useParams } from "react-router-dom";
 import Loader from '../../Component/Loader'
 
