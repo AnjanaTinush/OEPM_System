@@ -6,10 +6,6 @@ const app =express();
 
 const dbcongfig = require('./db')
 
-<<<<<<< Updated upstream
-app.use(express.json())
-
-=======
 const usersRoutes = require("./Routes/usersRoute")
 const driverRoute = require("./Routes/driverRoute")
 
@@ -18,7 +14,6 @@ app.use(express.json())
 
 app.use("/api/users", usersRoutes);
 app.use("/api/drivers", driverRoute);
->>>>>>> Stashed changes
 
 
 const port = process.env.PORT || 5000;
