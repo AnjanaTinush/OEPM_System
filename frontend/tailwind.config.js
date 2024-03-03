@@ -12,6 +12,7 @@ module.exports = {
         "Buttongreen": "#29bf12",
         "dark": "#133d00",
         "darkhover": "#3b562f",
+        "opacity" :"#ACACAC"
 
       },
      
