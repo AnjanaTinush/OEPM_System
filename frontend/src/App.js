@@ -16,6 +16,8 @@ import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
 import { Toaster } from "react-hot-toast";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
+import Euserprofile from "./Screens/Employee/Euserprofile";
+
 
 
 
@@ -50,7 +52,7 @@ function App() {
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
-
+      <Route path="e_userprofile" element={<Euserprofile/>}/>
       
       </Routes>
    
