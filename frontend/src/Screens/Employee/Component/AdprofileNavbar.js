@@ -32,8 +32,8 @@ function AdprofileNavbar() {
         <span className="font-bold text-lg">Edit profie</span>
       </Link>
       <Link
-        to="#"
-        className={`flex items-center w-full py-3 px-4 ${location.pathname === "/" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+        to="/e_requestedleave"
+        className={`flex items-center w-full py-3 px-4 ${location.pathname === "/e_requestedleave" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
       >
         <GiExitDoor  className="mr-5 text-lg" />
         <span className="font-bold text-lg">my leaves</span>
