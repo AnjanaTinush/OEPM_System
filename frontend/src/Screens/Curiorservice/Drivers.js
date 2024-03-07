@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Adminnavbar from "./Component/Adminnavbar";
-import Navbar from "./Component/Navbar";
+import Navbar from "../Component/Navbar";
 
 function Drivers() {
   const [isModalOpen, setIsModalOpen] = useState(false);

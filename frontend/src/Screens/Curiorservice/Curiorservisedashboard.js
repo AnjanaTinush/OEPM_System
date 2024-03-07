@@ -1,6 +1,6 @@
 import React from 'react'
 import Adminnavbar from './Component/Adminnavbar'
-import Navbar from './Component/Navbar'
+import Navbar from '../Component/Navbar'
 
 
 function Curiorservisedashboard() {
