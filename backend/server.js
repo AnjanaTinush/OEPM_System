@@ -17,7 +17,6 @@ app.use("/api/users", usersRoutes);
 app.use("/api/leaves",leavesRoutes);
 //app.use("/api/leaves" , leavesRoutes);
 
-
 const port =process.env.PORT || 5000;
 
 app.use(cors());
