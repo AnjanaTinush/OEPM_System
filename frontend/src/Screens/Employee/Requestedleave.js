@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import AdprofileNavbar from './Component/AdprofileNavbar'
 import Navbar from '../Component/Navbar'
+import moment from "moment"
 import { DatePicker, Space } from 'antd';
 const { RangePicker } = DatePicker;
 
 
+
+
 function Requestedleave() {
+
+  const [fromdate, setfromdate] = useState();
+  const [todate, settodate] = useState();
+
+  
+
+  function filterByDate(dates){
+    setfromdate(dates[0].format("DD-MM-YYYY"));
+    settodate(dates[1].format("DD-MM-YYYY"));
+    
+    
+    }
+
+
   return (
     <div>
         <Navbar/>
@@ -13,7 +30,7 @@ function Requestedleave() {
 
         <div class="max-w-2xl bg-white border border-gray-200 rounded-lg px-2 mx-auto mt-16 mr-60">
     <form class="flex items-center w-full">
-        <RangePicker />
+        <RangePicker format={"DD-MM-YYYY"} onChange={filterByDate}/>
 
         <input type="text" class="w-1/3 border rounded py-2 px-3 mb-3 mt-2 mr-4 ml-4" placeholder="Enter your reason" />
 
