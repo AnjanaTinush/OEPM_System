@@ -7,7 +7,7 @@ const leaverequestSchema = mongoose.Schema({
         require : true,
     },
 
-    formdate : {
+    fromdate : {
         type : String,
         require : true
     },

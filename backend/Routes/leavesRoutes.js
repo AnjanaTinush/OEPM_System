@@ -3,14 +3,14 @@ const router = express.Router();
 const Leaves = require('../models/leavesModel');
 
 router.post("/leaverequest", async (req, res) => {
-    const { userid, formdate, todate, description } = req.body; 
+    const { userid, fromdate, todate, desription } = req.body; 
 
     try {
         const newrequest = new Leaves({ 
             userid,
-            formdate,
+            fromdate,
             todate,
-            description 
+            desription 
         });
 
         const request = await newrequest.save(); 
