@@ -44,7 +44,6 @@ function Requestedleave() {
     <div>
         <Navbar/>
         <AdprofileNavbar/>
-
         <div class="max-w-2xl bg-white border border-gray-200 rounded-lg px-2 mx-auto mt-16 mr-60">
     <form class="flex items-center w-full">
         <RangePicker format={"DD-MM-YYYY"} onChange={filterByDate}/>
