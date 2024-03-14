@@ -16,7 +16,12 @@ function Requestedleave() {
   const[desription , setdesription]=useState('')
   
 
- 
+  function filterByDate(dates){
+    setfromdate(dates[0].format("DD-MM-YYYY"));
+    settodate(dates[1].format("DD-MM-YYYY"));
+    
+    
+    }
 
     async function leaverequest(){
 
