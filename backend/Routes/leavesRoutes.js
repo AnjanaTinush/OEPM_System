@@ -21,4 +21,16 @@ router.post("/leaverequest", async (req, res) => {
     }
 });
 
+//get all leaves
+router.get("/getallleaves",async(req,res)=>{
+
+    try {
+        const leaves = await Leaves.find()
+        return res.json(leaves);
+    } catch (error) {
+        return res.status(400).json({massage : error})
+    }
+});
+
+
 module.exports = router;

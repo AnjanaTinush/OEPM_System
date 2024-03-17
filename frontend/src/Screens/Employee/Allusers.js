@@ -12,7 +12,7 @@ function Allusers() {
 
   const [duplicateusers, setduplicateusers] = useState([]);
   const [searchkey , setsearchkey] = useState();
- 
+  const [loading, setloading] = useState(false);
 
   //Add users popup form
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -133,20 +133,16 @@ async function deleteuser(id){
 
 
 
-function filterBySearch() {
-  const tempUsers = users.filter(user => user.name.toLowerCase().includes(searchkey.toLowerCase()));
-  setusers(tempUsers);
-
-  
-}
-
-
-
-
+ function filterBySearch(key) {
+    // Filter users based on searchKey
+    const tempUsers = users.filter(user => user.name.toLowerCase().includes(key.toLowerCase()));
+    setusers(tempUsers);
+  }
 
 
   return (
     <div className='bg-wight-green'>
+      
         <div className="flex">
       {/* Side Navigation */}
       <Adminnavbar />
@@ -155,14 +151,14 @@ function filterBySearch() {
         {/* Top Navigation */}
         <Navbar />
         
-        
-       
+      
 
 
         <div className="flex justify-end items-center mr-20 h-full ">
 
-
-        <form class="max-w-md mx-auto py-3 mt-5 ">   
+       
+        <form class="max-w-md mx-auto py-3 mt-5 ">     
+        {Loading && (<Loader/>)}
     <label for="default-search" class="mb-2 text-sm font-medium text-whatsapp-green sr-only dark:text-dark ">Search</label>
     <div class="relative mr-60">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -171,8 +167,8 @@ function filterBySearch() {
             </svg>
         </div>
         <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm border border-whatsapp-green rounded-full bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search user" required 
-        value={searchkey} onChange={(e)=>{setsearchkey(e.target.value)}} onKeyUp={filterBySearch}
-        />
+value={searchkey}
+onChange={(e) => { setsearchkey(e.target.value); filterBySearch(e.target.value); }}        />
         {/* <button type="submit" class="text-white absolute end-2.5 bottom-2.5  hover:bg-Buttongreen focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-4 py-2 dark:bg-dark dark:hover:hover:bg-Buttongreen dark:focus:ring-blue-800">Search</button> */}
     </div>
 </form>
@@ -203,7 +199,7 @@ function filterBySearch() {
                   <h2 className="text-xl font-semibold text-dark font-custom  ">
                     Enter the users details
                   </h2>
-                  {Loading && (<Loader/>)}
+                 
                   <form onSubmit={handleSubmit} className="mt-8">
                     <div>
                       <input
@@ -267,8 +263,8 @@ function filterBySearch() {
        
        
        
-        <div className="flex justify-center items-center ml-48 h-full">
-        <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
+        <div className="flex justify-center items-center ml-48 h-full">      
+        <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16"> {Loading && (<Loader/>)}
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
           <tr>
