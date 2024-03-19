@@ -15,6 +15,7 @@ import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
 import Drivers from "./Screens//Curiorservice/Drivers"
+import AddDriver from "./Screens/Curiorservice/AddDriver"
 import { Toaster } from "react-hot-toast";
 
 
@@ -50,6 +51,7 @@ function App() {
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
+      <Route path="/j_addDriver" element={<AddDriver/>}/>
       
       </Routes>
    

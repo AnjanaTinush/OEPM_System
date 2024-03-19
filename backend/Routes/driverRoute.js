@@ -8,6 +8,7 @@ router.post("/j_drivers", async (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     vehicalnum: req.body.vehicalnum,
+    availability: req.body.availability,
   });
 
   try {

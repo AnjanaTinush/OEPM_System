@@ -21,6 +21,12 @@ const driversSchema = mongoose.Schema(
       type: String,
       require: true,
     },
+
+    availability: {
+      type: String,
+      require: true,
+    }
+
   },
   {
     timestamps: true,
