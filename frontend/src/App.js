@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Looginscreen from "./Screens/Login/Looginscreen";
 import Signupscreen from "./Screens/Login/Signupscreen";
@@ -18,75 +18,51 @@ import { Toaster } from "react-hot-toast";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
-<<<<<<< Updated upstream
+
 import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 
-=======
-<<<<<<< HEAD
-import Income from "./Screens/Financial/page/income";
-import Expence from "./Screens/Financial/page/expence";
-
-=======
 import Approveleave from "./Screens/Employee/Approveleave";
->>>>>>> f5f19ff435f0c6dc2e0b2b9450024ff81e5eb930
->>>>>>> Stashed changes
-
-
-
-
 
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
+        <Toaster position="top-center" reverseOrder={false} />
 
-    
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/login" element={<Looginscreen />} />
+          <Route path="/register" element={<Signupscreen />} />
+          <Route path="/employeeDashboard" element={<Employeedashboard />} />
+          <Route path="/inventorydasgboard" element={<Inventorydashboard />} />
+          <Route path="/tunneldashboard" element={<Tunneldashboard />} />
+          <Route path="/machinedashboard" element={<Machinedashboard />} />
+          <Route
+            path="/curiorservisedashboard"
+            element={<Curiorservisedashboard />}
+          />
+          <Route path="/c_displayitem" element={<C_displayitem />} />
+          <Route path="/financialdashboard" element={<Financialdasgboard />} />
+          <Route path="/targetsdashboard" element={<Targetsdashboard />} />
+          <Route path="/userprofile" element={<Userprofile />} />
+          <Route path="/e_allusers" element={<Allusers />} />
+          <Route path="/e_updates/:userid" element={<Userupdate />} />
+          <Route
+            path="/e_profile_dashboard"
+            element={<Employeeprofiledashboard />}
+          />
+          <Route path="e_userprofile" element={<Euserprofile />} />
+          <Route path="e_requestedleave" element={<Requestedleave />} />
 
-    <BrowserRouter>
+          <Route path="/income" element={<Income />} />
+          <Route path="/expence" element={<Expence />} />
 
-    <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-          
-      <Routes>
-      
-      <Route path="/" element={<Homepage/>}/>
-      <Route path="/login" element={<Looginscreen/>}/>
-      <Route path="/register" element={<Signupscreen/>}/>
-      <Route path="/employeeDashboard" element={<Employeedashboard/>}/>
-      <Route path="/inventorydasgboard" element={<Inventorydashboard/>}/>
-      <Route path="/tunneldashboard" element={<Tunneldashboard/>}/>
-      <Route path="/machinedashboard" element={<Machinedashboard/>}/>
-      <Route path="/curiorservisedashboard" element={<Curiorservisedashboard/>}/>
-      <Route path="/c_displayitem" element={<C_displayitem/>}/>
-      <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
-      <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
-      <Route path="/userprofile" element={<Userprofile/>}/>
-      <Route path="/e_allusers" element={<Allusers/>}/>
-      <Route path="/e_updates/:userid" element={<Userupdate/>}/>
-      <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
-      <Route path="e_userprofile" element={<Euserprofile/>}/>
-      <Route path="e_requestedleave" element={<Requestedleave/>}/>
-<<<<<<< Updated upstream
+          <Route path="e_approveleave" element={<Approveleave />} />
 
-      <Route path="/income" element={<Income/>}/>
-      <Route path="/expence" element={<Expence/>}/>
-=======
-<<<<<<< HEAD
-
-      <Route path="/income" element={<Income/>}/>
-      <Route path="/expence" element={<Expence/>}/>
-=======
-      <Route path="e_approveleave" element={<Approveleave/>}/>
->>>>>>> f5f19ff435f0c6dc2e0b2b9450024ff81e5eb930
->>>>>>> Stashed changes
-      
-      </Routes>
-   
-    </BrowserRouter>
-    
-   
+          <Route path="e_approveleave" element={<Approveleave />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
