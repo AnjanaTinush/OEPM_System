@@ -1,17 +1,17 @@
-const mongoose=require("mongoose");
- 
-var mongoURL=`mongodb+srv://anjana2:anjana@cluster0.rg6ebmf.mongodb.net/OEPM_System`;
+const mongoose = require("mongoose");
 
-mongoose.connect(mongoURL,{useUnifiedTopology : true,useNewUrlParser:true});
+var mongoURL = `mongodb+srv://sithum:sithum1234@cluster0.kcwj3im.mongodb.net/`;
 
-var connection=mongoose.connection;
+mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });
 
-connection.on('error',()=>{
-    console.log('Mongo DB connection faild')
-})
+var connection = mongoose.connection;
 
-connection.on('connected',()=>{
-    console.log('Mongo DB connection successful')
-})
+connection.on("error", () => {
+  console.log("Mongo DB connection faild");
+});
 
-module.exports=mongoose;
+connection.on("connected", () => {
+  console.log("Mongo DB connection successful....!");
+});
+
+module.exports = mongoose;

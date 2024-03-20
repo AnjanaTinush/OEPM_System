@@ -18,6 +18,9 @@ import { Toaster } from "react-hot-toast";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
+import Income from "./Screens/Financial/page/income";
+import Expence from "./Screens/Financial/page/expence";
+
 
 
 
@@ -55,6 +58,9 @@ function App() {
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
       <Route path="e_userprofile" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>
+
+      <Route path="/income" element={<Income/>}/>
+      <Route path="/expence" element={<Expence/>}/>
       
       </Routes>
    
