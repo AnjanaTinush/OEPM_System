@@ -18,9 +18,19 @@ import { Toaster } from "react-hot-toast";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
+<<<<<<< Updated upstream
 import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 
+=======
+<<<<<<< HEAD
+import Income from "./Screens/Financial/page/income";
+import Expence from "./Screens/Financial/page/expence";
+
+=======
+import Approveleave from "./Screens/Employee/Approveleave";
+>>>>>>> f5f19ff435f0c6dc2e0b2b9450024ff81e5eb930
+>>>>>>> Stashed changes
 
 
 
@@ -58,9 +68,19 @@ function App() {
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
       <Route path="e_userprofile" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>
+<<<<<<< Updated upstream
 
       <Route path="/income" element={<Income/>}/>
       <Route path="/expence" element={<Expence/>}/>
+=======
+<<<<<<< HEAD
+
+      <Route path="/income" element={<Income/>}/>
+      <Route path="/expence" element={<Expence/>}/>
+=======
+      <Route path="e_approveleave" element={<Approveleave/>}/>
+>>>>>>> f5f19ff435f0c6dc2e0b2b9450024ff81e5eb930
+>>>>>>> Stashed changes
       
       </Routes>
    

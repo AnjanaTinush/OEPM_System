@@ -52,12 +52,12 @@ function Employeeprofiledashboard() {
 </div>
 </div>
       
-    <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow  mr-2 ml-auto ">
-  <div className="mt-1 ">
+    <div class="max-w-sm  bg-white border border-gray-200 rounded-lg shadow   ml-auto ">
+  <div className=" ">
     <Calendar
       onChange={setDate}
       value={date}
-      className="w-16 text-xs" // Adjust width and text size as needed
+      className="w-18 text-xs" // Adjust width and text size as needed
     />
   </div>
 </div>

@@ -29,8 +29,18 @@ function Adminnavbar() {
           <span className="font-bold text-lg">Users</span>
         </Link>
         <Link
+<<<<<<< Updated upstream
           to=""
           className={`flex items-center w-full py-3 px-4 ${location.pathname === "" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+=======
+<<<<<<< HEAD
+          to=""
+          className={`flex items-center w-full py-3 px-4 ${location.pathname === "" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+=======
+          to="/e_approveleave"
+          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/e_approveleave" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+>>>>>>> f5f19ff435f0c6dc2e0b2b9450024ff81e5eb930
+>>>>>>> Stashed changes
         >
           <GiExitDoor  className="mr-5 text-lg" />
           <span className="font-bold text-lg">leaves</span>

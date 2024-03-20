@@ -7,7 +7,7 @@ const leaverequestSchema = mongoose.Schema({
         require : true,
     },
 
-    formdate : {
+    fromdate : {
         type : String,
         require : true
     },
@@ -29,6 +29,6 @@ const leaverequestSchema = mongoose.Schema({
     timestamps :true
 })
 
-const leavesMosdel = mongoose.model('leave_request' , leaverequestSchema)
+const leavesModel = mongoose.model('leaves request' , leaverequestSchema)
 
-module.exports=leavesMosdel
+module.exports=leavesModel
