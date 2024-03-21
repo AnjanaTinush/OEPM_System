@@ -13,7 +13,7 @@ function AdprofileNavbar() {
 
   return (
   
-    <div className="text-white bg-white border border-gray-200 h-120 w-1/6 fixed top-28 mb-20 left-4 flex flex-col rounded-lg justify-between shadow-xl">
+<div className="text-white bg-white border border-gray-200 h-auto min-h-120 w-1/6 fixed top-24 left-4 flex flex-col rounded-lg justify-between shadow-xl">
     <div className="p-4">
       <br></br>
       <br></br>
@@ -41,7 +41,7 @@ function AdprofileNavbar() {
     </div>
     <div className="p-4 mt-40">
      
-      <p className="text-gray-400 ml-6">&copy; 2024 PolyCrop </p>
+      <p className="text-gray-400 ml-6 mt-5">&copy; 2024 PolyCrop </p>
     </div>
   </div> 
   )

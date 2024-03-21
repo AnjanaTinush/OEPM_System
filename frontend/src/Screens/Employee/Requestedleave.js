@@ -62,10 +62,10 @@ function Requestedleave() {
     </form>
 </div>
 
-<div className="flex justify-center items-center ml-48 h-full mt-10">      
+<div className="flex justify-center items-center ml-40 h-full mt-10">      
         <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-green-900 dark:text-wight-green">
+        <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
           <tr>
             <th scope="col" className="px-6 py-3">
               id
@@ -75,6 +75,9 @@ function Requestedleave() {
             </th>
             <th scope="col" className="px-6 py-3">
               To Date
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Discription
             </th>
             <th scope="col" className="px-6 py-3">
               Status
@@ -88,16 +91,19 @@ function Requestedleave() {
           
           <tr className="bg-white dark:bg-table-row  hover:tablerow-hover dark:hover:bg-tablerow-hover">
             <td className="px-6 py-4 font-medium text-green-900 ">
-           dddd
+          12345
             </td>
             <td className="px-6 py-4 text-green-900">
-             ddd
+             22/03/2024
             </td>
             <td className="px-6 py-4 text-green-900">
-              dd
+            26/03/2024
             </td>
             <td className="px-6 py-4 text-green-900">
-             vvv
+             Discription
+            </td>
+            <td className="px-6 py-4 text-green-900">
+             Approve / Dissaprove
             </td>
            
            
