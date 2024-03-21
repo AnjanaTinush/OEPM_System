@@ -33,7 +33,7 @@ function Navbar() {
 
           
           {user ? (<>
-  <h1 className="text-sm text-whatsapp-green">{user.name}</h1>
+  <h1 className="text-sm text-whatsapp-green ">Hi , I m {user.name}</h1>
   <div className="relative inline-block ml-14 mt-0 ">
         {/* Dropdown Button */}
         <button
