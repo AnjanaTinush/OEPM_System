@@ -8,6 +8,8 @@ const dbcongfig = require('./db')
 
 const usersRoutes = require("./Routes/usersRoute")
 const driverRoute = require("./Routes/driverRoute")
+const leavesRoutes = require("./Routes/leavesRoutes")
+
 
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json())
@@ -17,6 +19,9 @@ app.use("/api/drivers", driverRoute);
 
 
 const port = process.env.PORT || 5000;
+app.use("/api/leaves",leavesRoutes);
+//app.use("/api/leaves" , leavesRoutes);
+
 
 app.use(cors());
 app.use(bodyParser.json());

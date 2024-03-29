@@ -40,7 +40,7 @@ function Looginscreen() {
         const role = result.data.user.role;
 
         if (role === 'User') {
-          window.location.href = '/';
+          window.location.href = '/c_displayitem';
           
         } else if (role ==='Employee manager') {
           window.location.href = '/employeeDashboard';
@@ -73,12 +73,13 @@ function Looginscreen() {
   
  
  return (
-
+<div>
+{loading && <Loader />}
   <div
   className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${bgimg1})` }}
 >
   <Navbar/>
-  {loading && <Loader />}
+ 
 
 
   <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/30 border border-white rounded-xl p-10 text-white w-1/3">
@@ -115,7 +116,7 @@ function Looginscreen() {
   </div>
 </div>
 
-  
+</div>
   )
 }
 
