@@ -120,17 +120,8 @@ async function Updateuser(e){
           <option value="Inventory manager">Inventory manager</option>
           <option value="Machine manager">Machine manager</option>
         </select>
-
- 
-
-
-
-
-
-
-          
-          
-          <div className="mt-8 mb-2">
+           
+         <div className="mt-8 mb-2">
             <button
               type="submit"
               onClick={Updateuser}

@@ -7,6 +7,12 @@ import Adminnavbar from './Component/Adminnavbar'
 import Navbar from '../Component/Navbar';
 import Loader from '../../Component/Loader';
 import Userupdate from './Userupdate';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+
+AOS.init({
+  duration:2500
+});
 
 function Allusers() {
 
@@ -265,7 +271,7 @@ onChange={(e) => { setsearchkey(e.target.value); filterBySearch(e.target.value);
        
         <div className="flex justify-center items-center ml-48 h-full">      
         <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16"> {Loading && (<Loader/>)}
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <table data-aos="zoom out" className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
           <tr>
             <th scope="col" className="px-6 py-3">
