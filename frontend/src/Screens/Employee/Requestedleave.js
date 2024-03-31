@@ -59,7 +59,7 @@ function Requestedleave() {
     <div>
       <Navbar />
       <AdprofileNavbar />
-      <div className="max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 mr-60">
+      <div className="flex max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 mr-60">
         <form className="flex items-center w-full">
           <RangePicker format="DD-MM-YYYY" onChange={filterByDate} className="rounded-3xl" />
           <input
@@ -102,7 +102,7 @@ function Requestedleave() {
               {error && <tr><td colSpan="5">Error fetching data.</td></tr>}
               {leaves.map((leave) => (
                 <tr key={leave.id} className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover">
-                  <td className="px-6 py-4 font-medium text-green-900">{leave.userid}</td>
+                  <td className="px-6 py-4 font-medium text-green-900">{leave._id}</td>
                   <td className="px-6 py-4 text-green-900">{leave.fromdate}</td>
                   <td className="px-6 py-4 text-green-900">{leave.todate}</td>
                   <td className="px-6 py-4 text-green-900">{leave.desription}</td>

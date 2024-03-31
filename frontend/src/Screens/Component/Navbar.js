@@ -20,7 +20,7 @@ function Navbar() {
 
   return (
     <div>
-      <header className="bg-white border-b border-gray-300 shadow-md">
+      <header className=" bg-white border-b border-gray-300 shadow-md">
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
           aria-label="Global"
