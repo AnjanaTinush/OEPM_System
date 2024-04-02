@@ -7,7 +7,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
 AOS.init({
-  duration:2500
+  duration:2000
 });
 
 
