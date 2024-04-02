@@ -4,6 +4,7 @@ import Navbar from '../Component/Navbar';
 import moment from "moment";
 import { DatePicker } from 'antd';
 import axios from "axios";
+import Swal from 'sweetalert2';
 import Loader from '../../Component/Loader';
 
 const { RangePicker } = DatePicker;
@@ -25,21 +26,38 @@ function Requestedleave() {
     settodate(dates[1].format("DD-MM-YYYY"));
   };
 
-  const leaverequest = async () => {
-    const requestdetails = {
-      userid: JSON.parse(localStorage.getItem("currentuser"))._id,
-      fromdate,
-      todate,
-      desription
+  const leaverequest = async (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+    
+    const currentuser = JSON.parse(localStorage.getItem("currentuser"));
+    const requestDetails = {
+        userid: currentuser._id,
+        fromdate: fromdate, // Assuming fromdate and todate are defined elsewhere
+        todate: todate,
+        description: desription // Fixing the typo here
     };
 
     try {
-      const result = await axios.post("/api/leaves/leaverequest", requestdetails);
+        const result = await axios.post("/api/leaves/leaverequest", requestDetails);
+        Swal.fire(
+            "Success!",
+            "Leave request sent successfully.",
+            "success"
+        ).then(() => {
+          window.location.reload();
+        });
     } catch (error) {
-      console.log(error);
+        console.log(error);
+        Swal.fire(
+            "Error!",
+            "Failed to send leave request.",
+            "error"
+        );
     }
-  };
+};
 
+  
+//read relavent leave requested
   const fetchData = async () => {
     try {
         setLoading(true);
@@ -59,7 +77,8 @@ function Requestedleave() {
     <div>
       <Navbar />
       <AdprofileNavbar />
-      <div className="max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 mr-60">
+     
+      <div className="flex max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 mr-60">
         <form className="flex items-center w-full">
           <RangePicker format="DD-MM-YYYY" onChange={filterByDate} className="rounded-3xl" />
           <input
@@ -102,7 +121,7 @@ function Requestedleave() {
               {error && <tr><td colSpan="5">Error fetching data.</td></tr>}
               {leaves.map((leave) => (
                 <tr key={leave.id} className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover">
-                  <td className="px-6 py-4 font-medium text-green-900">{leave.userid}</td>
+                  <td className="px-6 py-4 font-medium text-green-900">{leave._id}</td>
                   <td className="px-6 py-4 text-green-900">{leave.fromdate}</td>
                   <td className="px-6 py-4 text-green-900">{leave.todate}</td>
                   <td className="px-6 py-4 text-green-900">{leave.desription}</td>

@@ -4,6 +4,13 @@ import Adminnavbar from './Component/Adminnavbar'
 import Navbar from '../Component/Navbar'
 import Loader from '../../Component/Loader'
 import Swal from "sweetalert2";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+
+AOS.init({
+  duration:2500
+});
+
 
 function Approveleave() {
     const [approveleaves, setapproveleaves] = useState([]);
@@ -66,11 +73,12 @@ function Approveleave() {
     return (
         <div>
             <Adminnavbar />
-            <Navbar />
-            <div className="flex justify-center items-center ml-48 mr-10 h-full mt-10">
+           
+            <h1 className='flex justify-center text-4xl italic mt-16 ml-20 text-green-900'>Employee leave Request</h1>
+            <div className="flex justify-center items-center ml-48 mr-10 h-full mt-5">
                 <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-green-900 dark:text-wight-green">
+                    <table data-aos="zoom out" className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
                                     id
@@ -94,6 +102,7 @@ function Approveleave() {
                         </thead>
                         <tbody>
                             {approveleaves.length > 0 &&
+                            
                                 approveleaves.map((leave) => (
                                     <tr key={leave._id} className="bg-white dark:bg-table-row  hover:tablerow-hover dark:hover:bg-tablerow-hover">
                                         <td className="px-6 py-4 font-medium text-green-900">
