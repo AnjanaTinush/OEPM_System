@@ -24,11 +24,12 @@ function Signupscreen() {
     const[phone , setphone]=useState('')
     const[password , setpassword]=useState('')
     const [cpassword, setcpassword] = useState('');
+    
 
     const [Loading,setLoading] = useState(false)
     const navigate=useNavigate();
 
-   
+    
     async function registeruser(event) {
       event.preventDefault();
 
@@ -61,7 +62,7 @@ function Signupscreen() {
       }
     
     }else{
-      alert("Password dosen't match...")
+      toast.error("Password dosen't match...")
     }
   }
   return (
@@ -71,7 +72,7 @@ function Signupscreen() {
 
      {Loading && (<Loader/>)}
 
-     <form className='container' data-aos='' >
+     <form className='container' onSubmit={registeruser} data-aos='' >
 
   <div className="header">
     <div className="text">Sign up</div>
@@ -80,32 +81,32 @@ function Signupscreen() {
   <div className="inputs">
     <div className="input">
       <div className="icon"><FaUser /></div>
-      <input type="text" placeholder='Username' value={name} onChange={(e) => { setname(e.target.value) }} />
+      <input type="text" placeholder='Username' value={name} onChange={(e) => { setname(e.target.value) }} required />
     </div>
 
     <div className="input">
       <div className="icon"><MdEmail /></div>
-      <input type="email" placeholder='Email' value={email} onChange={(e) => { setemail(e.target.value) }} />
+      <input type="email" placeholder='Email' value={email} onChange={(e) => { setemail(e.target.value) }} required />
     </div>
 
     <div className="input">
       <div className="icon"><FaPhoneVolume /></div>
-      <input type="number" placeholder='Phone Number ' value={phone} onChange={(e) => { setphone(e.target.value) }} />
+      <input type="number" placeholder='Phone Number ' value={phone} onChange={(e) => { setphone(e.target.value) }} required/>
     </div>
 
     <div className="input">
       <div className="icon"><RiLockPasswordFill /></div>
-      <input type="password" placeholder='Password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
+      <input type="password" placeholder='Password' value={password} onChange={(e) => { setpassword(e.target.value) }} required />
     </div>
 
     <div className="input">
         <div className="icon"><RiLockPasswordFill /></div>
-        <input type="password" placeholder='Confirm Password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} />
+        <input type="password" placeholder='Confirm Password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} required/>
     </div>
 
     <div className="submit-container">
           <div className="submit">
-          <button type="submit" onClick={(e) => registeruser(e)}>Sign up</button>
+          <button type="submit" >Sign up</button>
           </div>
         </div>
 
