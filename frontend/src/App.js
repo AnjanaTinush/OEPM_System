@@ -15,7 +15,9 @@ import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
 import { Toaster } from "react-hot-toast";
+import Tunnels from "./Screens/Tunnel/Tunnels";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
+import Tunnelupdate from "./Screens/Tunnel/Tunnelupdate";
 
 
 
@@ -52,6 +54,8 @@ function App() {
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
 
       
+      <Route path="/t_tunnels" element={<Tunnels/>}/>
+      <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       </Routes>
    
     </BrowserRouter>

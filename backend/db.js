@@ -2,7 +2,7 @@ const mongoose=require("mongoose");
  
 var mongoURL=`mongodb+srv://anjana2:anjana@cluster0.rg6ebmf.mongodb.net/OEPM_System`;
 
-mongoose.connect(mongoURL,{useUnifiedTopology : true,useNewUrlParser:true});
+mongoose.connect(mongoURL,{});
 
 var connection=mongoose.connection;
 

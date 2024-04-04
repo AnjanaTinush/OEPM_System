@@ -7,12 +7,14 @@ const app =express();
 const dbconfig = require('./db');
 
 const usersRoutes = require("./Routes/usersRoute")
+const tunnelRoutes = require("./Routes/tunnelRoute")
 
 
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json())
 
 app.use("/api/users", usersRoutes);
+app.use("/api/tunnel", tunnelRoutes)
 
 
 
