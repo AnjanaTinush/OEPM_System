@@ -8,6 +8,17 @@ module.exports = {
         "wight-green": "#f5f5f5",
         "black-green": "#132A13",
         "table-row": "#C5D7C9",
+        "tablerow-hover": "#DBF4E0",
+        "Buttongreen": "#29bf12",
+        "dark": "#133d00",
+        "darkhover": "#3b562f",
+
+      },
+     
+  fontFamily: {
+  custom: ['Poppins'],
+  
+},
         "tablerow-hover": "#DBF4E0",
         "Buttongreen": "#29bf12",
         dark: "#133d00",
