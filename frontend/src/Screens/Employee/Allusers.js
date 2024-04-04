@@ -16,14 +16,21 @@ AOS.init({
 });
 //read users
 function Allusers() {
-  const [users, setUsers] = useState([]);
+  const [users, setusers] = useState([]);
   const [searchKey, setSearchKey] = useState('');
   const [loading, setLoading] = useState(false);
+
+  
+
+  const [duplicateusers, setduplicateusers] = useState([]);
+
+  const [searchkey , setsearchkey] = useState();
 
   const fetchData = async () => {
     try {
       const data = await axios.get('http://localhost:5000/api/users/getallusers');
-      setUsers(data.data);
+      setusers(data.data);
+      setduplicateusers(data.data); // Update duplicateusers with fetched data
     } catch (error) {
       console.log(error);
     }
@@ -83,6 +90,12 @@ function Allusers() {
     event.preventDefault();
   
     if (password == cpassword) {
+
+      if (phone.length !== 10) {
+        toast.error("Phone number must be 10 digits.");
+        return; // Exit the function if phone number is not valid
+      }
+
       const user = {
         name,
         email,
@@ -146,41 +159,50 @@ function Allusers() {
   };
 
 //search user
-const [searchuser, setsearchuser] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredUsers = users.filter((user) =>
-  user.name.toLowerCase().includes(searchQuery.toLowerCase())
-);
+
+function filterBySearch() {
+  const tempuser = duplicateusers.filter(user =>
+    user.name.toLowerCase().includes(searchkey.toLowerCase())
+  );
+
+  setusers(tempuser);
+
+  // Check if the filtered array is empty
+  if (tempuser.length === 0) {
+    toast.error("User not found.");
+  }
+}
+
+const [type, settype] = useState("all");
+
+
+
+function filterByType(e) {
+  const selectedType = e.target.value.toLowerCase();
+  settype(selectedType);
+
+  if (selectedType !== 'all') {
+    const tempUsers = duplicateusers.filter(user => user.role && user.role.toLowerCase() === selectedType);
+    setusers(tempUsers);
+  } else {
+    setusers(duplicateusers);
+  }
+}
+
+
 
 
   return (
     <div >
       <Adminnavbar />
-   
      
    
-      <div className='flex justify-between items-center mx-20  h-full mt-10'>
-    <input
-    
-        type="text"
-        placeholder="Search  name..."
-        className="mt-4 p-2 pl-10 block w-72 ml-64 mb-4 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-    />
-    
-    <button
-        type="button"
-        className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-6 py-1 text-center me-2 mb-0 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
-        onClick={openModal}
-    >
-        Add
-    </button>
-</div>
+      
 
 
-       {/* Modal */}
+      //popup form
+
        {isModalOpen && (
             <div className="fixed inset-0 z-10 overflow-y-auto bg-gray-500 bg-opacity-50 flex justify-center items-center backdrop-blur-sm">
              
@@ -217,6 +239,24 @@ const [searchuser, setsearchuser] = useState([]);
                         
                       />
                     </div>
+                    <div className="mt-4">
+  <input
+    type="number"
+    placeholder="Enter phone"
+    value={phone}
+    onChange={(e) => setphone(e.target.value)}
+    onInput={(e) => {
+      if (e.target.value.length > 10) {
+        toast.error("Phone number cannot exceed 10 digits.");
+        e.target.value = e.target.value.slice(0, 10); // Truncate input to 10 digits 
+        setphone(e.target.value); 
+      }
+    }}
+    className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+    min="1000000000"
+    max="9999999999"
+  />
+</div>
                     <div className="mt-4">
                       <input
                         type="password"
@@ -257,6 +297,48 @@ const [searchuser, setsearchuser] = useState([]);
       <div className='flex justify-center items-center ml-48 h-full '>
         <div className='overflow-x-auto shadow-2xl sm:rounded-lg ml-16 mb-4'>
           {loading && <Loader />}
+          <thead >
+            <tr>
+            <div className="flex items-center"> {/* Use flexbox to align items in a row */}
+  <input
+    type="text"
+    placeholder="Search name..."
+    className="mt-6 p-1 pl-10 block w-72 ml-26 mb-4  rounded-3xl dark:bg-table-row border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
+    value={searchkey}
+    onChange={(e) => { setsearchkey(e.target.value) }}
+    onKeyUp={filterBySearch}
+  />
+  <select
+    id="countries"
+    value={type}
+    onChange={(e) => filterByType(e)}
+    className="mt-2 p-1 ml-40 block rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green dark:bg-table-row placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
+  >
+    <option value="all">All</option>
+    <option value="user">User</option>
+    <option value="employee manager">Employee manager</option>
+    <option value="tunnel manager">Tunnel manager</option>
+    <option value="financial manager">Financial manager</option>
+    <option value="target manager">Target manager</option>
+    <option value="courier service">Courier service</option>
+    <option value="inventory manager">Inventory manager</option>
+    <option value="machine manager">Machine manager</option>
+  </select>
+
+  <button
+        type="button"
+        className="text-white  ml-80 bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-10 py-1 text-center me-4 mt-4 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-2xl"
+        onClick={openModal}
+    >
+        Add
+    </button>
+
+</div>
+
+
+
+</tr>
+          </thead>
           <table data-aos='zoom out' className='w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 '>
             <thead className='text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green'>
            
@@ -284,37 +366,34 @@ const [searchuser, setsearchuser] = useState([]);
             </thead>
 
             <tbody>
-            {filteredUsers.length === 0 ? (
-  <tr>
-    <td colSpan="6" className="px-6 py-4 text-center text-red-500">
-      User not found...
-    </td>
-  </tr>
-) : (
-            filteredUsers.map((user) => (
-             
-                  <tr key={user._id} className='bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover'>
-                    <td className='px-6 py-4 font-medium text-green-900'>{user._id}</td>
-                    <td className='px-6 py-4 text-green-900'>{user.name}</td>
-                    <td className='px-6 py-4 text-green-900'>{user.email}</td>
-                    <td className='px-6 py-4 text-green-900'>
-                      <img className='w-10 rounded-full' src={user.imageurl} alt='profile' />
-                    </td>
-                    <td className='px-6 py-4 text-green-900'>{user.role}</td>
-                    <td className='px-6 py-4 text-right text-green-900'>
-                      <Link to={`/e_updates/${user._id}`}>
-                        <button className='btn1 mr-3'>
-                          <FaEdit className='mr-5 text-xl' />
-                        </button>
-                      </Link>
-                      <button className='btn1' onClick={() => deleteuser(user._id)}>
-                        <MdDeleteForever className='mr-5 text-2xl' />
-                      </button>
-                    </td>
-                  </tr>
-                )))}
-                
-            </tbody>
+  {users.length > 0 ? (
+    users.map(user => (
+      <tr key={user._id} className='bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover'>
+        <td className='px-6 py-4 font-medium text-green-900'>{user._id}</td>
+        <td className='px-6 py-4 text-green-900'>{user.name}</td>
+        <td className='px-6 py-4 text-green-900'>{user.email}</td>
+        <td className='px-6 py-4 text-green-900'>
+          <img className='w-10 rounded-full' src={user.imageurl} alt='profile' />
+        </td>
+        <td className='px-6 py-4 text-green-900'>{user.role}</td>
+        <td className='px-6 py-4 text-right text-green-900'>
+          <Link to={`/e_updates/${user._id}`}>
+            <button className='btn1 mr-3'>
+              <FaEdit className='mr-5 text-xl' />
+            </button>
+          </Link>
+          <button className='btn1' onClick={() => deleteuser(user._id)}>
+            <MdDeleteForever className='mr-5 text-2xl' />
+          </button>
+        </td>
+      </tr>
+    ))
+  ) : (
+  <tr><td colSpan="6" className="text-center py-4 text-red-500">User not found.</td></tr>
+
+  )}
+</tbody>
+
           </table>
         </div>
       </div>
