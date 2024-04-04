@@ -2,6 +2,10 @@ const mongoose = require("mongoose")
 
 const itemsSchema = mongoose.Schema({
 
+    id :{
+        type : String,
+        require : true,
+    },
     name :{
         type : String,
         require : true,

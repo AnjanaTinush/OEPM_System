@@ -14,10 +14,22 @@ import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
+import Drivers from "./Screens//Curiorservice/Drivers"
+import AddDriver from "./Screens/Curiorservice/AddDriver"
 import { Toaster } from "react-hot-toast";
 import Tunnels from "./Screens/Tunnel/Tunnels";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
 import Tunnelupdate from "./Screens/Tunnel/Tunnelupdate";
+import Euserprofile from "./Screens/Employee/Euserprofile";
+import Requestedleave from "./Screens/Employee/Requestedleave";
+import ShoppingCart from "./Screens/Customerorder/ShoppingCart";
+import CheckoutPage from "./Screens/Customerorder/checkout";
+import PaymentPage from "./Screens/Customerorder/payment";
+
+import Approveleave from "./Screens/Employee/Approveleave";
+import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+
+
 
 
 
@@ -51,8 +63,18 @@ function App() {
       <Route path="/userprofile" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
+      <Route path="/j_drivers" element={<Drivers/>}/>
+      <Route path="/j_addDriver" element={<AddDriver/>}/>
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
-
+      <Route path="e_userprofile" element={<Euserprofile/>}/>
+      <Route path="e_requestedleave" element={<Requestedleave/>}/>
+      <Route path="shoppingCart" element={<ShoppingCart/>}/>
+      <Route path="checkout" element={<CheckoutPage/>}/>
+      <Route path="payment" element={<PaymentPage/>}/>
+     
+      
+      <Route path="e_approveleave" element={<Approveleave/>}/>
+      <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
       
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>

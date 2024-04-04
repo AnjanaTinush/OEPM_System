@@ -40,7 +40,7 @@ function Looginscreen() {
         const role = result.data.user.role;
 
         if (role === 'User') {
-          window.location.href = '/';
+          window.location.href = '/c_displayitem';
           
         } else if (role ==='Employee manager') {
           window.location.href = '/employeeDashboard';
