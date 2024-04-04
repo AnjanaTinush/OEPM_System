@@ -17,7 +17,9 @@ import Userupdate from "./Screens/Employee/Userupdate";
 import Drivers from "./Screens//Curiorservice/Drivers"
 import AddDriver from "./Screens/Curiorservice/AddDriver"
 import { Toaster } from "react-hot-toast";
+import Tunnels from "./Screens/Tunnel/Tunnels";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
+import Tunnelupdate from "./Screens/Tunnel/Tunnelupdate";
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
 import ShoppingCart from "./Screens/Customerorder/ShoppingCart";
@@ -74,6 +76,8 @@ function App() {
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
       
+      <Route path="/t_tunnels" element={<Tunnels/>}/>
+      <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       </Routes>
    
     </BrowserRouter>
