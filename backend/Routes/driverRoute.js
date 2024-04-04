@@ -29,6 +29,44 @@ router.get("/getalldrivers", async(req, res) => {
     }
     
     });
+
+    //getdriver
+router.route('/getdriver/:id').get(async(req,res) => {
+
+  const driverid = req.params.id;
+
+  try {
+    const user = await drivers.findById(driverid);
+    return res.status(200).json({status : "Driver is fatched",user});
+  } catch (error) {
+    return res.status(400).json({status : "Error with fatch Driver", message : error});
+  }
+})
+
+
+//update user
+router.route('/updatedriver/:id').put(async(req,res)=>{
+
+  const driverid = req.params.id;
+  const{ name, email, phone, vehicalnum, availability} = req.body;
+
+  const updatedriver={
+    name, 
+    email, 
+    phone, 
+    vehicalnum, 
+    availability
+  };
+
+  try {
+      await drivers.findByIdAndUpdate(driverid,updatedriver);
+      return res.status(200).json({status : "Driver updated"});
+  } catch (error) {
+
+      return res.status(400).json({status : "Error with update driver",massage : error})
+      
+  }
+})
     
 
 

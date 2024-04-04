@@ -31,6 +31,7 @@ function AddDriver() {
       );
       console.log(result.data);
       alert("Driver added successfully");
+      window.location.href='/j_drivers';
     } catch (error) {
       console.log(error);
     }

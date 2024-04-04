@@ -21,6 +21,8 @@ import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboar
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
 import Approveleave from "./Screens/Employee/Approveleave";
+import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+
 
 
 
@@ -61,6 +63,7 @@ function App() {
       <Route path="e_userprofile" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>
       <Route path="e_approveleave" element={<Approveleave/>}/>
+      <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
       
       </Routes>
    

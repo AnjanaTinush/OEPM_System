@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
 import logo from '../../../Images/logo.png';
 import { GiSteeringWheel } from "react-icons/gi";
-import { MdOutlineStarPurple500 } from "react-icons/md";
+import Navbar from "../../Component/Navbar"
 
 function Adminnavbar() {
   const location = useLocation();
@@ -13,7 +13,7 @@ function Adminnavbar() {
       <div className="p-4">
         <br></br>
         <br></br>
-
+        <Navbar/>
         <Link
           to="/Curiorservisedashboard"
           className={`flex items-center w-full py-3 px-4 ${location.pathname === "/Curiorservisedashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
@@ -29,6 +29,9 @@ function Adminnavbar() {
           <GiSteeringWheel className="mr-5 text-lg" />
           <span className="font-bold text-lg">Drivers</span>
         </Link>
+
+
+        
 
         
 

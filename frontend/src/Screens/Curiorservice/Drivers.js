@@ -48,7 +48,7 @@ function Drivers() {
 
   // Filter drivers based on search query
   const filteredDrivers = drivers.filter((driver) =>
-    driver.name.toLowerCase().includes(searchQuery.toLowerCase())
+    driver.name && driver.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -143,7 +143,7 @@ function Drivers() {
                         </td>
 
                         <td className="px-6 py-4 text-right text-green-900">
-                          <Link to="#">
+                          <Link to={`/j_updatedriver/${driver._id}`}>
                             <button className="btn1 mr-3">
                               <FaEdit className="mr-5 text-xl" />
                             </button>
