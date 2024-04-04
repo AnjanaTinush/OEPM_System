@@ -1,13 +1,13 @@
 import React, { useState,useRef, useEffect } from 'react';
 import axios from 'axios';
 import Adminnavbar from './Component/Adminnavbar'
-import Navbar from '../Component/Navbar'
+import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import Loader from '../../Component/Loader'
 
 const Userupdate =() => {
 
-
+//for selet tag for coose roll
   const handleRoleChange = (e) => {
     setroll(e.target.value);
   };
@@ -21,7 +21,7 @@ const [role,setroll]=useState('');
    
 const [Loading,setLoading] = useState(false)
 
-
+//take data for update
 useEffect(() => {
   async function getUser() {
     try {
@@ -43,7 +43,7 @@ useEffect(() => {
   getUser();
 }, [])
 
-//updateuser
+//updateuser function
 async function Updateuser(e){
 
   e.preventDefault();
@@ -59,7 +59,12 @@ async function Updateuser(e){
     const response = (await axios.put(`http://localhost:5000/api/users/updateuser/${userid}`,updateuser)).data;
     console.log(response);
     setLoading(false)
-    window.location.href='/e_allusers';
+    Swal.fire("Congratulations", "User updated successfully", "success").then(
+      () => {
+        window.location.href='/e_allusers';
+      }
+    );
+   
 
   } catch (error) {
     setLoading(false)
@@ -74,43 +79,42 @@ async function Updateuser(e){
       {/* Side Navigation */}
       <Adminnavbar />
 
-      <div className="flex flex-col w-full">
-        {/* Top Navigation */}
-        <Navbar />
+      <div className="flex flex-col w-full  justify-center">
+        
         {Loading && <Loader/>}
-        <div className="max-w-sm mx-auto bg-white shadow-xl rounded-3xl mt-28 p-6">
-      <h2 className="text-xl font-semibold text-dark font-custom  ">
+        <div className="max-w-lg mx-auto bg-white shadow-xl rounded-3xl mt-20 p-20 ">
+      <h2 className="text-3xl font-semibold text-dark font-custom text-center ">
                     Update user details
                   </h2>
         <form  className="mt-8">
           <div>
-            <input
-              type="text"
-              value={name}
-              className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
-            onChange={(e)=>{
-              setname(e.target.value)
-            }}
-            />
+          <input
+  type="text"
+  value={name}
+  className="mt-1 p-3 block w-full md:w-96 rounded-3xl dark:bg-table-row border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+  onChange={(e) => {
+    setname(e.target.value);
+  }}
+/>
           </div>
           <div className="mt-4">
             <input
               type="email"
               value={email}
-              className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
+              className="mt-1 p-3 block w-full md:w-96 rounded-3xl dark:bg-table-row border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               onChange={(e)=>{
                 setemail(e.target.value)
               }}
             />
           </div>
 
-     
+     {/*role selection tag */}
           <select
           id="countries"
           value={role} // set the selected value
           onChange={handleRoleChange} // handle the change event
-          className="mt-3 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
-        >
+          className="mt-4 p-3 block w-full md:w-96 rounded-3xl dark:bg-table-row border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+          >
           <option value="User">User</option>
           <option value="Employee manager">Employee manager</option>
           <option value="Tunnel manager">Tunnel manager</option>
@@ -121,16 +125,17 @@ async function Updateuser(e){
           <option value="Machine manager">Machine manager</option>
         </select>
            
-         <div className="mt-8 mb-2">
-            <button
-              type="submit"
-              onClick={Updateuser}
-              className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center me-2 mb-2 dark:bg-dark dark:hover:bg-darkhover"
-              
-            >
-              Confirm
-            </button>
-          </div>
+        <div className="flex justify-center">
+  <button
+    type="submit"
+    onClick={Updateuser}
+    className="mt-4 p-3 md:w-40 text-white bg-dark hover:bg-darkhover font-custom text-md"
+  >
+    Confirm
+  </button>
+</div>
+
+         
         </form>
       </div>
 
