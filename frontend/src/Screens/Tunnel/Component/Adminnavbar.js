@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
 import { GiGreenhouse } from "react-icons/gi";
-import { IoMdContacts } from 'react-icons/io';
-import logo from '../../../Images/logo.png';
+import { IoMdContacts } from "react-icons/io";
+import logo from "../../../Images/logo.png";
 
 function Adminnavbar() {
   const location = useLocation();
@@ -14,22 +14,34 @@ function Adminnavbar() {
         <br></br>
         <br></br>
         <Link
-          to="/employeeDashboard"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          to="/tunneldashboard"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/tunneldashboard"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <LuLayoutDashboard className="mr-5 text-lg" />
           <span className="font-bold text-lg">Dash Board</span>
         </Link>
         <Link
-          to="/e_allusers"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          to="/t_tunnels"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/t_tunnels"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <GiGreenhouse className="mr-5 text-lg" />
           <span className="font-bold text-lg">Tunnels</span>
         </Link>
         <Link
           to="/"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <IoMdContacts className="mr-5 text-lg" />
           <span className="font-bold text-lg">Contact</span>

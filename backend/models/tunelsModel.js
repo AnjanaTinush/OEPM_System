@@ -27,6 +27,6 @@ const tunnelSchema = mongoose.Schema({
     timestamps : true,
 })
 
-const tunnelModel = mongoose.model('Tunels',tunnelSchema)
+const tunnelModel = mongoose.model('Tunnels',tunnelSchema)
 
 module.exports=tunnelModel;
