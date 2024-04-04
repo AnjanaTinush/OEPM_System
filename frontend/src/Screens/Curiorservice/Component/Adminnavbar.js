@@ -1,9 +1,9 @@
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
-import logo from '../../../Images/logo.png';
+import logo from "../../../Images/logo.png";
 import { GiSteeringWheel } from "react-icons/gi";
-import Navbar from "../../Component/Navbar"
+import Navbar from "../../Component/Navbar";
 
 function Adminnavbar() {
   const location = useLocation();
@@ -11,12 +11,17 @@ function Adminnavbar() {
   return (
     <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col justify-between shadow-xl">
       <div className="p-4">
+       
+        <Navbar />
         <br></br>
         <br></br>
-        <Navbar/>
         <Link
           to="/Curiorservisedashboard"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/Curiorservisedashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/Curiorservisedashboard"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <LuLayoutDashboard className="mr-5 text-lg" />
           <span className="font-bold text-lg">Dash Board</span>
@@ -24,19 +29,15 @@ function Adminnavbar() {
 
         <Link
           to="/j_drivers"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/j_drivers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/j_drivers"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <GiSteeringWheel className="mr-5 text-lg" />
           <span className="font-bold text-lg">Drivers</span>
         </Link>
-
-
-        
-
-        
-
-        
-
       </div>
       <div className="p-4 ml">
         <div className="flex justify-center items-center mt-4 mr-5">

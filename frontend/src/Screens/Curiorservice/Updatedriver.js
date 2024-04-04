@@ -65,7 +65,7 @@ function Updatedriver() {
 
   return (
     <div>
-      <Navbar />
+      
       <Adminnavbar />
 
       <div className="flex justify-center items-center h-screen ">
@@ -128,7 +128,7 @@ function Updatedriver() {
                 type="submit"
                 className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center dark:bg-dark dark:hover:bg-darkhover"
               >
-                Submit
+                Update
               </button>
             </div>
           </form>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import Adminnavbar from "./Component/Adminnavbar";
-import Navbar from "../Component/Navbar";
+import Navbar from "./Component/Navbar";
 import { useReactToPrint } from "react-to-print";
 import { CiSearch } from "react-icons/ci";
 
@@ -42,8 +42,8 @@ function Drivers() {
 
   const generatePDF = useReactToPrint({
     content: () => componentPDF.current,
-    documentTitle: "Userdata",
-    onAfterPrint: () => alert("Data saved in PDF"),
+    documentTitle: "Drivers List",
+    
   });
 
   // Filter drivers based on search query
@@ -52,7 +52,7 @@ function Drivers() {
   );
 
   return (
-    <div className="bg-wight-green">
+    <div>
       <div className="flex">
         {/* Side Navigation */}
         <Adminnavbar />
