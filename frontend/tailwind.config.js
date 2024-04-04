@@ -19,10 +19,17 @@ module.exports = {
   custom: ['Poppins'],
   
 },
+        "tablerow-hover": "#DBF4E0",
+        "Buttongreen": "#29bf12",
+        dark: "#133d00",
+        darkhover: "#3b562f",
+        opacity: "#ACACAC",
+      },
 
-        
+      fontFamily: {
+        custom: ["Poppins"],
+      },
     },
   },
   plugins: [],
-}
-
+};

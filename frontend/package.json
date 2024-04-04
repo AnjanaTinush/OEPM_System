@@ -7,19 +7,27 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "antd": "^5.14.1",
+    "antd": "^5.15.0",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "html2canvas": "^1.4.1",
     "react": "^18.2.0",
     "react-datepicker": "^6.3.0",
+    "flexbox-react": "^4.4.0",
+    "moment": "^2.30.1",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
+    "react-calendar": "^4.8.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
-    "react-router-dom": "^6.22.0",
+    "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-to-print": "^2.15.1",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.10.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -48,5 +56,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

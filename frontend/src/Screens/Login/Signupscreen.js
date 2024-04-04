@@ -9,9 +9,11 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
 import Navbar from '../../Component/Navbar';
 import Loader from '../../Component/Loader';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 AOS.init({
-  duration:'500'
+  duration:'5000'
 });
 
 
@@ -22,10 +24,12 @@ function Signupscreen() {
     const[phone , setphone]=useState('')
     const[password , setpassword]=useState('')
     const [cpassword, setcpassword] = useState('');
+    
 
     const [Loading,setLoading] = useState(false)
+    const navigate=useNavigate();
 
-   
+    
     async function registeruser(event) {
       event.preventDefault();
 
@@ -44,13 +48,21 @@ function Signupscreen() {
         const result = await axios.post("http://localhost:5000/api/users/register", user);
         setLoading(false)
         console.log(result.data);
+        if(result.data.success){
+             toast.success(result.data.massage)
+             toast("Redirecting to Login page.")
+             navigate("/login");
+        }else{
+            toast.error(result.data.massage)
+        }
       } catch (error) {
         console.log(error)
         setLoading(false)
+        toast.error("Something went wrong")
       }
     
     }else{
-      alert("Password dosen't match...")
+      toast.error("Password dosen't match...")
     }
   }
   return (
@@ -60,7 +72,7 @@ function Signupscreen() {
 
      {Loading && (<Loader/>)}
 
-     <form className='container' data-aos='' >
+     <form className='container' onSubmit={registeruser} data-aos='' >
 
   <div className="header">
     <div className="text">Sign up</div>
@@ -69,32 +81,32 @@ function Signupscreen() {
   <div className="inputs">
     <div className="input">
       <div className="icon"><FaUser /></div>
-      <input type="text" placeholder='Username' value={name} onChange={(e) => { setname(e.target.value) }} />
+      <input type="text" placeholder='Username' value={name} onChange={(e) => { setname(e.target.value) }} required />
     </div>
 
     <div className="input">
       <div className="icon"><MdEmail /></div>
-      <input type="email" placeholder='Email' value={email} onChange={(e) => { setemail(e.target.value) }} />
+      <input type="email" placeholder='Email' value={email} onChange={(e) => { setemail(e.target.value) }} required />
     </div>
 
     <div className="input">
       <div className="icon"><FaPhoneVolume /></div>
-      <input type="number" placeholder='Phone Number ' value={phone} onChange={(e) => { setphone(e.target.value) }} />
+      <input type="number" placeholder='Phone Number ' value={phone} onChange={(e) => { setphone(e.target.value) }} required/>
     </div>
 
     <div className="input">
       <div className="icon"><RiLockPasswordFill /></div>
-      <input type="password" placeholder='Password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
+      <input type="password" placeholder='Password' value={password} onChange={(e) => { setpassword(e.target.value) }} required />
     </div>
 
     <div className="input">
         <div className="icon"><RiLockPasswordFill /></div>
-        <input type="password" placeholder='Confirm Password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} />
+        <input type="password" placeholder='Confirm Password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} required/>
     </div>
 
     <div className="submit-container">
           <div className="submit">
-          <button type="submit" onClick={(e) => registeruser(e)}>Sign up</button>
+          <button type="submit" >Sign up</button>
           </div>
         </div>
 
