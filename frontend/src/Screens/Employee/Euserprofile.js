@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../Component/Navbar'
 import AdprofileNavbar from './Component/AdprofileNavbar'
 import { FaUserEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
@@ -15,7 +14,7 @@ AOS.init({
 function Euserprofile() {
   return (
     <div>
-        <Navbar/>
+       
         <AdprofileNavbar/>
         
 <div data-aos="zoom in" className='ml-52'>
