@@ -13,6 +13,9 @@ import Financialdasgboard from "./Screens/Financial/Financialdasgboard";
 import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
+import Targets from "./Screens/Targets/Targets";
+import ManageTargets from "./Screens/Targets/ManageTargets";
+import UpdateTarget from "./Screens/Targets/UpdateTarget";
 import Userupdate from "./Screens/Employee/Userupdate";
 import Drivers from "./Screens//Curiorservice/Drivers"
 import AddDriver from "./Screens/Curiorservice/AddDriver"
@@ -62,6 +65,9 @@ function App() {
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
       <Route path="/userprofile" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
+      <Route path="/t_targets" element={<Targets/>}/>
+      <Route path="/m_targets" element={<ManageTargets/>}/>
+      <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
       <Route path="/j_addDriver" element={<AddDriver/>}/>
