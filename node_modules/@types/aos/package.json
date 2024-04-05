@@ -1,0 +1,30 @@
+{
+    "name": "@types/aos",
+    "version": "3.0.7",
+    "description": "TypeScript definitions for aos",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/aos",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Rostislav Shermenyov",
+            "githubUsername": "shermendev",
+            "url": "https://github.com/shermendev"
+        },
+        {
+            "name": "Matheus Grieger",
+            "githubUsername": "matheusgrieger",
+            "url": "https://github.com/matheusgrieger"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/aos"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "a5751d71b33efbe5945357be8d4f292791eda2357a5a995f58d68ca757031e29",
+    "typeScriptVersion": "4.5"
+}
