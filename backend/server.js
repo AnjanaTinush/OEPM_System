@@ -7,6 +7,7 @@ const app =express();
 const dbcongfig = require('./db')
 
 const usersRoutes = require("./Routes/usersRoute")
+const targetRoutes = require("./Routes/targetsRoute")
 const tunnelRoutes = require("./Routes/tunnelRoute")
 const driverRoute = require("./Routes/driverRoute")
 const leavesRoutes = require("./Routes/leavesRoutes")
@@ -18,6 +19,7 @@ app.use(cors()); // Add this line to enable CORS
 app.use(express.json())
 
 app.use("/api/users", usersRoutes);
+app.use("/api/target", targetRoutes)
 app.use("/api/tunnel", tunnelRoutes)
 app.use('/api/customeritems',customerOrderRoute);
 app.use("/api/shoppingCart",shoppingCartRoute);
