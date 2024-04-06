@@ -1,8 +1,10 @@
 import React from 'react'
-import "../Component/Navbar.js"
+import { useLocation } from "react-router-dom";
 import Navbar from '../Component/Navbar.js'
 
 function Homepage() {
+//home page
+  
   return (
     <div>
        <Navbar/>
