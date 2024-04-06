@@ -284,7 +284,7 @@ function Allusers() {
                 <input
                   type="text"
                   placeholder="Search name..."
-                  className="mt-6 p-1 pl-10 block w-72 ml-26 mb-4  rounded-3xl dark:bg-table-row border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
+                  className="mt-6 p-1 pl-10 block w-72 ml-10 mb-4  rounded-3xl dark:bg-table-row border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
                   value={searchkey}
                   onChange={(e) => {
                     setsearchkey(e.target.value);
@@ -296,7 +296,7 @@ function Allusers() {
                   id="countries"
                   value={type}
                   onChange={(e) => filterByType(e)}
-                  className="mt-2 p-1 ml-40 block rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green dark:bg-table-row placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
+                  className="mt-2 p-1 mr-20 ml-20 block rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green dark:bg-table-row placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-2xl"
                 >
                   <option value="all">All</option>
                   <option value="user">User</option>
@@ -309,9 +309,14 @@ function Allusers() {
                   <option value="machine manager">Machine manager</option>
                 </select>
 
+                <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full">
+  Generate Report
+</button>
+
+               
                 <button
                   type="button"
-                  className="text-white  ml-80 bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-10 py-1 text-center me-4 mt-4 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-2xl"
+                  className="text-white  ml-20 bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-10 py-1 text-center me-4 mt-3 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-2xl"
                   onClick={openModal}
                 >
                   Add
