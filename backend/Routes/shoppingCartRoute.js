@@ -75,6 +75,17 @@ router.route('/updatecart/:id').put(async(req,res)=>{
     }
 })
 
+// Get all items in the shopping cart
+router.get("/getitem", async (req, res) => {
+  try {
+    const items = await shoppingCart.find({}, 'itemName price quantity imageurl');
+    res.status(200).json(items);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 
 
 
