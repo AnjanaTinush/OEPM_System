@@ -330,14 +330,15 @@ function Allusers() {
           >
             <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
               <tr>
-                <th scope="col" className="px-6 py-3 text-center">
-                  id
-                </th>
+                
                 <th scope="col" className="px-6 py-3 text-center">
                   name
                 </th>
                 <th scope="col" className="px-6 py-3 text-center">
                   email
+                </th>
+                <th scope="col" className="px-6 py-3 text-center">
+                  Phone
                 </th>
                 <th scope="col" className="px-6 py-3 text-center">
                   image
@@ -361,11 +362,12 @@ function Allusers() {
                     key={user._id}
                     className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover"
                   >
-                    <td className="px-6 py-4 font-medium text-green-900 text-center">
-                      {user._id}
+                   
+                    <td className="px-6 py-4 text-green-900 left-0">{user.name}</td>
+                    <td className="px-6 py-4 text-green-900 left-0">{user.email}</td>
+                    <td className="px-6 py-4 font-medium text-green-900 left-0">
+                      {user.phone}
                     </td>
-                    <td className="px-6 py-4 text-green-900 text-center">{user.name}</td>
-                    <td className="px-6 py-4 text-green-900 text-center">{user.email}</td>
                     <td className="px-6 py-4 text-green-900 text-center">
                       <img
                         className="w-10 rounded-full"
@@ -373,7 +375,7 @@ function Allusers() {
                         alt="profile"
                       />
                     </td>
-                    <td className="px-6 py-4 text-green-900 text-center">{user.role}</td>
+                    <td className="px-6 py-4 text-green-900 left-0">{user.role}</td>
                     <td className="px-6 py-4  text-green-900 text-right">
                       <Link to={`/e_updates/${user._id}`}>
                         <button className="btn1 mr-3">
