@@ -105,7 +105,7 @@ function Employeedashboard() {
 
     </div>
     
-    <div className="w-96 ml-40 h-2xl bg-white shadow-lg rounded-lg p-2 mt-8  mb-1">
+    <div className="w-96 ml-40 h-2xl bg-white shadow-lg rounded-lg p-2 mt-6  mb-1">
       <h2 className="text-lg font-semibold text-center italic">Summary of user count</h2>
       {data && <Pie data={data} />}
       
