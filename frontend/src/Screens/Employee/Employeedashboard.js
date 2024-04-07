@@ -94,7 +94,7 @@ function Employeedashboard() {
   return (
     <div className="flex">
     <Adminnavbar />
-
+       {/*Line graph*/}
     <div className="ml-72 mt-40 ">
     <Chart
               options={state.options}
