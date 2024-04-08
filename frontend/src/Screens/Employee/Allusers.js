@@ -6,7 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Adminnavbar from "./Component/Adminnavbar";
 import Loader from "../../Component/Loader";
-import { CiSearch } from "react-icons/ci";
+import { jsPDF } from "jspdf";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -183,6 +183,55 @@ function Allusers() {
     }
   }
 
+  
+  
+  function generatePDF() {
+    const doc = new jsPDF();
+  
+    // Add a title and styling
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("User Report", 85, 15);
+  
+    let startY = 30; // Initial y position for the first user card
+  
+    // Loop through each user and add formatted information to the PDF
+    users.forEach((user) => {
+      const { name, email, phone, role, imageurl } = user;
+      const imageWidth = 30;
+      const imageHeight = 30;
+      const rowHeight = 50; // Height of each row
+  
+      // Add a new page if necessary
+      if (startY + rowHeight > doc.internal.pageSize.getHeight()) {
+        doc.addPage();
+        startY = 20; // Reset startY for the new page
+      }
+  
+      // User card styling
+      doc.setDrawColor(0);
+      doc.setFillColor(197, 215, 201);
+      doc.roundedRect(20, startY, 170, rowHeight - 2, 3, 3, "FD");
+  
+      // User information
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(12);
+      doc.text(`Name: ${name}`, 25, startY + 10);
+      doc.text(`Email: ${email}`, 25, startY + 20);
+      doc.text(`Phone: ${phone}`, 25, startY + 30);
+      doc.text(`Role: ${role}`, 25, startY + 40);
+      doc.addImage(imageurl, "JPEG", 150, startY + 5, imageWidth, imageHeight);
+  
+      startY += rowHeight; // Increment startY for the next user card
+    });
+  
+    // Save the PDF
+    doc.save("user_report.pdf");
+  }
+  
+  
+
+
   return (
     <div>
       <Adminnavbar />
@@ -309,7 +358,8 @@ function Allusers() {
                   <option value="machine manager">Machine manager</option>
                 </select>
 
-                <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full">
+                <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full"
+                onClick={generatePDF}>
   Generate Report
 </button>
 
