@@ -78,7 +78,7 @@ function Looginscreen() {
   <div data-aos="zoom in"
   className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${bgimg1})` }}
 >
-  <Navbar/>
+<Navbar/>
  
 
 

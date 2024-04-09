@@ -78,6 +78,7 @@ function Requestedleave() {
 
   return (
     <div>
+    
       <AdprofileNavbar />
 
       <div className="flex max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 mr-60">
@@ -165,7 +166,7 @@ function Requestedleave() {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }
