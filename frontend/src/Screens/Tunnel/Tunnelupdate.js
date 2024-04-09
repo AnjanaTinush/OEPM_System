@@ -68,8 +68,9 @@ async function Updatetunnel(e){
 
   return (
     <div className="bg-wight-green">
+      <div className="flex">
       <Adminnavbar />
-      <Navbar />
+      <div className="flex flex-col w-full" style={{ zIndex: 900 }}>
       <div className="max-w-sm mx-auto bg-white shadow-md rounded-3xl mt-32 p-6">
       <h2 className="text-xl font-semibold text-dark font-custom  ">
                     Enter the Tunnel Details
@@ -127,6 +128,10 @@ async function Updatetunnel(e){
           </div>
         </form>
       </div>
+
+      </div>
+      </div>
+
     </div>
   )
 }

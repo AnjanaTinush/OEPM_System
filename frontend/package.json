@@ -10,6 +10,7 @@
     "aos": "^2.3.4",
     "apexcharts": "^3.48.0",
     "axios": "^1.6.7",
+    "chart.js": "^4.4.2",
     "cors": "^2.8.5",
     "flexbox-react": "^4.4.0",
     "jspdf": "^2.5.1",
