@@ -19,8 +19,8 @@ function Navbar() {
   }
 
   return (
-    <div>
-      <header className="bg-white bg-opacity-10 border-b border-gray-300 shadow-md">
+    <div className="relative" >
+      <header className="bg-white   bg-opacity-10 border-b border-gray-300 shadow-md">
 
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
@@ -76,14 +76,14 @@ function Navbar() {
               <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                 <Link to={`/login`}>
                   <button
-                    className="text-xs font-light leading-4 text-white py-2 px-4 border border-white/80 rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5"
+                    className="text-xs font-light leading-4 text-white py-2 px-4 border border-white rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5"
                   >
                     Login
                   </button>
                 </Link>
                 <Link to={`/register`}>
                   <button
-                    className="text-xs font-light leading-4 text-white py-2 px-4 border border-white/80 rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5"
+                    className="text-xs font-light leading-4 text-white py-2 px-4 border border-white rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5"
                     onClick={() => console.log("Navigate to sign-up page")}
                   >
                     Sign Up

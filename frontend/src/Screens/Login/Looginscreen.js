@@ -11,7 +11,7 @@ import Loader from '../../Component/Loader';
 import bgimg1 from './Componenet/bgimg1.png';
 
 AOS.init({
-  duration:'500'
+  duration:'1000'
 });
 
 function Looginscreen() {
@@ -75,16 +75,16 @@ function Looginscreen() {
  return (
 <div>
 {loading && <Loader />}
-  <div
+  <div data-aos="zoom in"
   className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${bgimg1})` }}
 >
-  <Navbar/>
+<Navbar/>
  
 
 
-  <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/30 border border-white rounded-xl p-10 text-white w-1/3">
+  <div  className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/30 border border-white rounded-xl p-10 text-white w-1/3">
     <h1 className="text-3xl font-bold tracking-widest text-center mb-8">LOGIN</h1>
-    <div className="flex flex-col space-y-6 mb-4">
+    <div className="flex flex-col space-y-6 mb-4 "  >
       <input
        type="email"
           placeholder='Email'

@@ -42,6 +42,8 @@ router.post("/login", async (req, res) => {
           name: user.name,
           email: user.email,
           role: user.role,
+          phone:user.phone,
+          password:user.password,
           imageurl:user.imageurl,
           _id: user._id,
         };
@@ -88,11 +90,12 @@ router.route('/getuser/:id').post(async(req,res) => {
 router.route('/updateuser/:id').put(async(req,res)=>{
 
     const userid = req.params.id;
-    const{name,email,role,imageurl} = req.body;
+    const{name,email,phone,role,imageurl} = req.body;
 
     const updateuser={
         name,
         email,
+        phone,
         role,
         imageurl
     };
