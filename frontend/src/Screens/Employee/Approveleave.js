@@ -82,10 +82,10 @@ function Approveleave() {
     <div>
       <Adminnavbar />
 
-      <h1 className="flex justify-center text-4xl italic mt-16 ml-20 text-green-900">
+      <h1 className="flex justify-center text-4xl italic mt-8 ml-20 text-green-900">
         Employee leave Request
       </h1>
-      <div className="flex justify-center items-center ml-48 mr-10 h-full mt-5">
+      <div className="flex justify-center items-center ml-48 mr-10 mb-4 h-full mt-5">
         <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
           <table
             data-aos="zoom out"

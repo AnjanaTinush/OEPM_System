@@ -19,8 +19,8 @@ function Navbar() {
   }
 
   return (
-    <div>
-      <header className="bg-white bg-opacity-10 border-b border-gray-300 shadow-md">
+    <div className="" >
+      <header className="bg-white  bg-opacity-10 border-b border-gray-300 shadow-md">
 
         <nav
           className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"

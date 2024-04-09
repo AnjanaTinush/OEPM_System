@@ -31,11 +31,16 @@ function AddDriver() {
       );
       console.log(result.data);
       alert("Driver added successfully");
-      window.location.href='/j_drivers';
+      window.location.href = "/j_drivers";
     } catch (error) {
       console.log(error);
     }
-    
+  };
+
+  // Function to handle phone number input
+  const handlePhoneChange = (e) => {
+    const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
+    setPhone(input);
   };
 
   return (
@@ -45,7 +50,7 @@ function AddDriver() {
           {/* Name input field */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold text-dark font-custom text-center">
-              Enter the Driver Details
+              Enter New Driver Details
             </h2>
             <input
               type="text"
@@ -71,11 +76,12 @@ function AddDriver() {
           {/* Phone number input field */}
           <div className="mb-4">
             <input
-              type="number"
+              type="tel"
               placeholder="Phone Number"
+              maxLength="10"
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
             />
           </div>
 

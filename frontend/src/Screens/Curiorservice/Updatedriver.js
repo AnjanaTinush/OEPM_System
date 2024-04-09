@@ -37,7 +37,14 @@ function Updatedriver() {
     }
     getdriver();
   }, [driverid]);
-  //updatedriver
+
+  // Function to handle phone number input
+  const handlePhoneChange = (e) => {
+    const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
+    setPhone(input);
+  };
+
+  // Function to handle form submission
   async function Updatedriver(e) {
     e.preventDefault();
 
@@ -65,7 +72,6 @@ function Updatedriver() {
 
   return (
     <div>
-      
       <Adminnavbar />
 
       <div className="flex justify-center items-center h-screen ">
@@ -96,11 +102,13 @@ function Updatedriver() {
             </div>
             <div className="mb-4">
               <input
-                type="number"
+                type="tel"
                 placeholder="Phone Number"
+                pattern="[0-9]*"
+                maxLength="10"
                 className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={handlePhoneChange}
               />
             </div>
             <div className="mb-4">
