@@ -28,7 +28,7 @@ import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
-
+import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
 
@@ -78,6 +78,7 @@ function App() {
       
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
+      <Route path="/e_editprofile/:employeeid" element={<Edidemployeeprofile/>}/>
       </Routes>
    
     </BrowserRouter>

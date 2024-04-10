@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AdprofileNavbar from './Component/AdprofileNavbar'
-import { FaUserEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import Loader from "../../Component/Loader";
+import { Link } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
@@ -90,17 +90,19 @@ const togglePasswordVisibility = () => {
     </div>
     <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
     <li className="flex flex-col items-center justify-around">
-            <svg className="w-4 fill-current text-blue-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <FaUserEdit className="mr-5 text-2xl text-green-900" />
-            </svg>
-            <div><button>Edit</button></div>
+    <Link to={`/e_editprofile/${user._id}`}>
+                        <button className="btn1 mr-3">
+                          <FaEdit className="mr-5 text-xl" />
+                        </button>
+                      </Link>
         </li>
        
         <li class="flex flex-col items-center justify-around">
-            <svg class="w-4 fill-current text-blue-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <MdDeleteForever className=" text-2xl text-green-900" />
-                     </svg>
-            <div><button>Delete account</button></div>
+        <Link to={`/`}>
+                        <button className="btn1 mr-3">
+                          <MdDeleteForever className="mr-5 text-xl" />
+                        </button>
+                      </Link>
         </li>
     </ul>
     <div class="p-4 border-t  mx-8 mt-2 mb-4">
