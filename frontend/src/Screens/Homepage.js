@@ -177,7 +177,7 @@ function Homepage() {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Collaborative Team Dynamics"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Collaborative Team Dynamics</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Explore how our cohesive team works together seamlessly, leveraging each other's strengths to overcome challenges and deliver exceptional results at every stage of the operation.
 </p>
@@ -191,7 +191,7 @@ function Homepage() {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Customer Care Excellence"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Customer Care Excellence</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Discover how we prioritize customer satisfaction through prompt assistance and personalized service, ensuring every customer feels valued and supported.</p>
         
@@ -204,7 +204,7 @@ function Homepage() {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Efficient Delivery Solutions"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Efficient Delivery Solutions</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Learn about our streamlined delivery process, which optimizes routes and schedules to guarantee timely transportation of fresh produce from our polytunnels to customers' doorsteps.
 </p>

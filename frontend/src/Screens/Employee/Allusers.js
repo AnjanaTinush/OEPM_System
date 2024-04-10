@@ -172,63 +172,116 @@ function Allusers() {
   function filterByType(e) {
     const selectedType = e.target.value.toLowerCase();
     settype(selectedType);
-
+  
     if (selectedType !== "all") {
       const tempUsers = duplicateusers.filter(
-        (user) => user.role && user.role.toLowerCase() === selectedType
+        (user) => user.role && user.role.toLowerCase().includes(selectedType)
       );
       setusers(tempUsers);
     } else {
       setusers(duplicateusers);
     }
   }
+  
+  
 
   
-  
-  function generatePDF() {
-    const doc = new jsPDF();
-  
-    // Add a title and styling
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
-    doc.text("User Report", 85, 15);
-  
-    let startY = 30; // Initial y position for the first user card
-  
-    // Loop through each user and add formatted information to the PDF
-    users.forEach((user) => {
-      const { name, email, phone, role, imageurl } = user;
-      const imageWidth = 30;
-      const imageHeight = 30;
-      const rowHeight = 50; // Height of each row
-  
-      // Add a new page if necessary
-      if (startY + rowHeight > doc.internal.pageSize.getHeight()) {
-        doc.addPage();
-        startY = 20; // Reset startY for the new page
-      }
-  
-      // User card styling
-      doc.setDrawColor(0);
-      doc.setFillColor(197, 215, 201);
-      doc.roundedRect(20, startY, 170, rowHeight - 2, 3, 3, "FD");
-  
-      // User information
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(12);
-      doc.text(`Name: ${name}`, 25, startY + 10);
-      doc.text(`Email: ${email}`, 25, startY + 20);
-      doc.text(`Phone: ${phone}`, 25, startY + 30);
-      doc.text(`Role: ${role}`, 25, startY + 40);
-      doc.addImage(imageurl, "JPEG", 150, startY + 5, imageWidth, imageHeight);
-  
-      startY += rowHeight; // Increment startY for the next user card
-    });
-  
-    // Save the PDF
-    doc.save("user_report.pdf");
-  }
-  
+  const generatereport = () => {
+    
+       
+    // Open a new window
+    const printWindow = window.open("", "_blank", "width=600,height=600");
+
+    // Write HTML content to the new window
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Users Report</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f5f5f5;
+              padding: 20px;
+            }
+
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+              color: #132A13;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              background-color: #fff;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            th, td {
+              padding: 12px 15px;
+              text-align: left;
+              border-bottom: 1px solid #ddd;
+            }
+
+            th {
+              background-color: #48c81b;
+              color: white; /* Changed text color to white */
+              text-transform: uppercase;
+            }
+
+            tr {
+              background-color: #C5D7C9; /* Changed all row color */
+            }
+
+            /* Added style for right-aligned time */
+            .date-time {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            /* Added style for right-aligned time */
+            .right-align {
+              text-align: right;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Users Report</h1>
+        
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${users
+                .map(
+                  (user, index) => `
+                    <tr>
+                      <td>${index + 1}</td>
+                      <td>${user.name}</td>
+                      <td>${user.email}</td>
+                      <td>${user.phone}</td>
+                      <td>${user.role}</td>
+                    </tr>
+                  `
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `);
+};
+
   
 
 
@@ -353,13 +406,13 @@ function Allusers() {
                   <option value="tunnel manager">Tunnel manager</option>
                   <option value="financial manager">Financial manager</option>
                   <option value="target manager">Target manager</option>
-                  <option value="courier service">Courier service</option>
+                  <option value="Courior servise">Courier service</option>
                   <option value="inventory manager">Inventory manager</option>
                   <option value="machine manager">Machine manager</option>
                 </select>
 
                 <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full"
-                onClick={generatePDF}>
+                onClick={generatereport}>
   Generate Report
 </button>
 
