@@ -17,19 +17,20 @@ AOS.init({
 
   
 
-function Edidemployeeprofile() {
+const Edidemployeeprofile = () => {
 
-    const user = JSON.parse(localStorage.getItem('currentuser'));
-    const { userid } = useParams();
+ const { uid } =useParams("");
 
-    const [id, setid] = useState("");
-    const [name, setname] = useState("");
-    const [email, setemail] = useState("");
-    const [phone,setphone]=useState("");
-    const [password, setpassword] = useState("");
-    const[imgurl,setimgurl]=useState("");
+  const [id, setid] = useState("");
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [phone, setphone] = useState("");
+  const [imageurl, setimageurl] = useState("");
+   const [password, setPassword] = useState("");
+   const [confirmPassword, setConfirmPassword] = useState("");
+  const [Loading, setLoading] = useState(false);
 
-    const [Loading, setLoading] = useState(false);
+
 
     const [showPasswords, setShowPasswords] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -42,59 +43,55 @@ function Edidemployeeprofile() {
       setShowPassword((prevShowPassword) => !prevShowPassword);
     };
     
+      
     
-      const fetchData = async () => {
-        if (!user) {
-          window.location.href = "/login";
-        }
-      };
-    
-      useEffect(() => {
-        fetchData();
-      }, []);
-    
-
        //take data for update
-  useEffect(() => {
-    async function getUser() {
-      try {
-        setLoading(true);
-        const response = (
-          await axios.post(`http://localhost:5000/api/users/getuser/${userid}`)
-        ).data;
-        setLoading(false);
-        console.log(response.user);
-        setid(response.user._id);
-        setname(response.user.name);
-        setemail(response.user.email); // Corrected typo here
-        setphone(response.user.phone);
-        setimgurl(response.user.imageurl);
+       useEffect(() => {
+        async function getUser() {
+          try {
+            setLoading(true);
+            const response = (
+              await axios.post(`http://localhost:5000/api/users/getuser/${uid}`)
+            ).data;
+            setLoading(false);
+            console.log(response.user);
+            setid(response.user._id);
+            setname(response.user.name);
+            setemail(response.user.email); // Corrected typo here
+            setphone(response.user.phone);
+            setPassword(response.user.password);
+            setimageurl(response.user.imageurl);
+          } catch (error) {
+            setLoading(false);
+            console.log(error);
+          }
+        }
+        getUser();
+      }, []);
+  
 
-      } catch (error) {
-        setLoading(false);
-        console.log(error);
-      }
-    }
-    getUser();
-  }, []);
-
-
-   //updateuser function
-   async function Updateuser(e) {
+       //updateuser function
+  async function Updateuser(e) {
     e.preventDefault();
+
+    if (password !== confirmPassword) {
+      // Display error message or toast indicating password mismatch
+      toast.error("Passwords do not match");
+      return;
+  }
 
     const updateuser = {
       name,
       email,
       phone,
-      imgurl,
+      imageurl,
     };
 
     try {
       setLoading(true);
       const response = (
         await axios.put(
-          `http://localhost:5000/api/users/updateuser/${userid}`,
+          `http://localhost:5000/api/users/updateuser/${uid}`,
           updateuser
         )
       ).data;
@@ -102,7 +99,7 @@ function Edidemployeeprofile() {
       setLoading(false);
       Swal.fire("Congratulations", "Profile updated successfully", "success").then(
         () => {
-          window.location.href = "/e_userprofile";
+          window.location.href = `/e_userprofile/${uid}`;
         }
       );
     } catch (error) {
@@ -110,8 +107,6 @@ function Edidemployeeprofile() {
       console.log(error);
     }
   }
-
-
 
   return (
     <div>
@@ -125,8 +120,8 @@ function Edidemployeeprofile() {
     <div class="flex items-center justify-center p-12">
     
     <div class="mx-auto w-full max-w-[550px] bg-wight-green">
-    <form className="mt-6" onSubmit={Updateuser}>
-        <img class="object-cover ml-52 rounded-full object-center h-32 " src={user.imageurl} alt='Woman looking front'/>
+    <form className="mt-6" onSubmit={Updateuser} >
+        <img class="object-cover ml-52 rounded-full object-center h-32 "  alt='Woman looking front'/>
 
         <div class="mb-5">
         <label htmlFor="name" className="mb-3 ml-60 block text-base font-medium text-[#07074D]">
@@ -135,10 +130,8 @@ function Edidemployeeprofile() {
       <label htmlFor="file-upload" className="px-4 py-2  rounded-md cursor-pointer flex items-center">
         <FaPencilAlt className="h-5 ml-60 w-6 mr-2" />
       </label>
-      <input id="file-upload" type="file" className="hidden"   value={imgurl}
-      onChange={(e) => {
-        setimgurl(e.target.value);
-      }}
+      <input id="file-upload" type="file" className="hidden"   
+     
       />
 
             </div>
@@ -147,7 +140,7 @@ function Edidemployeeprofile() {
                 <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
                   Change Name
                 </label>
-                <input type="text" name="name" id="name" value={name}
+                <input type="text" value={name}
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" 
                     onChange={(e) => {
                         setname(e.target.value);
@@ -195,13 +188,12 @@ function Edidemployeeprofile() {
         )}
     </button>
     <input
-        type={showPasswords ? "text" : "password"}
-        name="password"
-        id="password"
-        value={password}
-        onChange={(e) => {
-            setpassword(e.target.value);
-          }}
+  type={showPasswords ? "text" : "password"}
+  name="password"
+  id="password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  
         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 pr-12 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         // value={user.password} Remove value attribute for password fields
          />
@@ -210,30 +202,23 @@ function Edidemployeeprofile() {
                     </div>
                 </div>
                 <div class="mb-5 relative">
-    <label for="password" class="mb-3 block text-base font-medium text-[#07074D]">
-    Confirm  Password
+    <label for="confirmPassword" class="mb-3 block text-base font-medium text-[#07074D]">
+        Confirm Password
     </label>
     <input
-        type={showPassword ? "text" : "password"}
-        name="password"
-        id="password"
-        value={password}
-        onChange={(e) => {
-            setpassword(e.target.value);
-          }}
+        type={showPasswords ? "text" : "password"}
+        name="confirmPassword"
+        id="confirmPassword"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 pr-12 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-        // value={user.password} Remove value attribute for password fields
-         />
+    />
     <button
         type="button"
         onClick={togglePasswordVisibility_2}
         className="absolute inset-y-0 mt-10 right-0 flex items-center px-2 focus:outline-none"
     >
-        {showPassword ? (
-            <FaEyeSlash className="text-gray-400" />
-        ) : (
-            <FaEye className="text-gray-400" />
-        )}
+        {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
     </button>
 </div>
 <button type="submit" className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2 ml-48 p-3 px-10 font-medium rounded-full"
