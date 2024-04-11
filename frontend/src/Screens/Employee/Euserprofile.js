@@ -5,6 +5,8 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import Loader from "../../Component/Loader";
+
 import { Link } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
@@ -18,24 +20,24 @@ AOS.init({
 function Euserprofile() {
 
     const user = JSON.parse(localStorage.getItem('currentuser'));
-    const { userid } = useParams();
+    const { empid } =useParams("");
 
     const [id, setid] = useState("");
     const [name, setname] = useState("");
     const [email, setemail] = useState("");
-    const [phone,setphone]=useState("");
-    const [role, setroll] = useState("");
-    const [password, setpassword] = useState("");
-
+    const [phone, setphone] = useState("");
+    const [password, setPassword] = useState("");
+    const [imageurl, setimageurl] = useState("");
     const [Loading, setLoading] = useState(false);
+    
+    const [showPassword, setShowPassword] = useState(false);
 
-    //take data for update
     useEffect(() => {
       async function getUser() {
         try {
           setLoading(true);
           const response = (
-            await axios.post(`http://localhost:5000/api/users/getuser/${userid}`)
+            await axios.post(`http://localhost:5000/api/users/getuser/${empid}`)
           ).data;
           setLoading(false);
           console.log(response.user);
@@ -43,7 +45,7 @@ function Euserprofile() {
           setname(response.user.name);
           setemail(response.user.email); // Corrected typo here
           setphone(response.user.phone);
-          setroll(response.user.role);
+          setimageurl(response.user.imageurl);
         } catch (error) {
           setLoading(false);
           console.log(error);
@@ -51,10 +53,7 @@ function Euserprofile() {
       }
       getUser();
     }, []);
-  
-  
-    
-    const [showPassword, setShowPassword] = useState(false);
+
 
 const togglePasswordVisibility = () => {
   setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -114,9 +113,9 @@ const togglePasswordVisibility = () => {
                 <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
                      Name
                 </label>
-                <input type="text" name="name" id="name" 
+                <input  
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" 
-                    value={user.name}
+                    value={name}
                     readOnly/>
             </div>
             <div class="mb-5">
@@ -125,7 +124,7 @@ const togglePasswordVisibility = () => {
                 </label>
                 <input type="email" name="email" id="email" 
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" 
-                    value={user.email}
+                    value={email}
                     readOnly/>
             </div>
             <div class="mb-5">
@@ -134,7 +133,7 @@ const togglePasswordVisibility = () => {
                 </label>
                 <input type="text" name="phone" id="phone"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                    value={user.phone} 
+                    value={phone} 
                     readOnly/>
             </div>
            

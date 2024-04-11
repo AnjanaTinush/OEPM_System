@@ -22,10 +22,10 @@ app.use("/api/tunnel", tunnelRoutes)
 app.use('/api/customeritems',customerOrderRoute);
 app.use("/api/shoppingCart",shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
-
+app.use("/api/leaves",leavesRoutes);
 
 const port = process.env.PORT || 5000;
-app.use("/api/leaves",leavesRoutes);
+
 //app.use("/api/leaves" , leavesRoutes);
 
 
