@@ -12,7 +12,7 @@ function Drivers() {
   const [drivers, setDrivers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const componentPDF = useRef();
-  
+  const [availabilityFilter, setAvailabilityFilter] = useState("All");
 
   useEffect(() => {
     fetchData();
@@ -42,7 +42,7 @@ function Drivers() {
       if (result.isConfirmed) {
         await axios.delete(`/api/drivers/delete/${id}`);
         setDrivers(drivers.filter((driver) => driver._id !== id));
-        
+
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -142,34 +142,50 @@ function Drivers() {
   const filteredDrivers = drivers.filter(
     (driver) =>
       driver.name &&
-      driver.name.toLowerCase().includes(searchQuery.toLowerCase())
+      driver.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (availabilityFilter === "All" ||
+        driver.availability === availabilityFilter)
   );
 
   return (
-    <div>
-      <div className="flex">
-        
-        <AdminNavbar />
-        <div className="flex flex-col w-full">
-          
-          <Navbar />
-          <div className="flex justify-between items-center ml-72 mb-4">
-            
+    <div
+      style={{
+        backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
+        backgroundSize: "cover",
+      }}
+    >
+      
+          <AdminNavbar/>
+          <Navbar/>
+
+          <h1 className="flex justify-center text-5xl font-semibold ml-44 p-8 font-serif text-green-800">Driver details</h1>
+
+          <div className="flex justify-center ml-64 m-auto gap-8 p-5 ">
             <div className="relative">
               <CiSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
               <input
                 type="text"
                 placeholder="Search by name..."
-                className=" p-2 pl-10 block w-72 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+                className=" p-2 pl-10 block w-72 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
 
-            <div className="flex justify-center items-center h-full mt-8">
+            <select
+              className="p-2 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
+              value={availabilityFilter}
+              onChange={(e) => setAvailabilityFilter(e.target.value)}
+            >
+              <option value="All">All</option>
+              <option value="Available">Available</option>
+              <option value="Unavailable">Unavailable</option>
+            </select>
+
+            <div className="flex justify-center items-center">
               <button
                 type="button"
-                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center me-2 mb-2 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
+                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
                 onClick={generatePDF}
               >
                 Generate Report
@@ -179,7 +195,7 @@ function Drivers() {
             <Link to="/j_AddDriver">
               <button
                 type="button"
-                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center me-2 mb-2 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
+                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
               >
                 Click Here to Add a Driver
               </button>
@@ -189,7 +205,7 @@ function Drivers() {
           <div className="flex justify-center items-center h-full">
             <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
               <div ref={componentPDF} style={{ width: "100%" }}>
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="w-full text-sm text-left rtl:text-right dark:text-gray-400">
                   <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
                     <tr>
                       <th scope="col" className="px-6 py-3">
@@ -259,8 +275,7 @@ function Drivers() {
           <br />
           <br />
         </div>
-      </div>
-    </div>
+      
   );
 }
 

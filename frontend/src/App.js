@@ -7,7 +7,6 @@ import Employeedashboard from "./Screens/Employee/Employeedashboard";
 import Inventorydashboard from "./Screens/Inventory/Inventorydashboard";
 import Tunneldashboard from "./Screens/Tunnel/Tunneldashboard";
 import Machinedashboard from "./Screens/Machine/Machinedashboard";
-import Curiorservisedashboard from "./Screens/Curiorservice/Curiorservisedashboard";
 import C_displayitem from "./Screens/Customerorder/C_displayitem";
 import Financialdasgboard from "./Screens/Financial/Financialdasgboard";
 import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
@@ -16,6 +15,9 @@ import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
 import Drivers from "./Screens//Curiorservice/Drivers"
 import AddDriver from "./Screens/Curiorservice/AddDriver"
+import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+import Curiorservisedashboard from "./Screens/Curiorservice/Curiorservisedashboard";
+import Deliveries from "./Screens/Curiorservice/Deliveries";
 import { Toaster } from "react-hot-toast";
 import Tunnels from "./Screens/Tunnel/Tunnels";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
@@ -27,7 +29,7 @@ import CheckoutPage from "./Screens/Customerorder/checkout";
 import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
-import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+
 
 
 
@@ -65,6 +67,7 @@ function App() {
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
       <Route path="/j_addDriver" element={<AddDriver/>}/>
+      <Route path="/j_deliveries" element={<Deliveries/>}/>
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
       <Route path="e_userprofile" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>

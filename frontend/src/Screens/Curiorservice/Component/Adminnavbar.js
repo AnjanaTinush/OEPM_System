@@ -28,6 +28,18 @@ function Adminnavbar() {
         </Link>
 
         <Link
+          to="/j_deliveries"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/j_deliveries"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+        >
+          <GiSteeringWheel className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Deliveries</span>
+        </Link>
+
+        <Link
           to="/j_drivers"
           className={`flex items-center w-full py-3 px-4 ${
             location.pathname === "/j_drivers"
@@ -38,6 +50,7 @@ function Adminnavbar() {
           <GiSteeringWheel className="mr-5 text-lg" />
           <span className="font-bold text-lg">Drivers</span>
         </Link>
+
       </div>
       <div className="p-4 ml">
         <div className="flex justify-center items-center mt-4 mr-5">
