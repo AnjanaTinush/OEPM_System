@@ -12,6 +12,8 @@ function AdprofileNavbar() {
 
     const location = useLocation();
 
+    const user = JSON.parse(localStorage.getItem('currentuser'));
+
   return (
   
     <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col  justify-between shadow-xl">
@@ -34,8 +36,8 @@ function AdprofileNavbar() {
         <span className="font-bold text-lg">Profile Board</span>
       </Link>
       <Link
-        to="/e_userprofile"
-        className={`flex items-center w-full mt-6 py-3 px-4 ${location.pathname === "/e_userprofile" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+        to={`/e_userprofile/${user._id}`}
+        className={`flex items-center w-full mt-6 py-3 px-4 ${location.pathname === `/e_userprofile/${user._id}` ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
       >
         <CgProfile  className="mr-5 text-lg" />
         <span className="font-bold text-lg">Edit profie</span>

@@ -31,6 +31,8 @@ import PaymentPage from "./Screens/Customerorder/payment";
 import Approveleave from "./Screens/Employee/Approveleave";
 
 
+import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
 
@@ -69,7 +71,7 @@ function App() {
       <Route path="/j_addDriver" element={<AddDriver/>}/>
       <Route path="/j_deliveries" element={<Deliveries/>}/>
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
-      <Route path="e_userprofile" element={<Euserprofile/>}/>
+      <Route path="e_userprofile/:empid" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>
       <Route path="shoppingCart" element={<ShoppingCart/>}/>
       <Route path="checkout" element={<CheckoutPage/>}/>
@@ -81,6 +83,7 @@ function App() {
       
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
+      <Route path="/e_editprofile/:uid" element={<Edidemployeeprofile/>}/>
       </Routes>
    
     </BrowserRouter>

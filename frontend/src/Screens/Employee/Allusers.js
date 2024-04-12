@@ -6,7 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import Adminnavbar from "./Component/Adminnavbar";
 import Loader from "../../Component/Loader";
-import { CiSearch } from "react-icons/ci";
+import { jsPDF } from "jspdf";
 import toast from "react-hot-toast";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -172,16 +172,118 @@ function Allusers() {
   function filterByType(e) {
     const selectedType = e.target.value.toLowerCase();
     settype(selectedType);
-
+  
     if (selectedType !== "all") {
       const tempUsers = duplicateusers.filter(
-        (user) => user.role && user.role.toLowerCase() === selectedType
+        (user) => user.role && user.role.toLowerCase().includes(selectedType)
       );
       setusers(tempUsers);
     } else {
       setusers(duplicateusers);
     }
   }
+  
+  
+
+  
+  const generatereport = () => {
+    
+       
+    // Open a new window
+    const printWindow = window.open("", "_blank", "width=600,height=600");
+
+    // Write HTML content to the new window
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Users Report</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background-color: #f5f5f5;
+              padding: 20px;
+            }
+
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+              color: #132A13;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              background-color: #fff;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            }
+
+            th, td {
+              padding: 12px 15px;
+              text-align: left;
+              border-bottom: 1px solid #ddd;
+            }
+
+            th {
+              background-color: #48c81b;
+              color: white; /* Changed text color to white */
+              text-transform: uppercase;
+            }
+
+            tr {
+              background-color: #C5D7C9; /* Changed all row color */
+            }
+
+            /* Added style for right-aligned time */
+            .date-time {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            /* Added style for right-aligned time */
+            .right-align {
+              text-align: right;
+            }
+          </style>
+        </head>
+        <body>
+          <h1>Users Report</h1>
+        
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${users
+                .map(
+                  (user, index) => `
+                    <tr>
+                      <td>${index + 1}</td>
+                      <td>${user.name}</td>
+                      <td>${user.email}</td>
+                      <td>${user.phone}</td>
+                      <td>${user.role}</td>
+                    </tr>
+                  `
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `);
+};
+
+  
+
 
   return (
     <div>
@@ -304,12 +406,13 @@ function Allusers() {
                   <option value="tunnel manager">Tunnel manager</option>
                   <option value="financial manager">Financial manager</option>
                   <option value="target manager">Target manager</option>
-                  <option value="courier service">Courier service</option>
+                  <option value="Courior servise">Courier service</option>
                   <option value="inventory manager">Inventory manager</option>
                   <option value="machine manager">Machine manager</option>
                 </select>
 
-                <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full">
+                <button className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2  p-1 px-10 font-medium rounded-full"
+                onClick={generatereport}>
   Generate Report
 </button>
 
