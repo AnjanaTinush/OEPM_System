@@ -52,14 +52,7 @@ function AdprofileNavbar() {
 
     
     </div>
-    <Link
-        to="/employeeDashboard"
-
-        className={`flex items-center w-full mt-28  px-4  text-green-900  font-custom rounded-md text-decoration-none `}
-     >
-        <FaArrowCircleLeft className="mr-5 text-lg" />
-        <span className="">Back to Dashboard</span>
-      </Link>
+   
     <p className="text-gray-400 ml-10 py-4">&copy; 2024 PolyCrop </p>
   </div> 
   )
