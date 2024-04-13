@@ -74,17 +74,14 @@ const Edidemployeeprofile = () => {
   async function Updateuser(e) {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      // Display error message or toast indicating password mismatch
-      toast.error("Passwords do not match");
-      return;
-  }
+   
 
     const updateuser = {
       name,
       email,
       phone,
       imageurl,
+      password
     };
 
     try {
@@ -121,7 +118,7 @@ const Edidemployeeprofile = () => {
     
     <div class="mx-auto w-full max-w-[550px] bg-wight-green">
     <form className="mt-6" onSubmit={Updateuser} >
-        <img class="object-cover ml-52 rounded-full object-center h-32 "  alt='Woman looking front'/>
+        <img class="object-cover ml-52 rounded-full object-center h-32 " src={imageurl}  alt='Woman looking front'/>
 
         <div class="mb-5">
         <label htmlFor="name" className="mb-3 ml-60 block text-base font-medium text-[#07074D]">
@@ -131,7 +128,7 @@ const Edidemployeeprofile = () => {
         <FaPencilAlt className="h-5 ml-60 w-6 mr-2" />
       </label>
       <input id="file-upload" type="file" className="hidden"   
-     
+      
       />
 
             </div>
@@ -201,26 +198,7 @@ const Edidemployeeprofile = () => {
                             
                     </div>
                 </div>
-                <div class="mb-5 relative">
-    <label for="confirmPassword" class="mb-3 block text-base font-medium text-[#07074D]">
-        Confirm Password
-    </label>
-    <input
-        type={showPasswords ? "text" : "password"}
-        name="confirmPassword"
-        id="confirmPassword"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 pr-12 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-    />
-    <button
-        type="button"
-        onClick={togglePasswordVisibility_2}
-        className="absolute inset-y-0 mt-10 right-0 flex items-center px-2 focus:outline-none"
-    >
-        {showPassword ? <FaEyeSlash className="text-gray-400" /> : <FaEye className="text-gray-400" />}
-    </button>
-</div>
+              
 <button type="submit" className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:ring-Buttongreen mt-2 ml-48 p-3 px-10 font-medium rounded-full"
                 >
   Save Changes

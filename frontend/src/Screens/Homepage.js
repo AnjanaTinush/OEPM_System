@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from './../Component/Navbar.js'
 import first from './../Images/home.jpg';
 import AOS from 'aos';
+import {Link} from 'react-router-dom';
 import 'aos/dist/aos.css';
 
 AOS.init({
@@ -29,9 +30,12 @@ function Homepage() {
           <div  data-aos="zoom in" className="relative mt-7 text-2xl font-light tracking-[2.00px] max-md:max-w-full">
             Online Enclosed Polytunnel System
           </div>
+          <Link
+            to="/c_displayitem">
           <button data-aos="zoom out" className="relative justify-center px-12 py-4 mt-10 mb-52 text-xl tracking-widest text-center rounded-3xl border-solid bg-white bg-opacity-40 border-neutral-200 max-md:px-5 max-md:my-10">
             Shop Now
           </button>
+          </Link>
         </div>
       </div> 
       </div>

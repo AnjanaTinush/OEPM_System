@@ -46,6 +46,7 @@ function Euserprofile() {
           setemail(response.user.email); // Corrected typo here
           setphone(response.user.phone);
           setimageurl(response.user.imageurl);
+          setPassword(response.user.password)
         } catch (error) {
           setLoading(false);
           console.log(error);
@@ -157,7 +158,7 @@ const togglePasswordVisibility = () => {
         type={showPassword ? "text" : "password"}
         name="password"
         id="password"
-        value={user.password}
+        value={password}
         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 pr-12 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
         // value={user.password} Remove value attribute for password fields
          readOnly/>
