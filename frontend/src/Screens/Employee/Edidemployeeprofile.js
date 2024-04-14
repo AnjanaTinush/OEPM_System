@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FaPencilAlt } from 'react-icons/fa'
+import Loader from "../../Component/Loader";
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -28,7 +30,7 @@ const Edidemployeeprofile = () => {
   const [imageurl, setimageurl] = useState("");
    const [password, setPassword] = useState("");
    const [confirmPassword, setConfirmPassword] = useState("");
-  const [Loading, setLoading] = useState(false);
+   const [loading, setLoading] = useState(false);
 
 
 
@@ -107,7 +109,10 @@ const Edidemployeeprofile = () => {
 
   return (
     <div>
-        <AdprofileNavbar/>
+       {loading ? (
+                <Loader />
+            ) : (<>
+             <AdprofileNavbar/>
         <div data-aos="zoom in" className='ml-52 mb-6'>
         <div class="  relative    xl:max-w-3xl  md:mx-auto    mt-8 bg-wight-green shadow-xl rounded-lg text-gray-900">
         <h1 className="text-dark text-2xl font-bold ml-80">Edit Profile</h1>
@@ -216,6 +221,7 @@ const Edidemployeeprofile = () => {
 </div>
 </div>
         
+            </>)}
         
         </div>
   )
