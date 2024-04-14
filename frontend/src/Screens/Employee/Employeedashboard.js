@@ -5,6 +5,7 @@ import "chart.js/auto"; // Import Chart.js library
 import Adminnavbar from "./Component/Adminnavbar";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import Loader from "../../Component/Loader";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Tag } from "antd";
@@ -21,27 +22,35 @@ function Employeedashboard() {
   const [data, setData] = useState(null);
   const [approveleaves, setapproveleaves] = useState([]);
   const [statusCounts, setStatusCounts] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     axios
       .get("http://localhost:5000/api/leaves/statuscounts")
       .then((response) => {
         setStatusCounts(response.data);
+        setLoading(false)
       })
+
       .catch((error) => {
         console.error("Error fetching status counts:", error);
+        setLoading(false)
       });
   }, []);
 
   //get all leaves
   const allleaves = async () => {
     try {
+      setLoading(true)
       const data = await axios.get(
         "http://localhost:5000/api/leaves/getallleaves"
       );
       setapproveleaves(data.data);
+      setLoading(false)
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
 
@@ -68,11 +77,12 @@ function Employeedashboard() {
 
   const fetchData = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(
         "http://localhost:5000/api/users/getallusers"
       );
       setUsers(response.data);
-
+setLoading(false)
       // Calculate role counts
       const counts = response.data.reduce((acc, user) => {
         acc[user.role] = (acc[user.role] || 0) + 1;
@@ -81,6 +91,7 @@ function Employeedashboard() {
       setRoleCounts(counts);
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
 
@@ -112,11 +123,15 @@ function Employeedashboard() {
   }, [roleCounts]);
 
   return (
-    <div className="flex">
+    <div>
+      {loading ? (
+                <Loader />
+            ) : (<>
+            <div className="flex">
       <Adminnavbar />
       <div className="ml-80 mt-6  ">
         <h1 className="flex justify-center font-semibold text-center italic text-2xl">
-          Leaves Summary
+          Employee Leaves Summary
         </h1>
         {/* Radial Progress Chart for Pending Percentage 
           
@@ -134,7 +149,7 @@ function Employeedashboard() {
         <h1  data-aos="zoom in" className="flex justify-center text-black-green text-1xl mt-4">
           Pending({statusCounts.pending?.count})
         </h1>
-        <div class="flex justify-center max-w-sm p-6 ml-6">
+        <div class="flex justify-center max-w-sm p-6 ml-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
           <div  data-aos="zoom out" style={{ width: 150, height: 150 }}>
             <CircularProgressbar
               value={statusCounts.pending?.percentage}
@@ -144,12 +159,13 @@ function Employeedashboard() {
                 textColor: "#48c81b",
                 trailColor: "#d6d6d6",
               })}
+              className="transition-transform duration-300 ease-in-out transform hover:scale-110"
             />
           </div>
         </div>
         <div className="flex gap-8 mt-4">
           <div class="max-w-sm p-6 ">
-            <h1  data-aos="zoom in" className="flex justify-center text-black-green text-1xl mb-4">
+            <h1  data-aos="zoom in" className="flex justify-center text-black-green text-1xl mb-4 ">
               Approved({statusCounts.approved?.count})
             </h1>
             <div  data-aos="zoom out" style={{ width: 150, height: 150 }}>
@@ -161,6 +177,7 @@ function Employeedashboard() {
                   textColor: "#48c81b",
                   trailColor: "#d6d6d6",
                 })}
+                className="transition-transform duration-300 ease-in-out transform hover:scale-110"
               />
             </div>
           </div>
@@ -178,13 +195,14 @@ function Employeedashboard() {
                   textColor: "#48c81b",
                   trailColor: "#d6d6d6",
                 })}
+                className="transition-transform duration-300 ease-in-out transform hover:scale-110"
               />
             </div>
           </div>
         </div>
       </div>
 
-      <div  data-aos="zoom out" className="w-96 ml-40 h-2xl bg-wight-green shadow-lg rounded-lg p-2 mt-6 mb-1">
+      <div  data-aos="zoom out" className="w-96 ml-40 h-2xl bg-wight-green shadow-lg rounded-lg p-2 mt-6 mb-1  ">
         <h2 className="text-2xl font-semibold text-center italic">
           Summary of user count
         </h2>
@@ -250,6 +268,9 @@ function Employeedashboard() {
           </div>
         )}
       </div>
+    </div>
+
+            </>)}
     </div>
   );
 }

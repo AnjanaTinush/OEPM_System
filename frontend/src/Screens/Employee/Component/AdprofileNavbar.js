@@ -16,7 +16,7 @@ function AdprofileNavbar() {
 
   return (
   
-    <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col  justify-between shadow-xl">
+    <div className="bg-wight-green text-white h-screen w-1/6  fixed top-0 left-0  flex-col  justify-between shadow-xl">
    
     <div className="p-4">
   
