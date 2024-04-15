@@ -1,15 +1,10 @@
 import React, { useState,useRef, useEffect } from 'react';
 import axios from 'axios';
 import Adminnavbar from './Component/Adminnavbar'
-import Navbar from '../Component/Navbar'
 import { useParams } from "react-router-dom";
+import Greenhouse from '../../Images/Greenhouse.jpg'
 
 const Tunnelupdate =() => {
-
-    // const handleRoleChange = (e) => {
-    //     setroll(e.target.value);
-    //   };
-    
       
     const { tunnelid } = useParams();
     
@@ -29,7 +24,7 @@ const Tunnelupdate =() => {
           console.log(response.Tunnel);
     
           settemperature(response.Tunnel.temperature);
-          sethumidity(response.Tunnel.humidity); // Corrected typo here
+          sethumidity(response.Tunnel.humidity); 
           setcapacity(response.Tunnel.capacity);
           setplantType(response.Tunnel.plantType);
     
@@ -68,15 +63,20 @@ async function Updatetunnel(e){
 
   return (
     <div className="bg-wight-green">
-      <div className="flex">
+    <div className="flex">
       <Adminnavbar />
       <div className="flex flex-col w-full" style={{ zIndex: 900 }}>
-      <div className="max-w-sm mx-auto bg-white shadow-md rounded-3xl mt-32 p-6">
-      <h2 className="text-xl font-semibold text-dark font-custom  ">
-                    Enter the Tunnel Details
+      <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-3xl mt-10 p-6" style={{ display: 'flex' }}>
+      <div className="flex-1 mr-6">
+      <img src={Greenhouse} alt="Image" className="w-full h-auto rounded-xl mr-4" style={{ maxWidth: '100%', height: 'auto' }} />
+      </div>
+          <div className="flex-1" style={{ margin: '0 2rem' }}>
+        <form  className="mt-2">
+        <h2 className=" font-bold text-dark text-2xl font-custom  ">
+                     Update Tunnel Details
                   </h2>
-        <form  className="mt-8">
-          <div>
+        <div className="flex flex-col mt-6">
+    <label htmlFor="temperature" className="text-gray-700 font-bold mb-2">Enter the updated Temperature</label>
           <input
               type="number"
               value={temperature}
@@ -86,7 +86,8 @@ async function Updatetunnel(e){
             }}
             />
           </div>
-          <div className="mt-4">
+          <div className="flex flex-col mt-4">
+    <label htmlFor="humidity" className="text-gray-700 font-bold mb-2">Enter the updated Humidity</label>
           <input
               type="number"
               value={humidity}
@@ -96,7 +97,8 @@ async function Updatetunnel(e){
             }}
             />
           </div>
-          <div className="mt-4">
+          <div className="flex flex-col mt-4">
+    <label htmlFor="capacity" className="text-gray-700 font-bold mb-2">Enter the updated Capacity</label>
           <input
               type="number"
               value={capacity}
@@ -106,7 +108,8 @@ async function Updatetunnel(e){
             }}
             />
           </div>
-          <div className="mt-4">
+          <div className="flex flex-col mt-4">
+    <label htmlFor="capacity" className="text-gray-700 font-bold mb-2">Enter the updated Plant Type</label>
           <input
               type="text"
               value={plantType}
@@ -120,15 +123,15 @@ async function Updatetunnel(e){
             <button
               type="submit"
               onClick={Updatetunnel}
-              className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center me-2 mb-2 dark:bg-dark dark:hover:bg-darkhover"
+              className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center me-2 mb-2 dark:bg-dark dark:hover:bg-darkhover transition-transform duration-300 ease-in-out transform hover:scale-105"
               
             >
-              Submit
+              Confirm
             </button>
           </div>
         </form>
       </div>
-
+</div>
       </div>
       </div>
 

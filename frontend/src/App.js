@@ -28,7 +28,7 @@ import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
-
+import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
 
 
 
@@ -75,7 +75,7 @@ function App() {
       
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
-      
+      <Route path="/t_tunnelprofile" element={<Tunnelprofile/>}/>
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       </Routes>
