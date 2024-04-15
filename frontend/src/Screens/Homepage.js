@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from './../Component/Navbar.js'
 import first from './../Images/home.jpg';
 import AOS from 'aos';
+import {Link} from 'react-router-dom';
 import 'aos/dist/aos.css';
 
 AOS.init({
@@ -17,21 +18,24 @@ function Homepage() {
   const FirstSection = () => {
     return (
          <div><div className="flex flex-col justify-center text-white bg-white "> 
-        <div data-aos="zoom in"
+        <div
         className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${first})` }}
       >
      <Navbar/>
       
         <div className="flex overflow-hidden  flex-col items-start px-12 py-20 w-full min-h-screen max-h-screen max-md:px-5 max-md:max-w-full">
-          <div data-aos="zoom out" className="relative mt-20 text-7xl font-semibold tracking-[5.93px] max-md:mt-10 max-md:max-w-full max-md:text-4xl">
+          <div data-aos="zoom in" className="relative mt-20 text-7xl font-semibold tracking-[5.93px] max-md:mt-10 max-md:max-w-full max-md:text-4xl">
             PolyCrop
           </div>
-          <div  data-aos="zoom out" className="relative mt-7 text-2xl font-light tracking-[2.00px] max-md:max-w-full">
+          <div  data-aos="zoom in" className="relative mt-7 text-2xl font-light tracking-[2.00px] max-md:max-w-full">
             Online Enclosed Polytunnel System
           </div>
+          <Link
+            to="/c_displayitem">
           <button data-aos="zoom out" className="relative justify-center px-12 py-4 mt-10 mb-52 text-xl tracking-widest text-center rounded-3xl border-solid bg-white bg-opacity-40 border-neutral-200 max-md:px-5 max-md:my-10">
             Shop Now
           </button>
+          </Link>
         </div>
       </div> 
       </div>
@@ -42,7 +46,7 @@ function Homepage() {
   const SecondSection = () => {
     return (
       <div className="flex flex-col items-center p-10 border border-black border-solid border-opacity-10 bg-neutral-100 max-md:px-5">
-        <div data-aos="zoom in" className="mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:text-4xl">
+        <div data-aos="fade-down" className="mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:text-4xl">
           ABOUT US
         </div>
         <div className="mt-40 w-full max-w-screen-xl max-md:mt-10 max-md:max-w-full">
@@ -84,7 +88,7 @@ function Homepage() {
   const ThirdSection = () => {
   return (
       <div className="flex flex-col p-20 border border-black border-solid border-opacity-10 bg-neutral-100 max-md:px-5">
-        <div data-aos="zoom in" className="self-center mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:max-w-full max-md:text-4xl">
+        <div data-aos="fade-down" className="self-center mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:max-w-full max-md:text-4xl">
           WHAT WE DO
         </div>
         <div className="self-start mt-44 ml-3.5 max-md:mt-10 max-md:max-w-full">
@@ -127,7 +131,7 @@ function Homepage() {
   
       return (
           <div className="flex flex-col p-20 border border-black border-solid border-opacity-10 bg-neutral-100 max-md:px-5">
-            <div data-aos="fade-out" className="self-center mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:max-w-full max-md:text-4xl">
+            <div data-aos="fade-down" className="self-center mt-4 text-6xl font-light text-center text-black leading-[67.76px] tracking-[8.37px] max-md:max-w-full max-md:text-4xl">
               CONTACT US
             </div>
             <div className="mt-36 max-md:mt-10 max-md:mr-2 max-md:max-w-full">
@@ -177,7 +181,7 @@ function Homepage() {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Collaborative Team Dynamics"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Collaborative Team Dynamics</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Explore how our cohesive team works together seamlessly, leveraging each other's strengths to overcome challenges and deliver exceptional results at every stage of the operation.
 </p>
@@ -185,13 +189,13 @@ function Homepage() {
 
     </div>
 </div>
-<div data-aos="zoom out" class="mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div data-aos="zoom in" class="mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <a href="#">
         <img class="rounded-t-lg" src={first} alt="dddd" />
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Customer Care Excellence"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Customer Care Excellence</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Discover how we prioritize customer satisfaction through prompt assistance and personalized service, ensuring every customer feels valued and supported.</p>
         
@@ -204,7 +208,7 @@ function Homepage() {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"Efficient Delivery Solutions"</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Efficient Delivery Solutions</h5>
         </a>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Learn about our streamlined delivery process, which optimizes routes and schedules to guarantee timely transportation of fresh produce from our polytunnels to customers' doorsteps.
 </p>

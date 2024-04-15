@@ -80,6 +80,40 @@ router.post("/getleaverequestedbyuserid", async (req, res) => {
     }
 });
 
+// Get counts of different statuses
+router.get("/statuscounts", async (req, res) => {
+    try {
+        const pendingCount = await Leaves.countDocuments({ status: 'Pending' });
+        const approvedCount = await Leaves.countDocuments({ status: 'Approved' });
+        const disapprovedCount = await Leaves.countDocuments({ status: 'Dissapproved' });
+
+        const totalCount = pendingCount + approvedCount + disapprovedCount;
+
+        const pendingPercentage = (pendingCount / totalCount) * 100;
+        const approvedPercentage = (approvedCount / totalCount) * 100;
+        const disapprovedPercentage = (disapprovedCount / totalCount) * 100;
+
+        res.json({
+            pending: {
+                count: pendingCount,
+                percentage: pendingPercentage.toFixed(2),
+            },
+            approved: {
+                count: approvedCount,
+                percentage: approvedPercentage.toFixed(2),
+            },
+            disapproved: {
+                count: disapprovedCount,
+                percentage: disapprovedPercentage.toFixed(2),
+            },
+        });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+
+
   
 
 module.exports = router;
