@@ -162,18 +162,26 @@ function Allusers() {
 
   //search user using name
 
-  function filterBySearch() {
-    const tempuser = duplicateusers.filter((user) =>
-      user.name.toLowerCase().includes(searchkey.toLowerCase())
+  // Search user using name and filter by type
+function filterBySearch() {
+  const filteredBySearch = duplicateusers.filter((user) =>
+    user.name.toLowerCase().includes(searchkey.toLowerCase())
+  );
+
+  if (type !== "all") {
+    const filteredByTypeAndSearch = filteredBySearch.filter(
+      (user) => user.role && user.role.toLowerCase().includes(type)
     );
-
-    setusers(tempuser);
-
-    // Check if the filtered array is empty
-    if (tempuser.length === 0) {
-      toast.error("User not found.");
-    }
+    setusers(filteredByTypeAndSearch);
+  } else {
+    setusers(filteredBySearch);
   }
+
+  // Check if the filtered array is empty
+  if (filteredBySearch.length === 0) {
+    toast.error("User not found.");
+  }
+}
 
   const [type, settype] = useState("all");
 
