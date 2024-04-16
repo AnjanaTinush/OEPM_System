@@ -77,4 +77,78 @@ router.route('/gettunnel/:id').post(async(req,res) => {
   }
 });
 
+router.get("/getpresentcapacities", async (req, res) => {
+  try {
+    const currentCapacity = await tunnel.aggregate([
+      {
+        $group: {
+          _id: "$plantType",
+          totalCapacity: { $sum: "$currentCapacity" }
+        }
+      }
+    ]);
+
+    const presentCapacities = {};
+    currentCapacity.forEach(currentCapacity => {
+      presentCapacities[currentCapacity._id] = currentCapacity.totalCapacity;
+    });
+
+    res.json(presentCapacities);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+router.get("/getplanttypecounts", async (req, res) => {
+  try {
+    const counts = await tunnel.aggregate([
+      {
+        $group: {
+          _id: "$plantType",
+          count: { $sum: 1 } // Count occurrences of each plant type
+        }
+      }
+    ]);
+
+    const plantTypeCounts = {};
+    counts.forEach(item => {
+      plantTypeCounts[item._id] = item.count;
+    });
+
+    res.json(plantTypeCounts);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+// Add a route to update the current capacity of a tunnel
+router.put("/updatecurrentcapacity/:id", async (req, res) => {
+  const { id } = req.params;
+  const { currentCapacity } = req.body;
+
+  try {
+    const existingTunnel = await tunnel.findById(id);
+    if (!existingTunnel) {
+      return res.status(404).json({ message: "Tunnel not found" });
+    }
+
+    const newCapacity = parseInt(currentCapacity);
+    if (isNaN(newCapacity) || newCapacity < 0) {
+      return res.status(400).json({ message: "Invalid current capacity value" });
+    }
+
+    if (newCapacity > existingTunnel.capacity) {
+      return res.status(400).json({ message: "Current capacity exceeds maximum capacity" });
+    }
+
+    // Update current capacity and save the tunnel
+    existingTunnel.currentCapacity = newCapacity;
+    await existingTunnel.save();
+
+    return res.status(200).json({ message: "Current capacity updated successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Error updating current capacity", error });
+  }
+});
+
 module.exports = router;

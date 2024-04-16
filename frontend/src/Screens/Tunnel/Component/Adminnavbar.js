@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { GiGreenhouse } from "react-icons/gi";
+import { AiFillProfile } from "react-icons/ai";
 import Navbar from '../../Component/Navbar';
 import logo from '../../../Images/logo.png';
 
@@ -35,6 +36,18 @@ function Adminnavbar() {
         >
           <GiGreenhouse className="mr-5 text-lg" />
           <span className="font-bold text-lg">Tunnels</span>
+        </Link>
+        <Link
+          to="/t_tunnelprofile"
+          className={`flex items-center py-3 px-5 ${
+            location.pathname === "/t_tunnelprofile"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+          style={{ width: '100%', minWidth: '180px' }} // Fixed width for buttons
+        >
+          <AiFillProfile className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Profiles</span>
         </Link>
       </div>
       <div className="flex justify-center items-center mt-20 mr-5">
