@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../Component/Navbar";
-import Adminnavbar from "./Component/Adminnavbar";
+
 
 function Updatedriver() {
   const driverid = useParams().id;
@@ -37,7 +36,14 @@ function Updatedriver() {
     }
     getdriver();
   }, [driverid]);
-  //updatedriver
+
+  // Function to handle phone number input
+  const handlePhoneChange = (e) => {
+    const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
+    setPhone(input);
+  };
+
+  // Function to handle form submission
   async function Updatedriver(e) {
     e.preventDefault();
 
@@ -64,16 +70,22 @@ function Updatedriver() {
   }
 
   return (
-    <div>
-      
-      <Adminnavbar />
+    <div
+    
+    style={{
+      backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
+      backgroundSize: "cover",
+    }}
 
-      <div className="flex justify-center items-center h-screen ">
+    >
+      
+
+      <div className="flex justify-center items-center h-screen">
         <div className="w-96 rounded-lg shadow-lg bg-white p-8">
           <form onSubmit={Updatedriver}>
             {" "}
             <div className="mb-4">
-              <h2 className="text-xl font-semibold text-dark font-custom text-center">
+              <h2 className="text-xl font-semibold text-dark font-custom text-center mb-4">
                 Enter the Driver Details
               </h2>
               <input
@@ -96,11 +108,13 @@ function Updatedriver() {
             </div>
             <div className="mb-4">
               <input
-                type="number"
+                type="tel"
                 placeholder="Phone Number"
+                pattern="[0-9]*"
+                maxLength="10"
                 className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={handlePhoneChange}
               />
             </div>
             <div className="mb-4">
