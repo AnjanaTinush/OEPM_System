@@ -160,7 +160,8 @@ function Allusers() {
     }
   };
 
-  //search user using name.....
+  //search user using name
+  //comment
 
   // Search user using name and filter by type
 function filterBySearch() {
