@@ -323,6 +323,7 @@ className="bg-white rounded-3xl overflow-hidden shadow-xl max-w-md"
         required
         minLength={10}
         maxLength={10}
+        
       />
     </div>
     <div className="mt-4">
