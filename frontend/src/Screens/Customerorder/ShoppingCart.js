@@ -4,13 +4,17 @@ import Navbar from '../../Component/Navbar';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
+    // State variables to hold cart items and total price
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
 
+    // Fetch cart items when component mounts
     useEffect(() => {
         fetchCartItems();
     }, []);
 
+
+    // Function to fetch cart items from the server
     const fetchCartItems = async () => {
         try {
             const response = await axios.get('/api/shoppingCart/getitem');
@@ -21,6 +25,8 @@ const Cart = () => {
         }
     };
 
+
+    // Function to remove item from cart
     const removeFromCart = async (id) => {
         try {
             await axios.delete(`/api/shoppingCart/${id}`);
@@ -30,6 +36,8 @@ const Cart = () => {
         }
     };
 
+
+    // Function to calculate total price of cart items
     const calculateTotalPrice = (items) => {
         let totalPrice = 0;
         items.forEach(item => {
@@ -38,6 +46,8 @@ const Cart = () => {
         setTotalPrice(totalPrice);
     };
 
+
+    // Function to update quantity of an item in cart
     const updateQuantity = async (id, quantity) => {
         try {
             await axios.put(`/api/shoppingCart/${id}`, { quantity: quantity });
@@ -47,6 +57,8 @@ const Cart = () => {
         }
     };
 
+
+    // Handler function for quantity change
     const handleQuantityChange = (id, newQuantity) => {
         const updatedCartItems = cartItems.map(item => {
             if (item._id === id) {
@@ -58,12 +70,16 @@ const Cart = () => {
         calculateTotalPrice(updatedCartItems);
     };
 
+
+    // Function to increment quantity of an item in cart
     const incrementQuantity = (id, currentQuantity) => {
         const newQuantity = currentQuantity + 1;
         handleQuantityChange(id, newQuantity);
         updateQuantity(id, newQuantity);
     };
 
+
+     // Function to decrement quantity of an item in cart
     const decrementQuantity = (id, currentQuantity) => {
         const newQuantity = Math.max(1, currentQuantity - 1);
         handleQuantityChange(id, newQuantity);
@@ -71,15 +87,15 @@ const Cart = () => {
     };
 
 
-    //updateuser
+    // Function to update cart item
     async function Updatecart(itemid, quantity, totalprice) {
-        const updateuser = {
+        const updatecart = {
             quantity,
             totalprice,
         }
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/shoppingCart/updatecart/${itemid}`, updateuser);
+            const response = await axios.put(`http://localhost:5000/api/shoppingCart/updatecart/${itemid}`, updatecart);
             console.log(response);
         } catch (error) {
             console.log(error);
@@ -102,75 +118,77 @@ const Cart = () => {
                 </div>
             </div>
             <div className="border-b-2 mb-10 border-blue-900 ..."></div>
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-green-900 dark:text-white">
-                        <tr>
-                            <th scope="col" className="px-16 py-3">
-                                <span className="sr-only">Image</span>
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Product
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Qty (kg)
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Unit Price ( 1Kg)
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Total Price
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cartItems.map(item => (
-                            <tr key={item._id} className="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
-                                <td className="p-4">
-                                    <img src={item.imageurl} className="w-16 md:w-32 max-w-full max-h-full" alt="Item" />
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-100 dark:text-black">
-                                    {item.itemName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    <div className="flex items-center">
-                                        <button onClick={() => {
-                                            decrementQuantity(item._id, item.quantity);
-                                            Updatecart(item._id, item.quantity-1, item.price * item.quantity-(item.price));
-                                        }} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-r px-2 py-1">
-                                            -
-                                        </button>
-                                        <input
-                                            type="number"
-                                            value={item.quantity}
-                                            onChange={(e) => handleQuantityChange(item._id, parseInt(e.target.value))}
-                                            className="focus:outline-none text-center w-16 bg-gray-200 px-2 py-1"
-                                        />
-                                        <button onClick={() => {
-                                            incrementQuantity(item._id, item.quantity);
-                                            Updatecart(item._id, item.quantity+1, item.price * item.quantity+(item.price));
-                                        }} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-r px-2 py-1">
-                                            +
-                                        </button>
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
-                                    {item.price}
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
-                                    {item.price * item.quantity}
-                                </td>
-                                <td className="px-6 py-4">
-                                    <button onClick={() => removeFromCart(item._id)} className="font-medium text-red-600 dark:text-red-500 hover:underline" type="button">Remove</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <div
+            style={{ width: "100%", paddingLeft: "10rem", paddingRight: "10rem" }}
+          >
+            <table className="w-full text-sm text-center  rtl:text-right text-gray-500 dark:text-gray-400  rounded-xl overflow-hidden">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-green-900 dark:text-white">
+            <tr>
+                <th scope="col" className="px-16 py-3">
+                    <span className="sr-only">Image</span>
+                </th>
+                <th scope="col" className="px-6 py-3">
+                    Product
+                </th>
+                <th scope="col" className="px-6 py-3">
+                    Qty (kg)
+                </th>
+                <th scope="col" className="px-6 py-3">
+                    Unit Price ( 1Kg)
+                </th>
+                <th scope="col" className="px-6 py-3">
+                    Total Price
+                </th>
+                <th scope="col" className="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {cartItems.map(item => (
+                <tr key={item._id} className="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
+                    <td className="p-4">
+                        <img src={item.imageurl} className="w-16 md:w-32 max-w-full max-h-full" alt="Item" />
+                    </td>
+                    <td className="px-6 py-4 font-semibold text-gray-100 dark:text-black">
+                        {item.itemName}
+                    </td>
+                    <td className="px-6 py-4">
+                        <div className="flex items-center">
+                            <button onClick={() => {
+                                decrementQuantity(item._id, item.quantity);
+                                Updatecart(item._id, item.quantity-1, item.price * item.quantity-(item.price));
+                            }} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-r px-2 py-1">
+                                -
+                            </button>
+                            <input
+                                type="number"
+                                value={item.quantity}
+                                onChange={(e) => handleQuantityChange(item._id, parseInt(e.target.value))}
+                                className="focus:outline-none text-center w-16 bg-gray-200 px-2 py-1"
+                            />
+                            <button onClick={() => {
+                                incrementQuantity(item._id, item.quantity);
+                                Updatecart(item._id, item.quantity+1, item.price * item.quantity+(item.price));
+                            }} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-r px-2 py-1">
+                                +
+                            </button>
+                        </div>
+                    </td>
+                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
+                        {item.price}
+                    </td>
+                    <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
+                        {item.price * item.quantity}
+                    </td>
+                    <td className="px-6 py-4">
+                        <button onClick={() => removeFromCart(item._id)} className="font-medium text-red-600 dark:text-red-500 hover:underline" type="button">Remove</button>
+                    </td>
+                </tr>
+            ))}
+        </tbody>
+    </table>
+</div>
         </div>
     );
 };

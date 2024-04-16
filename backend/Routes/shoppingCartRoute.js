@@ -3,6 +3,7 @@ const router = express.Router();
 const shoppingCart = require("../models/shopingcartModel"); 
 
 
+//Add items to cart
 router.post("/addToCart", async (req, res) => {
   try {
     const { name, _id, price, userid, quantity, imageurl } = req.body;
@@ -26,6 +27,7 @@ router.post("/addToCart", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
 
 
 // Get all items in the shopping cart
@@ -53,6 +55,8 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+
+
 //update cart
 router.route('/updatecart/:id').put(async(req,res)=>{
 
@@ -74,6 +78,8 @@ router.route('/updatecart/:id').put(async(req,res)=>{
         
     }
 })
+
+
 
 // Get all items in the shopping cart
 router.get("/getitem", async (req, res) => {
