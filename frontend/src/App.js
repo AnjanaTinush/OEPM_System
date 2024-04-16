@@ -38,6 +38,7 @@ import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
 
+
 function App() {
   return (
     <div className="App">
@@ -64,7 +65,7 @@ function App() {
       <Route path="/c_displayitem" element={<C_displayitem/>}/>
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
-      <Route path="/userprofile" element={<Userprofile/>}/>
+      <Route path="/u_userprofile" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
@@ -84,6 +85,7 @@ function App() {
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       <Route path="/e_editprofile/:uid" element={<Edidemployeeprofile/>}/>
+      
       </Routes>
    
     </BrowserRouter>

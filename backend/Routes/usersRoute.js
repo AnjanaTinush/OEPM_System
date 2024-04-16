@@ -17,7 +17,7 @@ router.post("/register" , async(req,res)=>{
 
         const userExsist = await Users.findOne({ email : req.body.email})
         if(userExsist){
-            return res.status(200).json({massage : "user  already exist",sussess : false});
+            return res.status(200).json({massage : "This email already ",sussess : false});
             
         }
         const user = await newuser.save();
@@ -90,14 +90,15 @@ router.route('/getuser/:id').post(async(req,res) => {
 router.route('/updateuser/:id').put(async(req,res)=>{
 
     const userid = req.params.id;
-    const{name,email,phone,role,imageurl} = req.body;
+    const{name,email,phone,role,imageurl,password} = req.body;
 
     const updateuser={
         name,
         email,
         phone,
         role,
-        imageurl
+        imageurl,
+        password
     };
 
     try {
