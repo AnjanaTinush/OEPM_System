@@ -32,6 +32,10 @@ import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
 import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
+import ManageTargets from "./Screens/Targets/ManageTargets";
+import Targets from "./Screens/Targets/Targets";
+import UpdateTarget from "./Screens/Targets/UpdateTarget";
+
 
 
 
@@ -81,6 +85,9 @@ function App() {
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       <Route path="/e_editprofile/:uid" element={<Edidemployeeprofile/>}/>
+      <Route path="/m_targets" element={<ManageTargets/>}/>
+      <Route path="/t_targets" element={<Targets/>}/>
+      <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
       
       </Routes>
    
