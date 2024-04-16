@@ -15,6 +15,8 @@ function ShippingDetailsForm() {
     fetchCartItems();
   }, []);
 
+
+  // Function to fetch cart items
   const fetchCartItems = async () => {
     try {
       const response = await axios.get('/api/shoppingCart/getitem');
@@ -25,6 +27,8 @@ function ShippingDetailsForm() {
     }
   };
 
+
+  // Function to calculate total price
   const calculateTotalPrice = (items) => {
     let totalPrice = 0;
     items.forEach(item => {
@@ -33,6 +37,8 @@ function ShippingDetailsForm() {
     setTotalPrice(totalPrice);
   };
 
+
+  // Event handler for first name input
   const handleFirstNameChange = (e) => {
     const input = e.target.value;
     if (/^[a-zA-Z]*$/.test(input) || input === '') {
@@ -40,6 +46,8 @@ function ShippingDetailsForm() {
     }
   };
 
+
+  // Event handler for last name input
   const handleLastNameChange = (e) => {
     const input = e.target.value;
     if (/^[a-zA-Z]*$/.test(input) || input === '') {
@@ -47,6 +55,8 @@ function ShippingDetailsForm() {
     }
   };
 
+
+  // Event handler for phone number input
   const handlePhoneChange = (e) => {
     let input = e.target.value;
     input = input.replace(/\D/g, '');
@@ -54,12 +64,14 @@ function ShippingDetailsForm() {
     setPhoneNumber(input);
   };
 
+
+  // Function to handle checkout
   const handleCheckout = async () => {
     try {
       const response = await axios.post('/api/orderDetails', {
         firstName: firstName,
         lastName: lastName,
-        email: 'user@example.com', // You can replace this with the actual email if you collect it in the form
+        email: 'user@example.com',
         contactNumber: phoneNumber,
         streetAddress: '123 Street',
         city: 'City',
@@ -76,37 +88,38 @@ function ShippingDetailsForm() {
     }
   };
 
- 
-const generateReport = (firstName, lastName, phoneNumber, totalPrice, cartItems) => {
-  const doc = new jsPDF();
-  
-  let y = 20; // Initial Y position
-  
-  // Header
-  doc.setFontSize(16);
-  doc.text('Order Summary', 105, y, { align: 'center' });
-  y += 10; // Increase Y position
-  
-  // Customer information
-  doc.setFontSize(12);
-  doc.text(`Name: ${firstName} ${lastName}`, 20, y);
-  doc.text(`Phone Number: ${phoneNumber}`, 20, y + 10);
-  y += 20; // Increase Y position
-  
-  // Order items
-  doc.setFontSize(14);
-  cartItems.forEach(item => {
-    doc.text(`${item.itemName}: Qty ${item.quantity} - Rs.${item.price.toFixed(2)}`, 20, y);
+
+  // Function to generate PDF report
+  const generateReport = (firstName, lastName, phoneNumber, totalPrice, cartItems) => {
+    const doc = new jsPDF();
+
+    let y = 20; // Initial Y position
+
+    // Header
+    doc.setFontSize(16);
+    doc.text('Order Summary', 105, y, { align: 'center' });
     y += 10; // Increase Y position
-  });
-  
-  // Total price
-  doc.setFontSize(16);
-  doc.text(`Total Price: Rs.${totalPrice.toFixed(2)}`, 20, y + 10);
-  
-  // Save PDF
-  doc.save('order_summary.pdf');
-};
+
+    // Customer information
+    doc.setFontSize(12);
+    doc.text(`Name: ${firstName} ${lastName}`, 20, y);
+    doc.text(`Phone Number: ${phoneNumber}`, 20, y + 10);
+    y += 20; // Increase Y position
+
+    // Order items
+    doc.setFontSize(14);
+    cartItems.forEach(item => {
+      doc.text(`${item.itemName}: Qty ${item.quantity} - Rs.${item.price.toFixed(2)}`, 20, y);
+      y += 10; // Increase Y position
+    });
+
+    // Total price
+    doc.setFontSize(16);
+    doc.text(`Total Price: Rs.${totalPrice.toFixed(2)}`, 20, y + 10);
+
+    // Save PDF
+    doc.save('order_summary.pdf');
+  };
 
 
   return (
@@ -209,7 +222,7 @@ const generateReport = (firstName, lastName, phoneNumber, totalPrice, cartItems)
       </div>
       <div className="flex items-center justify-center mt-10">
         <button type="submit" className="rounded-md bg-red-600 px-12 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
-        onClick={() => generateReport(firstName, lastName, phoneNumber, totalPrice, cartItems)} >
+          onClick={() => generateReport(firstName, lastName, phoneNumber, totalPrice, cartItems)} >
           Download Invoice
         </button>
       </div>
