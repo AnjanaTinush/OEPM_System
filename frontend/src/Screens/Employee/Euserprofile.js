@@ -7,6 +7,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Loader from "../../Component/Loader";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -20,6 +22,7 @@ function Euserprofile() {
   const user = JSON.parse(localStorage.getItem("currentuser"));
   const { empid } = useParams("");
   const [loading, setLoading] = useState(false); // Define loading state variable here
+  const navigate = useNavigate();
 
   const [id, setid] = useState("");
   const [name, setname] = useState("");
@@ -57,7 +60,7 @@ function Euserprofile() {
     try {
       setLoading(true);
       const confirmed = await Swal.fire({
-        title: "Are you sure remove user?",
+        title: "Are you sure delete account?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,
@@ -72,9 +75,12 @@ function Euserprofile() {
         Swal.fire({
           icon: "success",
           title: "Success",
-          text: "User deleted successfully!",
+          text: "Your account deleted successfully!",
         });
+        navigate("/login"); // Navigate to login page after successful deletion
+
       }
+      
       setLoading(false);
     } catch (error) {
       console.log(error);
