@@ -23,7 +23,7 @@ function Adminnavbar() {
         <br />
         <Link
           to="/inventorydasgboard"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/inventorydasgboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/inventorydashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
         >
           <LuLayoutDashboard className="mr-5 text-lg" />
           <span className="font-bold text-lg">Dashboard</span>
@@ -53,7 +53,7 @@ function Adminnavbar() {
           className={`flex items-center w-full py-3 px-4 ${location.pathname === "/i_faq" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
         >
           <IoMdContacts className="mr-5 text-lg" />
-          <span className="font-bold text-lg">FAQ</span>
+          <span className="font-bold text-lg">Help</span>
         </Link>
       </div>
       <div className="p-4">
