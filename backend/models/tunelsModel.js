@@ -15,6 +15,10 @@ const tunnelSchema = mongoose.Schema({
         type : Number,
         require: true
     },
+    currentCapacity : {
+        type : Number,
+        require: true
+    },
     plantType : {
         type: String,
         require :true

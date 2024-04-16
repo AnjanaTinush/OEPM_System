@@ -1,65 +1,8 @@
-// payment.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Pay = () => {
-    const [cartItems, setCartItems] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
 
-    useEffect(() => {
-        fetchCartItems();
-    }, []);
-
-    const fetchCartItems = async () => {
-        try {
-            const response = await axios.get('/api/shoppingCart');
-            setCartItems(response.data);
-            calculateTotalPrice(response.data);
-        } catch (error) {
-            console.error('Error fetching cart items: ', error);
-        }
-    };
-
-    const calculateTotalPrice = (items) => {
-        let totalPrice = 0;
-        items.forEach(item => {
-            totalPrice += (item.price * item.quantity);
-        });
-        setTotalPrice(totalPrice);
-    };
-
-    const updateQuantity = async (id, quantity) => {
-        try {
-            await axios.put(`/api/shoppingCart/${id}`, { quantity: quantity });
-            fetchCartItems();
-        } catch (error) {
-            console.error('Error updating quantity: ', error);
-        }
-    };
-
-    const handleQuantityChange = (id, newQuantity) => {
-        const updatedCartItems = cartItems.map(item => {
-            if (item._id === id) {
-                return { ...item, quantity: newQuantity };
-            }
-            return item;
-        });
-        setCartItems(updatedCartItems);
-        calculateTotalPrice(updatedCartItems);
-    };
-
-    const incrementQuantity = (id, currentQuantity) => {
-        const newQuantity = currentQuantity + 1;
-        handleQuantityChange(id, newQuantity);
-        updateQuantity(id, newQuantity);
-    };
-
-    const decrementQuantity = (id, currentQuantity) => {
-        const newQuantity = Math.max(1, currentQuantity - 1);
-        handleQuantityChange(id, newQuantity);
-        updateQuantity(id, newQuantity);
-    };
-   
 
     return (
         <div className='full mt-20'>
@@ -107,75 +50,9 @@ const Pay = () => {
                 </div>
             </form>
 
-            <h1 className='heading mt-20 ml-20 text-2xl  '>Scheduled Orders</h1>
-
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
-                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-green-900 dark:text-white">
-                        <tr>
-                            <th scope="col" className="px-16 py-3">
-                                <span className="sr-only">Image</span>
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Product
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Qty (kg)
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Unit Price ( 1Kg)
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Total Price
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Date
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Status
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cartItems.map(item => (
-                            <tr key={item._id} className="bg-white border-b dark:bg-white dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-200">
-                                <td className="p-4">
-                                    <img src={item.imageurl} className="w-16 md:w-32 max-w-full max-h-full" alt="Item" />
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-100 dark:text-black">
-                                    {item.itemName}
-                                </td>
-                                <td className="px-6 py-4">
-                                    <div className="flex items-center">
-                                        <button onClick={() => decrementQuantity(item._id, item.quantity)} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-l px-2 py-1">
-                                            -
-                                        </button>
-                                        <input 
-                                            type="number" 
-                                            value={item.quantity} 
-                                            onChange={(e) => handleQuantityChange(item._id, parseInt(e.target.value))} 
-                                            className="focus:outline-none text-center w-16 bg-gray-200 px-2 py-1" 
-                                        />
-                                        <button onClick={() => incrementQuantity(item._id, item.quantity)} className="bg-gray-200 text-gray-600 hover:text-gray-800 hover:bg-gray-400 rounded-r px-2 py-1">
-                                            +
-                                        </button>
-                                    </div>
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
-                                    {item.price}
-                                </td>
-                                <td className="px-6 py-4 font-semibold text-gray-900 dark:text-grey">
-                                    {item.price * item.quantity}
-                                </td>
-                              
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
         </div>
 
-       
+
 
     );
 }

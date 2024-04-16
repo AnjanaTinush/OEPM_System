@@ -101,14 +101,13 @@ function Navbar() {
             ) : (
               <div className="hidden lg:flex lg:flex-1 lg:justify-end">
                 <Link to={`/login`}>
-                  <button className="text-xs font-light leading-4 text-white py-2 px-4 border border-white rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5">
+                  <button className="text-white text-base font-semibold border border-solid border-transparent p-3 ">
                     Login
                   </button>
                 </Link>
                 <Link to={`/register`}>
                   <button
-                    className="text-xs font-light leading-4 text-white py-2 px-4 border border-white rounded-sm bg-black bg-opacity-5 hover:bg-opacity-10 mr-5"
-                    onClick={() => console.log("Navigate to sign-up page")}
+className="text-white text-base font-semibold border border-solid border-transparent p-3"                    onClick={() => console.log("Navigate to sign-up page")}
                   >
                     Sign Up
                   </button>
