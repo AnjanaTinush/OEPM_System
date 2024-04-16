@@ -13,6 +13,8 @@ function Drivers() {
   const [searchQuery, setSearchQuery] = useState("");
   const componentPDF = useRef();
   const [availabilityFilter, setAvailabilityFilter] = useState("All");
+  const currentDate = new Date().toLocaleDateString();
+  const currentTime = new Date().toLocaleTimeString();
 
   useEffect(() => {
     fetchData();
@@ -55,10 +57,7 @@ function Drivers() {
   };
 
   const generatePDF = () => {
-    const currentDate = new Date().toLocaleDateString();
-    const currentTime = new Date().toLocaleTimeString();
-
-    const printWindow = window.open("", "_blank", "width=600,height=600");
+    const printWindow = window.open("", "_blank", "width=1600,height=750");
 
     printWindow.document.write(`
       <html>
@@ -67,20 +66,18 @@ function Drivers() {
           <style>
           body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             padding: 20px;
           }
 
           h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: #333;
+            
           }
 
           table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -122,14 +119,14 @@ function Drivers() {
               ${filteredDrivers
                 .map(
                   (driver, index) => `
-                  <tr key=${driver._id}>
-                    <td>${index + 1}</td>
-                    <td>${driver.name}</td>
-                    <td>${driver.email}</td>
-                    <td>${driver.phone}</td>
-                    <td>${driver.vehicalnum}</td>
-                  </tr>
-                `
+                    <tr key=${driver._id}>
+                      <td>${index + 1}</td>
+                      <td>${driver.name}</td>
+                      <td>${driver.email}</td>
+                      <td>${driver.phone}</td>
+                      <td>${driver.vehicalnum}</td>
+                    </tr>
+                  `
                 )
                 .join("")}
             </tbody>
@@ -137,6 +134,9 @@ function Drivers() {
         </body>
       </html>
     `);
+
+    
+    printWindow.print();
   };
 
   const filteredDrivers = drivers.filter(
@@ -154,128 +154,128 @@ function Drivers() {
         backgroundSize: "cover",
       }}
     >
-      
-          <AdminNavbar/>
-          <Navbar/>
+      <AdminNavbar />
+      <Navbar />
 
-          <h1 className="flex justify-center text-5xl font-semibold ml-44 p-8 font-serif text-green-800">Driver details</h1>
+      <h1 className="flex justify-center text-5xl font-semibold ml-44 p-8 font-serif text-green-800">
+        Driver details
+      </h1>
 
-          <div className="flex justify-center ml-64 m-auto gap-8 p-5 ">
-            <div className="relative">
-              <CiSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search by name..."
-                className=" p-2 pl-10 block w-72 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
-
-            <select
-              className="p-2 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
-              value={availabilityFilter}
-              onChange={(e) => setAvailabilityFilter(e.target.value)}
-            >
-              <option value="All">All</option>
-              <option value="Available">Available</option>
-              <option value="Unavailable">Unavailable</option>
-            </select>
-
-            <div className="flex justify-center items-center">
-              <button
-                type="button"
-                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
-                onClick={generatePDF}
-              >
-                Generate Report
-              </button>
-            </div>
-
-            <Link to="/j_AddDriver">
-              <button
-                type="button"
-                className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
-              >
-                Click Here to Add a Driver
-              </button>
-            </Link>
-          </div>
-
-          <div className="flex justify-center items-center h-full">
-            <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
-              <div ref={componentPDF} style={{ width: "100%" }}>
-                <table className="w-full text-sm text-left rtl:text-right dark:text-gray-400">
-                  <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
-                    <tr>
-                      <th scope="col" className="px-6 py-3">
-                        Name
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Email
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Phone Number
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Vehicle Number
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Availability
-                      </th>
-                      <th scope="col" className="px-6 py-3">
-                        Action
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredDrivers.map((driver) => (
-                      <tr
-                        key={driver._id}
-                        className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover"
-                      >
-                        <td className="px-6 py-4 font-medium text-green-900">
-                          {driver.name}
-                        </td>
-                        <td className="px-6 py-4 font-medium text-green-900">
-                          {driver.email}
-                        </td>
-                        <td className="px-6 py-4 font-medium text-green-900">
-                          {driver.phone}
-                        </td>
-                        <td className="px-6 py-4 font-medium text-green-900">
-                          {driver.vehicalnum}
-                        </td>
-                        <td className="px-6 py-4 font-medium text-green-900">
-                          {driver.availability}
-                        </td>
-                        <td className="px-6 py-4 text-right text-green-900">
-                          <Link to={`/j_updatedriver/${driver._id}`}>
-                            <button className="btn1 mr-3">
-                              <FaEdit className="mr-5 text-xl" />
-                            </button>
-                          </Link>
-                          <button
-                            className="btn1"
-                            onClick={() => deleteDriver(driver._id)}
-                          >
-                            <MdDeleteForever className="mr-5 text-2xl" />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+      <div className="flex justify-center ml-64 m-auto gap-8 p-5 ">
+        <div className="relative">
+          <CiSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search by name..."
+            className=" p-2 pl-10 block w-72 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-      
+
+        <select
+          className="p-2 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
+          value={availabilityFilter}
+          onChange={(e) => setAvailabilityFilter(e.target.value)}
+        >
+          <option value="All">All</option>
+          <option value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+        </select>
+
+        <div className="flex justify-center items-center">
+          <button
+            type="button"
+            className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
+            onClick={generatePDF}
+          >
+            Generate Report
+          </button>
+        </div>
+
+        <Link to="/j_AddDriver">
+          <button
+            type="button"
+            className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center  dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl"
+          >
+            Click Here to Add a Driver
+          </button>
+        </Link>
+      </div>
+
+      <div className="flex justify-center items-center h-full">
+        <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
+          <div ref={componentPDF} style={{ width: "100%" }}>
+            <table className="w-full text-sm text-left rtl:text-right dark:text-gray-400">
+              <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Phone Number
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Vehicle Number
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Availability
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredDrivers.map((driver) => (
+                  <tr
+                    key={driver._id}
+                    className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover"
+                  >
+                    <td className="px-6 py-4 font-medium text-green-900">
+                      {driver.name}
+                    </td>
+                    <td className="px-6 py-4 font-medium text-green-900">
+                      {driver.email}
+                    </td>
+                    <td className="px-6 py-4 font-medium text-green-900">
+                      {driver.phone}
+                    </td>
+                    <td className="px-6 py-4 font-medium text-green-900">
+                      {driver.vehicalnum}
+                    </td>
+                    <td className="px-6 py-4 font-medium text-green-900">
+                      {driver.availability}
+                    </td>
+                    <td className="px-6 py-4 text-right text-green-900">
+                      <Link to={`/j_updatedriver/${driver._id}`}>
+                        <button className="btn1 mr-3">
+                          <FaEdit className="mr-5 text-xl" />
+                        </button>
+                      </Link>
+                      <button
+                        className="btn1"
+                        onClick={() => deleteDriver(driver._id)}
+                      >
+                        <MdDeleteForever className="mr-5 text-2xl" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>
   );
 }
 

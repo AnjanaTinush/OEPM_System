@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Adminnavbar from "./Component/Adminnavbar";
 import Navbar from "./Component/Navbar";
 import Flexbox from "flexbox-react";
-import { AiFillPieChart } from "react-icons/ai";
 import Chart from "chart.js/auto";
 import axios from "axios";
 import { BsCartCheck } from "react-icons/bs";

@@ -18,6 +18,7 @@ import AddDriver from "./Screens/Curiorservice/AddDriver"
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
 import Curiorservisedashboard from "./Screens/Curiorservice/Curiorservisedashboard";
 import Deliveries from "./Screens/Curiorservice/Deliveries";
+import Driverprofile from "./Screens/Curiorservice/Driverprofile";
 import { Toaster } from "react-hot-toast";
 import Tunnels from "./Screens/Tunnel/Tunnels";
 import Employeeprofiledashboard from "./Screens/Employee/Employeeprofiledashboard";
@@ -31,7 +32,7 @@ import PaymentPage from "./Screens/Customerorder/payment";
 import Approveleave from "./Screens/Employee/Approveleave";
 
 
-import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+
 import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
@@ -81,6 +82,7 @@ function App() {
       
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
+      <Route path="j_driverprofile" element={<Driverprofile/>}/>
       
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>

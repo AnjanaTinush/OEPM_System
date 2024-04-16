@@ -44,8 +44,18 @@ function AddDriver() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
-      <div className="w-96 rounded-lg shadow-lg bg-white p-8">
+    <div 
+    
+    style={{
+      backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      opacity: 50,
+      
+    }}
+
+    className="flex justify-center items-center h-screen ">
+      <div className="w-96 rounded-lg shadow-lg bg-white p-8 ">
         <form onSubmit={handleSubmit}>
           {/* Name input field */}
           <div className="mb-4">
