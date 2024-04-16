@@ -12,6 +12,7 @@ const driverRoute = require("./Routes/driverRoute")
 const leavesRoutes = require("./Routes/leavesRoutes")
 const customerOrderRoute = require("./Routes/customerOrderRoute")
 const shoppingCartRoute = require("./Routes/shoppingCartRoute")
+const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
 
 
@@ -24,6 +25,7 @@ app.use("/api/tunnel", tunnelRoutes)
 app.use('/api/customeritems',customerOrderRoute);
 app.use("/api/shoppingCart",shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
+app.use("/api/inventory", inventoryRoutes);
 app.use("/api/target", targetRoutes)
 
 
