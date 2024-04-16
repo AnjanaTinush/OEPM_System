@@ -1,5 +1,3 @@
-// orderDetailsRoute.js
-
 const express = require('express');
 const router = express.Router();
 const orderdetailsmodel = require('../models/orderdetailsModel');
@@ -20,16 +18,20 @@ router.post('/orderDetails', async (req, res) => {
       cartItems
     } = req.body;
 
+
+
     // Assuming cartItems is an array of items to be saved in the order details
     const orderItems = cartItems.map(item => ({
       itemName: item.itemName,
-      itemid: item._id, // or however you identify items
-      userid: 'user123', // example user ID, you should replace this with the actual user ID
+      itemid: item._id, 
+      userid: 'user123', 
       quantity: item.quantity,
       price: item.price,
       totalprice: item.price * item.quantity,
       imageurl: item.imageurl
     }));
+
+
 
     // Create a new order
     const newOrder = new orderdetailsmodel({
@@ -45,6 +47,8 @@ router.post('/orderDetails', async (req, res) => {
       total
     });
 
+
+
     // Save the order to the database
     await newOrder.save();
 
@@ -54,5 +58,7 @@ router.post('/orderDetails', async (req, res) => {
     res.status(500).json({ success: false, message: 'Failed to place order', error: error.message });
   }
 });
+
+
 
 module.exports = router;
