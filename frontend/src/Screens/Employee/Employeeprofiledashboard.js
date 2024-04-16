@@ -13,7 +13,38 @@ function Employeeprofiledashboard() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [loading, setLoading] = useState(false); // Define loading state variable here
   const [selectedDate, setSelectedDate] = useState(new Date()); // State for selected date
+  const [pendingLeaves, setPendingLeaves] = useState(0);
+  const [approvedLeaves, setApprovedLeaves] = useState(0);
+  
 
+  const user = JSON.parse(localStorage.getItem("currentuser"));
+  const userId=user._id;
+  // Inside the useEffect for userId
+useEffect(() => {
+  fetchLeaveCounts(userId);
+}, [userId]); // Add userId as a dependency to useEffect
+
+// Inside the fetchLeaveCounts function
+const fetchLeaveCounts = async (userId) => {
+  if (!userId) return; // Return if userId is empty
+
+  try {
+    const response = await fetch(`http://localhost:5000/api/leaves/leaverequestcounts/${userId}`); // Include userId in the URL
+    const data = await response.json();
+    console.log("API response:", data); // Log the API response for debugging
+
+    setPendingLeaves(data.pending);
+    setApprovedLeaves(data.approved);
+    setLoading(false);
+  } catch (error) {
+    console.error("Error fetching leave counts:", error);
+    setLoading(false);
+  }
+};
+
+
+
+  
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
@@ -50,7 +81,7 @@ function Employeeprofiledashboard() {
                     </div>
                     <div>
                       <p className="text-2xl font-normal text-gray-700 dark:text-gray-400 ml-10 mt-1 ">
-                        60
+                        {approvedLeaves}
                       </p>
                     </div>
                   </div>
@@ -65,7 +96,7 @@ function Employeeprofiledashboard() {
                     </div>
                     <div>
                       <p className="text-2xl font-normal text-gray-700 dark:text-gray-400 ml-10 mt-1 ">
-                        60
+                        {pendingLeaves}
                       </p>
                     </div>
                   </div>
