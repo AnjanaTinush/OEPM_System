@@ -140,6 +140,9 @@ const Edidemployeeprofile = () => {
                                 id="file-upload"
                                 type="file"
                                 className="hidden"
+                                onChange={(e) => {
+                                  setimageurl(e.target.value);
+                                }}
                               />
                             </div>
 

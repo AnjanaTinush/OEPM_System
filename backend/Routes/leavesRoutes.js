@@ -113,6 +113,24 @@ router.get("/statuscounts", async (req, res) => {
 });
 
 
+// Backend API - Get counts of pending and approved requests for a specific user
+router.get("/leaverequestcounts/:userid", async (req, res) => {
+    const { userid } = req.params;
+
+    try {
+        const pendingCount = await Leaves.countDocuments({ userid, status: 'Pending' });
+        const approvedCount = await Leaves.countDocuments({ userid, status: 'Approved' });
+
+        res.json({
+            userid,
+            pending: pendingCount,
+            approved: approvedCount,
+        });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
 
   
 

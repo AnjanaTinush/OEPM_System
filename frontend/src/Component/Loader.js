@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PulseLoader from "react-spinners/PulseLoader";
+import SyncLoader from "react-spinners/SyncLoader";
 
 function Loader() {
 
@@ -9,7 +9,7 @@ function Loader() {
     <div style={{marginTop:'300px',marginBottom:"210px"}}>
            <center><div className="sweet-loading">
 
-                <PulseLoader
+                <SyncLoader
                     color='#48c81b'
                     loading={loading}
                     cssOverride=''
