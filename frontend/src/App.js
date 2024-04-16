@@ -28,12 +28,8 @@ import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
-import ManageTargets from "./Screens/Targets/ManageTargets";
-import Targets from "./Screens/Targets/Targets";
-import UpdateTarget from "./Screens/Targets/UpdateTarget";
-
-
-
+import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
+import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
 
 
@@ -66,13 +62,13 @@ function App() {
       <Route path="/c_displayitem" element={<C_displayitem/>}/>
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
-      <Route path="/userprofile" element={<Userprofile/>}/>
+      <Route path="/u_userprofile" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
       <Route path="/j_addDriver" element={<AddDriver/>}/>
       <Route path="/e_profile_dashboard" element={<Employeeprofiledashboard/>}/>
-      <Route path="e_userprofile" element={<Euserprofile/>}/>
+      <Route path="e_userprofile/:empid" element={<Euserprofile/>}/>
       <Route path="e_requestedleave" element={<Requestedleave/>}/>
       <Route path="shoppingCart" element={<ShoppingCart/>}/>
       <Route path="checkout" element={<CheckoutPage/>}/>
@@ -81,16 +77,11 @@ function App() {
       
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
-      
+      <Route path="/t_tunnelprofile" element={<Tunnelprofile/>}/>
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
-      <Route path="/m_targets" element={<ManageTargets/>}/>
-      <Route path="/t_targets" element={<Targets/>}/>
-      <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
-
+      <Route path="/e_editprofile/:uid" element={<Edidemployeeprofile/>}/>
       
-
-
       </Routes>
    
     </BrowserRouter>
