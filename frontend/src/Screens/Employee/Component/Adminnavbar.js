@@ -16,8 +16,7 @@ function Adminnavbar() {
     <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col justify-between shadow-xl">
     <div className="p-4 mt-2">
     <Navbar/>
-        <Link
-            to="/employeeDashboard"
+        <Link            to="/employeeDashboard"
             className={`flex items-center w-full mt-6 py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
         >
             <LuLayoutDashboard className="mr-5 text-lg" />

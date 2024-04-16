@@ -28,6 +28,12 @@ import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
+import ManageTargets from "./Screens/Targets/ManageTargets";
+import Targets from "./Screens/Targets/Targets";
+import UpdateTarget from "./Screens/Targets/UpdateTarget";
+
+
+
 
 
 
@@ -78,6 +84,13 @@ function App() {
       
       <Route path="/t_tunnels" element={<Tunnels/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
+      <Route path="/m_targets" element={<ManageTargets/>}/>
+      <Route path="/t_targets" element={<Targets/>}/>
+      <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
+
+      
+
+
       </Routes>
    
     </BrowserRouter>

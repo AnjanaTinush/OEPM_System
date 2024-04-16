@@ -12,6 +12,8 @@ const driverRoute = require("./Routes/driverRoute")
 const leavesRoutes = require("./Routes/leavesRoutes")
 const customerOrderRoute = require("./Routes/customerOrderRoute")
 const shoppingCartRoute = require("./Routes/shoppingCartRoute")
+const targetRoutes = require("./Routes/targetsRoute")
+
 
 
 app.use(cors()); // Add this line to enable CORS
@@ -22,6 +24,8 @@ app.use("/api/tunnel", tunnelRoutes)
 app.use('/api/customeritems',customerOrderRoute);
 app.use("/api/shoppingCart",shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
+app.use("/api/target", targetRoutes)
+
 
 
 const port = process.env.PORT || 5000;
