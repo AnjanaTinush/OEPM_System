@@ -1,8 +1,13 @@
 import React from 'react'
+import Adminnavbar from './Component/Adminnavbar'
+// import Navbar from './Component/Navbar'
 
 function Targetsdashboard() {
   return (
-    <div>Targetsdashboard</div>
+    <div>
+      <Adminnavbar/>
+      {/* <Navbar/> */}
+      </div>
   )
 }
 
