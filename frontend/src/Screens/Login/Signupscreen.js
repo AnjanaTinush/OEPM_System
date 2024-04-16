@@ -11,7 +11,7 @@ import signup from "./Componenet/signup.jpg";
 import logo from "./Componenet/logo.png";
 
 AOS.init({
-  duration: "5000",
+  duration: "1000",
 });
 
 function Signupscreen() {
@@ -72,7 +72,7 @@ function Signupscreen() {
         <Loader />
       ) : (
         <>
-          <div
+          <div data-aos="zoom in" 
             className="flex flex-col justify-center items-center bg-zinc-800 min-h-screen"
             style={{
               backgroundImage: `url(${signup})`,
@@ -115,7 +115,7 @@ function Signupscreen() {
                   </div>
                 </div>
                 <div className="w-full md:w-2/5 md:ml-6">
-                  <form
+                  <form 
                     onSubmit={registeruser}
                     className="flex flex-col gap-3  py-5  bg-white rounded-2xl max-w-[30rem] mx-auto md:px-5 md:mt-12"
                   >
