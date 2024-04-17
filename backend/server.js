@@ -15,7 +15,7 @@ const shoppingCartRoute = require("./Routes/shoppingCartRoute");
 
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
-
+const machinesRoute = require("./Routes/machineRoute");
 
 
 app.use(cors()); // Add this line to enable CORS
@@ -27,7 +27,7 @@ app.use("/api/customeritems", customerOrderRoute);
 app.use("/api/shoppingCart", shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
 app.use("/api/deliveries", deliveriesRoute);
-
+app.use("/api/machines", machinesRoute);
 
 
 app.use("/api/inventory", inventoryRoutes);
