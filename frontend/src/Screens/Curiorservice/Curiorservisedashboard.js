@@ -45,8 +45,7 @@ function Curiorservisedashboard() {
         {
           label: "Driver Availability",
           data: [availableCount, unavailableCount],
-          backgroundColor: ["#ffa600", "#bc5090"],
-          borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+          backgroundColor: ["#25D366", "#128C7E"],
           borderWidth: 0,
         },
       ],

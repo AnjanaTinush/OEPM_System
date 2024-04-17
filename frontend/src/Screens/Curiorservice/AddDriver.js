@@ -2,29 +2,29 @@ import axios from "axios";
 import React, { useState } from "react";
 
 function AddDriver() {
-  // State variables to store form input values
+  // define variables
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [vehicalnum, setVehicalnum] = useState("");
   const [availability, setAvailability] = useState("");
 
-  // Function to handle form submission
+  // handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if any field is empty
+    // check any field is empty
     if (!name || !email || !phone || !vehicalnum || !availability) {
       alert("Please fill in all fields");
       return;
     }
 
-    // Create an object with form data
+    // Create object with form data
     const driver = { name, email, phone, vehicalnum, availability };
     console.log(driver);
 
     try {
-      // Send POST request to add driver
+      // add driver post request
       const result = await axios.post(
         "http://localhost:5000/api/drivers/j_drivers",
         driver
@@ -37,27 +37,26 @@ function AddDriver() {
     }
   };
 
-  // Function to handle phone number input
+  //phone number validation
   const handlePhoneChange = (e) => {
-    const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
+    const input = e.target.value.replace(/\D/g, ""); // remove non-numeric values
     setPhone(input);
   };
 
   return (
-    <div 
-    
-    style={{
-      backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      opacity: 50,
-      
-    }}
-
-    className="flex justify-center items-center h-screen ">
+    <div
+      style={{
+        backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        opacity: 50,
+      }}
+      className="flex justify-center items-center h-screen "
+    >
       <div className="w-96 rounded-lg shadow-lg bg-white p-8 ">
         <form onSubmit={handleSubmit}>
-          {/* Name input field */}
+
+          {/* input name */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold text-dark font-custom text-center">
               Enter New Driver Details
@@ -71,7 +70,7 @@ function AddDriver() {
             />
           </div>
 
-          {/* Email input field */}
+          {/* input email */}
           <div className="mb-4">
             <input
               type="email"
@@ -83,7 +82,7 @@ function AddDriver() {
             />
           </div>
 
-          {/* Phone number input field */}
+          {/* input drivers */}
           <div className="mb-4">
             <input
               type="tel"
