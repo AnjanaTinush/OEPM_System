@@ -1,58 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { default as api } from "../../store/apiSlice";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import CloseIcon from "@mui/icons-material/Close";
+import { default as api } from "../../store/apiSlice";
 
-export default function EditIncome({ open, setOpen, productData }) {
-  const { register } = useForm();
-  const [addTransaction] = api.useAddTransactionMutation();
-  const [editProduct] = api.useEditIncomeMutation();
-  const [formData, setFormData] = useState({
-    type: "",
-    date: "",
-    name: "",
-    amount: "",
-  });
+export default function AddEMPSalary({ open, setOpen }) {
+  const { register, handleSubmit, reset } = useForm();
+  const [addSallary] = api.useAddSallaryMutation();
 
-  const handleType = (event) => {
-    setFormData({ ...formData, type: event.target.value });
-  };
+  const [basic, setBasic] = useState("");
+  const [otHours, setOtHours] = useState("");
+  const [amount, setAmount] = useState(0);
 
-  const handleDate = (event) => {
-    setFormData({ ...formData, date: event.target.value });
-  };
-
-  const handleAmount = (event) => {
-    setFormData({ ...formData, amount: event.target.value });
-  };
-
-  const handleName = (event) => {
-    const { value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      name: value,
-    }));
-  };
-
-  React.useEffect(() => {
-    setFormData(productData);
-  }, [productData]);
-
-  const handleSubmit = async (e) => {
+  const handleCalculate = (e) => {
     e.preventDefault();
-    if (!formData) return {};
+    const calculatedAmount = parseFloat(basic) + parseFloat(otHours) * 1000;
+    setAmount(calculatedAmount);
+  };
 
-    if (productData) {
-      await editProduct({
-        _id: productData._id,
-        data: formData,
-      });
-    } else {
-      await addTransaction(formData).unwrap();
-    }
-    setOpen(false);
+  const onSubmit = async (data) => {
+    if (!data) return {};
+    await addSallary(data).unwrap();
+    setAmount(0); // Reset amount to 0
+    reset();
+    console.log("daef", data);
   };
 
   return (
@@ -85,7 +55,7 @@ export default function EditIncome({ open, setOpen, productData }) {
             aria-labelledby="modal-title"
             aria-describedby="modal-description"
           >
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="w-full">
@@ -93,15 +63,45 @@ export default function EditIncome({ open, setOpen, productData }) {
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Name
+                      Employee No.
                     </label>
                     <input
                       type="text"
-                      {...register("name")}
-                      placeholder="Name"
-                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                      value={formData.name}
-                      onChange={handleName}
+                      {...register("empno")}
+                      placeholder="Employee No"
+                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                    />
+                  </div>
+                  <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
+                    <div className="w-full">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Employee Name.
+                      </label>
+                      <input
+                        type="text"
+                        {...register("empname")}
+                        placeholder="Employee Name"
+                        className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="sm:flex sm:items-start">
+                  <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      {...register("date")}
+                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
                     />
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
@@ -109,16 +109,15 @@ export default function EditIncome({ open, setOpen, productData }) {
                       htmlFor="type"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Type
+                      Department
                     </label>
                     <select
-                       className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                      {...register("type")}
-                      value={formData.type}
-                      onChange={handleType}
-                    >
-                      <option value="Delivery_fee">Delivery fee</option>
-                      <option value="Expense">Sales</option>
+                      {...register("department")}
+                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
+                    
+                      <option value="IT">IT</option>
+                      <option value="HR">HR</option>
+                      <option value="Finance">Finance</option>
                     </select>
                   </div>
                 </div>
@@ -133,36 +132,20 @@ export default function EditIncome({ open, setOpen, productData }) {
                     </label>
                     <input
                       type="text"
-                      {...register("amount")}
                       placeholder="Amount"
-                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                      value={formData.amount}
-                      onChange={handleAmount}
-                    />
-                  </div>
-                  <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
-                    <label
-                      htmlFor="date"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Date
-                    </label>
-                    <input
-                      type="date"
-                      {...register("date")}
-                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                      value={formData.date}
-                      onChange={handleDate}
+                      {...register("amount")}
+                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
                     />
                   </div>
                 </div>
+              
               </div>
               <div className="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="submit"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm"
                 >
-                  Update
+                  Create
                 </button>
                 <button
                   type="button"
@@ -180,7 +163,7 @@ export default function EditIncome({ open, setOpen, productData }) {
   );
 }
 
-EditIncome.propTypes = {
+AddEMPSalary.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
   productData: PropTypes.object,

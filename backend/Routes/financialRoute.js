@@ -2,6 +2,7 @@ const financialroute = require("express").Router();
 
 const controller = require("../controller/Financial_controller");
 const expencecontroller = require("../controller/exepence_controller");
+const sallarycontroller = require("../controller/sallary_controller");
 
 //  all the income base api request
 financialroute
@@ -18,7 +19,7 @@ financialroute
 
 financialroute.route("/api/labels").get(controller.get_Labels);
 
-// all the expences api request 
+// all the expences api request
 financialroute
   .route("/api/expence")
   .post(expencecontroller.create_expence)
@@ -31,6 +32,13 @@ financialroute
   .post(expencecontroller.create_expenceCategories)
   .get(expencecontroller.get_expenceCategories);
 
-financialroute.route("/api/expencelabels").get(expencecontroller.get_ExpenceLabels);
+financialroute
+  .route("/api/empsallary")
+  .post(sallarycontroller.create_sallary)
+  .get(sallarycontroller.get_Sallary);
+
+financialroute
+  .route("/api/expencelabels")
+  .get(expencecontroller.get_ExpenceLabels);
 
 module.exports = financialroute;

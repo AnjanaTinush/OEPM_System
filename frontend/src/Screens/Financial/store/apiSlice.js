@@ -95,7 +95,21 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["expence"],
     }),
-    
+
+    //Sallary
+    addSallary: builder.mutation({
+      query: (initialSallary) => ({
+        url: "/api/empsallary",
+        method: "POST",
+        body: initialSallary,
+      }),
+      invalidatesTags: ["sallary"],
+    }),
+
+    getSallary: builder.query({
+      query: () => "/api/empsallary",
+      providesTags: ["sallary"],
+    }),
   }),
 });
 

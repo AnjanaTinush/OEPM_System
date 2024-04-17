@@ -36,15 +36,15 @@ function Adminnavbar() {
           <span className="font-bold text-lg">Expences</span>
         </Link>
         <Link
-          to=""
+          to="/empsallary"
           className={`flex items-center w-full py-3 px-4 ${
-            location.pathname === ""
+            location.pathname === "/empsallary"
               ? "bg-whatsapp-green text-white"
               : "hover:bg-whatsapp-green text-green-900"
           } font-custom rounded-md text-decoration-none mb-2`}
         >
           <IoMdContacts className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Whatapp clone</span>
+          <span className="font-bold text-lg">Sallary </span>
         </Link>
       </div>
       <div className="p-4">

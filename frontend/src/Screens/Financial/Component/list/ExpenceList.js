@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import "boxicons";
 import { default as api } from "../../store/apiSlice";
-import EditIncome from "../form/edit_income";
 import EditExpence from "../form/editExpenceForm";
 
 export default function Expence_List() {

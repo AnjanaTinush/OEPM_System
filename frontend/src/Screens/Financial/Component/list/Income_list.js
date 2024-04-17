@@ -9,7 +9,7 @@ export default function Income_List() {
   const [deleteTransaction] = api.useDeleteTransactionMutation();
   let Transactions;
 
-  console.log("date set",data)
+  console.log("date set", data);
   const handlerClick = (e) => {
     if (!e.target.dataset.id) return 0;
     deleteTransaction({ _id: e.target.dataset.id });
@@ -57,7 +57,7 @@ function Transaction({ category, handler }) {
         ></box-icon>
       </button>
 
-      <button className="px-3"  onClick={handleOpen}>
+      <button className="px-3" onClick={handleOpen}>
         <box-icon
           data-id={category._id ?? ""}
           color={category.color ?? "#e5e5e5"}

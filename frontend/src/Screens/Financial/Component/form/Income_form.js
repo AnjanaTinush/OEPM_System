@@ -23,9 +23,9 @@ export default function IncomeForm() {
           type="text"
           {...register("name")}
           placeholder="Name"
-          className="form-input w-full"
+          className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
         />
-        <select {...register("type")} className="form-select w-full">
+        <select {...register("type")}   className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
           <option value="Delivery_fee">Delivery fee</option>
           <option value="Sales">Sales</option>
          
@@ -34,13 +34,13 @@ export default function IncomeForm() {
           type="text"
           {...register("amount")}
           placeholder="Amount"
-          className="form-input w-full"
+          className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
         />
         <input
           type="date"
           {...register("date")}
           placeholder="Date"
-          className="form-input w-full"
+          className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
         />
         <button className="bg-green-800 text-white py-2 w-full rounded-md">
           Submit
