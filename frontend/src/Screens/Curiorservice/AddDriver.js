@@ -55,7 +55,6 @@ function AddDriver() {
     >
       <div className="w-96 rounded-lg shadow-lg bg-white p-8 ">
         <form onSubmit={handleSubmit}>
-
           {/* input name */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold text-dark font-custom text-center">
@@ -94,7 +93,7 @@ function AddDriver() {
             />
           </div>
 
-          {/* Vehicle number input field */}
+          {/* input vehical number*/}
           <div className="mb-4">
             <input
               type="text"
@@ -105,6 +104,7 @@ function AddDriver() {
             />
           </div>
 
+          {/*availability*/}
           <div className="mb-4">
             <select
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"

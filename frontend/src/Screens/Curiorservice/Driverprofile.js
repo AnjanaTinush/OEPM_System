@@ -5,11 +5,14 @@ import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineStarRate } from "react-icons/md";
 
 function Driverprofile() {
+  // State driver availability
   const [availability, setAvailability] = useState("available");
+  // State order status
   const [orderstatus, setOrderstatus] = useState("orderstatus");
 
   return (
     <div
+      // Background 
       style={{
         backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
         backgroundSize: "cover",
@@ -17,11 +20,14 @@ function Driverprofile() {
       className="flex flex-col items-center justify-center min-h-screen bg-gray-100 font-sans"
     >
       <div className=" bg-white p-8">
+        {/* Profile welcome message */}
         <h1 className="text-center text-5xl font-semibold p-8 font-serif text-green-800">
           Hi Janith, Welcome to your Profile page
         </h1>
 
+        {/* Dashboard cards */}
         <Flexbox className="flex justify-evenly grow p-5 gap-auto ">
+          {/* Total Deliveries card*/}
           <Flexbox className="p-5 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
             Total Deliveries
             <br />
@@ -29,6 +35,7 @@ function Driverprofile() {
             50
             <TbTruckDelivery className="w-20 h-20 ml-12 opacity-70 " />
           </Flexbox>
+          {/* Total Deliveries This Month card*/}
           <Flexbox className=" p-5 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
             Total Deliveries This Month
             <br />
@@ -36,7 +43,7 @@ function Driverprofile() {
             20
             <MdCalendarMonth className="w-20 h-20 ml-12 opacity-70 " />
           </Flexbox>
-
+          {/* Average Rating card*/}
           <Flexbox className="p-5 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
             Average Rating
             <br />
@@ -49,11 +56,12 @@ function Driverprofile() {
         <div>
           <div className="flex gap-8">
             <div className="flex gap-8 grow flex-col">
-              {/* Personal Information */}
+              {/* Personal Information*/}
               <div className="p-4 border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
                 <h2 className="text-2xl font-semibold  text-center">
                   Personal Information
                 </h2>
+                {/* Personal details */}
                 <p className="text-lg mb-4">
                   <strong>Name:</strong> Janith Wijethunga
                 </p>
@@ -70,12 +78,12 @@ function Driverprofile() {
                   <strong className="text-lg mb-4 ">Availability:</strong>{" "}
                   {availability}
                 </p>
-
                 {/* Update Availability */}
                 <div className="p-4  bg-white">
                   <h2 className="text-xl font-semibold mb-4">
                     Update Availability
                   </h2>
+                  {/* Dropdown availability */}
                   <select
                     className="border p-2 mb-4 rounded-lg border-black"
                     value={availability}
@@ -92,12 +100,12 @@ function Driverprofile() {
             </div>
 
             <div className="flex gap-4 flex-col ">
-              {/* Ongoing Delivery */}
+              {/* Ongoing Delivery*/}
               <div className="p-4 border-2 size-full border-whatsapp-green rounded-lg shadow-2xl bg-green-100 ">
                 <h1 className="text-xl text-center font-semibold mb-4">
-                  Ongoing Delivery - (date)
+                  Ongoing Delivery - 2024/04/25
                 </h1>
-
+                {/* Ongoing delivery details */}
                 <p className="text-lg mb-4">
                   <strong>OrderID-</strong> Janith Wijethunga
                 </p>
@@ -113,15 +121,12 @@ function Driverprofile() {
                 <p className="text-lg mb-4">
                   <strong>Status-</strong> {orderstatus}
                 </p>
-                <p className="text-lg mb-4">
-                  <strong>Rating-</strong> 3 Out Of 5
-                </p>
-
-                {/* Update Availability */}
+                {/* Update order status */}
                 <div className="p-4  bg-green-100 mt-2">
                   <h2 className="text-xl font-semibold mb-4">
                     Update Order Status
                   </h2>
+                  {/* Dropdown*/}
                   <select
                     className="border p-2 mb-4 rounded-lg border-black"
                     value={orderstatus}
@@ -141,8 +146,10 @@ function Driverprofile() {
               </div>
             </div>
           </div>
+          {/* Delivery History */}
           <div className="p-4 border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white mt-8">
             <h2 className="text-xl font-semibold mb-4">Delivery History</h2>
+            {/* Table*/}
             <table className="min-w-full border-collapse border border-gray-300">
               <thead>
                 <tr>
@@ -161,6 +168,7 @@ function Driverprofile() {
                 </tr>
               </thead>
               <tbody>
+                {/* Sample delivery history row */}
                 <tr>
                   <td className="border border-gray-300 px-4 py-2">D001</td>
                   <td className="border border-gray-300 px-4 py-2">
