@@ -122,7 +122,7 @@ function Requestedleave() {
                       <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green ">
                         <tr>
                           <th scope="col" className="px-6 py-3">
-                            id
+                            No
                           </th>
                           <th scope="col" className="px-6 py-3">
                             From Date
@@ -139,13 +139,13 @@ function Requestedleave() {
                         </tr>
                       </thead>
                       <tbody>
-                        {leaves.map((leave) => (
+                        {leaves.map((leave,index) => (
                           <tr
                             key={leave.id}
                             className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover mb-4"
                           >
                             <td className="px-6 py-4 font-medium text-green-900">
-                              {leave._id}
+                             {index+1}
                             </td>
                             <td className="px-6 py-4 text-green-900">
                               {leave.fromdate}
