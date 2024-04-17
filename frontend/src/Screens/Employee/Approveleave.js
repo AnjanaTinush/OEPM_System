@@ -15,6 +15,7 @@ AOS.init({
 function Approveleave() {
   const [approveleaves, setapproveleaves] = useState([]);
   const [loading, setloading] = useState(false);
+  const [usersMap, setUsersMap] = useState({}); // State to store user details
 
   // Read all requested
   const fetchData = async () => {
@@ -25,9 +26,24 @@ function Approveleave() {
       );
       setapproveleaves(data.data);
       setloading(false);
+      await fetchUsers(); // Fetch user details once leave requests are fetched
     } catch (error) {
       console.log(error);
       setloading(false);
+    }
+  };
+
+  // Fetch user details based on userid
+  const fetchUsers = async () => {
+    try {
+      const usersData = await axios.get("http://localhost:5000/api/users/getallusers");
+      const users = usersData.data.reduce((acc, user) => {
+        acc[user._id] = user.name; // Map userid to user's name
+        return acc;
+      }, {});
+      setUsersMap(users);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -101,7 +117,7 @@ function Approveleave() {
                 <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-center">
-                      User id
+                      User name
                     </th>
                     <th scope="col" className="px-6 py-3 text-center">
                       From Date
@@ -120,13 +136,13 @@ function Approveleave() {
                 </thead>
                 <tbody>
                   {approveleaves.length > 0 &&
-                    approveleaves.map((leave) => (
+                    approveleaves.map((leave,user) => (
                       <tr
                         key={leave._id}
                         className="bg-white dark:bg-table-row  hover:tablerow-hover dark:hover:bg-tablerow-hover"
                       >
                         <td className="px-6 py-4 font-medium text-green-900 text-center">
-                          {leave.userid}
+                        {usersMap[leave.userid] }
                         </td>
                         <td className="px-6 py-4 text-green-900 text-center">
                           {leave.fromdate}
