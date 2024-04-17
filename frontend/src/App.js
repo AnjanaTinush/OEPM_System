@@ -46,6 +46,10 @@ import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
 import UpdateTarget from "./Screens/Targets/UpdateTarget";
 
+import Machine from './Screens/Machine/Machine'
+import MachineUpdate from "./Screens/Machine/MachineUpdate";
+
+import { MachinePdf } from "./Screens/Machine/MachinePdf";
 
 
 
@@ -107,7 +111,9 @@ function App() {
       <Route path="/m_targets" element={<ManageTargets/>}/>
       <Route path="/t_targets" element={<Targets/>}/>
       <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
-      
+      <Route path='/m_machine' element={<Machine/>}/>
+      <Route path="m_update/:mid" element={<MachineUpdate/>}/>
+      <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
       </Routes>
    
     </BrowserRouter>
