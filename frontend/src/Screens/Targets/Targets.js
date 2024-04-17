@@ -61,12 +61,9 @@ function Targets() {
     <div className="bg-wight-green">
       <div className="flex">
         <Adminnavbar />
-        <div className="flex flex-col w-full">
-         
-          <br></br>
-          <br></br>
 
-          <div className="absolute top-32 right-0 mt-12 mr-12">
+        <div className="flex flex-col w-full">
+          <div className="absolute top-32 right-0  mr-12">
           <button
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={generateReport}
@@ -76,14 +73,14 @@ function Targets() {
         </div>
 
 
+                <div className="flex justify-center items-center h-full mt-16 mb-16">
 
-          <div className="flex justify-center items-center h-full">
-            <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
+            <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-0">
               
-              <div className="mb-2 shadow-2xl ">
+              <div className="mb-2  px-8">
                 <input
                   type="text"
-                  className="form-input w-full border border-gray-300 rounded-lg px-5 py-2 shadow-2xl sm:rounded-full"
+                  className="form-input w-full border border-gray-300 rounded-lg px-5 py-2 shadow-2xl sm:rounded-full "
                   placeholder="Search targets..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
@@ -157,11 +154,7 @@ function Targets() {
 
             </div>
           </div>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
+          
         </div>
       </div>
     </div>
