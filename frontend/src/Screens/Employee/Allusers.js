@@ -444,7 +444,7 @@ Generate Report
 
       <tbody>
 
-        {/*user details table */}
+        {/*user details table*/}
 
         {users.length > 0 ? (
           users.map((user) => (
