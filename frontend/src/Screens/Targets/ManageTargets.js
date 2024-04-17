@@ -6,7 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import DatePicker from "react-datepicker"; // Import DatePicker
 import "react-datepicker/dist/react-datepicker.css"; // Import Datepicker CSS
 import Adminnavbar from "./Component/Adminnavbar";
-// import Navbar from "./Component/Navbar";
+
 
 function ManageTargets() {
 
@@ -22,12 +22,7 @@ function ManageTargets() {
     // closeModal(); 
   };
 
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleOutsideClick);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleOutsideClick);
-  //   };
-  // }, []);
+
 
   const [type, settype] = useState("");
   const [quantity, setquantity] = useState("");
@@ -55,6 +50,22 @@ function ManageTargets() {
     }
   }
 
+  const [items, setItems] = useState([]);
+
+const fetchItems = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/api/inventory/getallitems");
+    setItems(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+useEffect(() => {
+  fetchItems();
+}, []);
+
+
   const [targets, settargets] = useState([]);
 
   const fetchData = async () => {
@@ -72,72 +83,42 @@ function ManageTargets() {
     fetchData();
   }, []);
 
-  // async function deletetarget(id) {
-  //   try {
-  //     const response = await axios.delete(`http://localhost:5000/api/target/delete/${id}`);
-  //     console.log(response);
-  //     window.location.reload();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   return (
     <div className="bg-wight-green">
       <div className="flex">
-        {/* Side Navigation */}
         <Adminnavbar />
-
-        <div className="flex flex-col w-full">
-          {/* Top Navigation */}
-          {/* <Navbar /> */}
-          <br />
-          <br />
-
-          <div className="bg-gray-200 py-12 mt-0 px-12 pb-28">
-            <h1 className="text-center text-3xl font-bold text-green-600 mb-12 ">
+        <div className="flex flex-col w-full" style={{ zIndex: 900 }}>
+            <h1 className="text-center text-3xl font-bold text-green-600 mt-8 mb-12 mr-32">
               Target List
             </h1>
 
-            <div className=" w-5/6 mx-auto flex justify-center items-center  ml-60">
-              <div className="px-0 py-0 mr-14  bg-wight-green  shadow-2xl sm:rounded-lg  pl-8 pr-8 pt-4 pb-4">
-                {/* <span
-                  className="close absolute top-0 right-0 mt-2 mr-4 cursor-pointer"
-                  onClick={closeModal}
-                >
-                  &times;
-                </span> */}
+            <div className="flex justify-between items-center px-44 ">
+              <div className="   shadow-2xl sm:rounded-lg  pl-8 pr-8 pt-4 ">
+               
                 <h2 className="text-xl font-semibold text-dark font-custom  ">
                   Enter the target Details
                 </h2>
                 <form onSubmit={handleSubmit} className="mt-8">
-                  {/* <div>
-                    <input
-                      type="text"
-                      placeholder="Enter Item type"
-                      className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
-                      value={type}
-                      onChange={(e) => {
-                        settype(e.target.value);
-                      }}
-                    />
-                  </div> */}
+                  
                   <div className="mb-4">
                   <select
-                    className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
-                    value={type}
-                    onChange={(e) => settype(e.target.value)}
-                  >
-                    <option value="">Select Item type</option>
-                    <option value="Tomato">Tomato</option>
-                    <option value="Bellpeper">Bellpeper</option>
-                    <option value="Cucumber">Cucumber</option>
-                    <option value="Cabbage">Cabbage</option>
-                  </select>
+  className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+  value={type}
+  onChange={(e) => settype(e.target.value)}
+>
+  <option value="">Select Item type</option>
+  {items.map((item) => (
+    <option key={item._id} value={item.name}>
+      {item.name}
+    </option>
+  ))}
+</select>
+
                 </div>
                   <div className="mt-4">
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Enter Capacity (in Kg)"
                       className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md "
                       value={quantity}
@@ -147,7 +128,7 @@ function ManageTargets() {
                     />
                   </div>
                   <div className="mt-4">
-                    {/* Use DatePicker component */}
+                    {/* Use DatePicker  */}
                     <DatePicker
                       selected={date}
                       onChange={(date) => setdate(date)}
@@ -160,7 +141,7 @@ function ManageTargets() {
                   <div className="mt-8 mb-2">
                     <button
                       type="submit"
-                      className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center me-2 mb-2 dark:bg-dark dark:hover:bg-darkhover"
+                      className="text-white bg-dark hover:bg-darkhover block w-full focus:outline-none  font-semibold rounded-md font-custom text-md px-5 py-2.5 text-center me-2 mb-8 dark:bg-dark dark:hover:bg-darkhover"
                       onClick={target}
                     >
                       Submit
@@ -168,9 +149,9 @@ function ManageTargets() {
                   </div>
                 </form>
               </div>
-
-              <div className="flex justify-center items-center h-full ">
-                <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-14 ">
+              
+              
+                <div className="overflow-x-auto shadow-2xl sm:rounded-lg  ">
                   <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                     <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green ">
                       <tr>
@@ -187,9 +168,7 @@ function ManageTargets() {
                           Date
                         </th>
                        
-                        {/* <th scope="col" className="px-8 py-3">
-                          Action
-                        </th> */}
+                    
                       </tr>
                     </thead>
                     <tbody>
@@ -215,32 +194,14 @@ function ManageTargets() {
                               </td>
 
                               
-                              {/* <td className="px-8 py-4 text-right text-green-900">
-                                <Link to="#">
-                                  <button className="btn1 mr-3">
-                                    <FaEdit className="mr-5 text-xl" />
-                                  </button>
-                                </Link>
-                                <Link to="#">
-                                  <button
-                                    className="btn1"
-                                    onClick={(e) =>deletetarget(target._id)}
-                                  >
-                                    <MdDeleteForever className="mr-5 text-2xl " />
-                                  </button>
-                                </Link>
-                              </td> */}
+                              
                             </tr>
                           );
                         })}
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <br />
-              <br />
             </div>
-          </div>
         </div>
       </div>
     </div>
