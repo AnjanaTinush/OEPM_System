@@ -5,11 +5,12 @@ import { default as api } from "../../store/apiSlice";
 import EditExpence from "../form/editExpenceForm";
 
 export default function Expence_List() {
-  const { data, isFetching, isSuccess, isError } = api.useGetExpenceLabelsQuery();
+  const { data, isFetching, isSuccess, isError } =
+    api.useGetExpenceLabelsQuery();
   const [deleteTransaction] = api.useDeleteExpenceMutation();
   let Expence;
 
-  console.log("date set",data)
+  console.log("date set", data);
   const handlerClick = (e) => {
     if (!e.target.dataset.id) return 0;
     deleteTransaction({ _id: e.target.dataset.id });
@@ -57,7 +58,7 @@ function Transaction({ category, handler }) {
         ></box-icon>
       </button>
 
-      <button className="px-3"  onClick={handleOpen}>
+      <button className="px-3" onClick={handleOpen}>
         <box-icon
           data-id={category._id ?? ""}
           color={category.color ?? "#e5e5e5"}

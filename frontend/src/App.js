@@ -45,7 +45,7 @@ import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
 
-import Approveleave from "./Screens/Employee/Approveleave";
+
 
 
 import ManageTargets from "./Screens/Targets/ManageTargets";
