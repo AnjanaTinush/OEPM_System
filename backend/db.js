@@ -1,17 +1,19 @@
-const mongoose=require("mongoose");
- 
+const mongoose = require("mongoose");
+
 var mongoURL=`mongodb+srv://anjana2:anjana@cluster0.rg6ebmf.mongodb.net/OEPM_System`;
 
-mongoose.connect(mongoURL,{});
 
-var connection=mongoose.connection;
+mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });
+
+
+var connection = mongoose.connection;
 
 connection.on('error',()=>{
-    console.log('Mongo DB connection failed')
+    console.log('Mongo DB connection failed...!')
 })
 
-connection.on('connected',()=>{
-    console.log('Mongo DB connection successful')
-})
+connection.on("connected", () => {
+  console.log("Mongo DB connection successful....!");
+});
 
-module.exports=mongoose;
+module.exports = mongoose;

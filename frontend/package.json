@@ -3,29 +3,50 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
     "@react-pdf/renderer": "^3.4.2",
+    "@reduxjs/toolkit": "^2.2.1",
+
+
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.15.0",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
-    "chart.js": "^4.4.2",
+
+    "boxicons": "^2.1.4",
     "cors": "^2.8.5",
+
+    "chart.js": "^4.4.2",
+  
     "flexbox-react": "^4.4.0",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
+
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-calendar": "^4.8.0",
     "react-chartjs-2": "^5.2.0",
+
     "react-circular-progressbar": "^2.1.0",
     "react-datepicker": "^6.8.0",
+
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
+
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.0",
+
     "react-router-dom": "^6.22.3",
+
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-to-print": "^2.15.1",
