@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Looginscreen from "./Screens/Login/Looginscreen";
 import Signupscreen from "./Screens/Login/Signupscreen";
@@ -41,6 +41,12 @@ import Itemfaq from "./Screens/Inventory/Faq";
 import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
 import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
+import Income from "./Screens/Financial/page/income";
+import Expence from "./Screens/Financial/page/expence";
+import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
+
+import Approveleave from "./Screens/Employee/Approveleave";
+
 
 import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
@@ -53,21 +59,13 @@ import { MachinePdf } from "./Screens/Machine/MachinePdf";
 
 
 
-
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
+        <Toaster position="top-center" reverseOrder={false} />
 
-    
-
-    <BrowserRouter>
-
-    <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-          
-      <Routes>
+     <Routes>
       
       <Route path="/" element={<Homepage/>}/>
       <Route path="/login" element={<Looginscreen/>}/>
@@ -114,6 +112,10 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+        
+         <Route path="/income" element={<Income />} />
+          <Route path="/expence" element={<Expence />} />
+          <Route path="/empsallary" element={<EMPSallary />} />
       </Routes>
    
     </BrowserRouter>
