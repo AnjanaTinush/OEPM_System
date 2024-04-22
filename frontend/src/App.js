@@ -45,7 +45,7 @@ import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
 
-import Approveleave from "./Screens/Employee/Approveleave";
+
 
 
 import ManageTargets from "./Screens/Targets/ManageTargets";
@@ -112,6 +112,7 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+        
         
          <Route path="/income" element={<Income />} />
           <Route path="/expence" element={<Expence />} />

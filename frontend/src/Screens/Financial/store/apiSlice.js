@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const baseURI = "http://localhost:8080";
+const baseURI = "http://localhost:5000";
 
 export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: baseURI }),
@@ -42,10 +42,10 @@ export const apiSlice = createApi({
     }),
     editIncome: builder.mutation({
       query: (recordId) => ({
-        // put: `http://localhost:8082/api/product/${updateProduct.id}`
+        // put: http://localhost:8082/api/product/${updateProduct.id}
         url: `/api/income/${recordId._id}`,
         method: "PUT",
-        body: { recordId }, // Pass the updated properties in the body
+        body: { recordId },
       }),
       invalidatesTags: ["transaction"],
     }),
@@ -88,8 +88,8 @@ export const apiSlice = createApi({
     }),
     editExpence: builder.mutation({
       query: (recordId) => ({
-        // put: `http://localhost:8082/api/product/${updateProduct.id}`
-        url: `/api/expence/${recordId._id}`,
+        // put: http://localhost:8082/api/product/${updateProduct.id}
+        url:` /api/expence/${recordId._id}`,
         method: "PUT",
         body: { recordId }, // Pass the updated properties in the body
       }),
