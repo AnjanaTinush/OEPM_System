@@ -378,7 +378,7 @@ function Allusers() {
               <thead>
                 <tr>
                   <div className="flex items-center">
-                    {/search ,filter and add button/}
+                    {/*search ,filter and add button*/}
                     <input
                       type="text"
                       placeholder="Search name..."
@@ -456,7 +456,7 @@ function Allusers() {
                 </thead>
 
                 <tbody>
-                  {/user details table/}
+                  {/*user details table*/}
 
                   {users.length > 0 ? (
                     users.map((user) => (
