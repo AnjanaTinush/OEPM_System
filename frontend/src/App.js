@@ -113,6 +113,7 @@ function App() {
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
         
+        
          <Route path="/income" element={<Income />} />
           <Route path="/expence" element={<Expence />} />
           <Route path="/empsallary" element={<EMPSallary />} />

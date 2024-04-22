@@ -66,7 +66,6 @@ function CheckoutForm() {
         </div>
       </form>
 
-      {/* Button to show address form */}
       <button
         onClick={() => setShowAddressForm(!showAddressForm)}
         className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
