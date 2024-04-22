@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 
-var mongoURL = `mongodb+srv://sithum:sithum1234@cluster0.kcwj3im.mongodb.net/`;
+var mongoURL=`mongodb+srv://anjana2:anjana@cluster0.rg6ebmf.mongodb.net/OEPM_System`;
+
 
 mongoose.connect(mongoURL, { useUnifiedTopology: true, useNewUrlParser: true });
 
+
 var connection = mongoose.connection;
 
-connection.on("error", () => {
-  console.log("Mongo DB connection faild");
-});
+connection.on('error',()=>{
+    console.log('Mongo DB connection failed...!')
+})
 
 connection.on("connected", () => {
   console.log("Mongo DB connection successful....!");

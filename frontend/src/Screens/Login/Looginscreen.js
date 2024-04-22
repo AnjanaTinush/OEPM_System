@@ -9,9 +9,10 @@ import Navbar from '../../Component/Navbar';
 import toast from 'react-hot-toast';
 import Loader from '../../Component/Loader';
 import bgimg1 from './Componenet/bgimg1.png';
+import logo from "./Componenet/logo.png";
 
 AOS.init({
-  duration:'500'
+  duration:'1000'
 });
 
 function Looginscreen() {
@@ -74,49 +75,102 @@ function Looginscreen() {
  
  return (
 <div>
-{loading && <Loader />}
-  <div
-  className='bg-cover  bg-center min-h-screen bg-local' style={{ backgroundImage: `url(${bgimg1})` }}
->
-  <Navbar/>
- 
-
-
-  <div className="absolute mt-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/30 border border-white rounded-xl p-10 text-white w-1/3">
-    <h1 className="text-3xl font-bold tracking-widest text-center mb-8">LOGIN</h1>
-    <div className="flex flex-col space-y-6 mb-4">
-      <input
-       type="email"
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div data-aos="zoom in"
+            className="flex flex-col justify-center items-center bg-zinc-800 min-h-screen"
+            style={{
+              backgroundImage: `url(${bgimg1})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              fontFamily: "Poppins, sans-serif",
+            }}
+          >
+            {/* Sign In Button */}
+            <a href="/register" className="absolute top-0 right-5 m-6">
+              <button className="text-white text-base font-semibold border border-solid border-transparent">
+               Sign Up
+              </button>
+            </a>
+            {/* End of Sign In Button */}
+            <div className="overflow-hidden   w-full max-w-screen-lg mx-auto">
+              <div className="flex flex-col items-center gap-10 md:flex-row md:gap-0">
+                <div className="w-full md:w-2/3 mr-32">
+                  <div className="flex flex-col items-center text-white leading-[130%] md:max-w-full">
+                    <br />
+                    <img
+                      loading="lazy"
+                      src={logo}
+                      className="w-full md:w-[400px] "
+                      alt="Farm fresh vegetables"
+                    />
+                    <br />
+                    <div
+                      className="mt-2 md:mt-0 text-lg font-extralight max-w-full text-center"
+                      style={{ letterSpacing: "5px" }}
+                    >
+                      Farm fresh bounty awaits
+                    </div>
+                    <div
+                      className="mt-2 md:mt-7 text-5xl md:text-4xl font-semibold max-w-full text-center"
+                      style={{ letterSpacing: "6px", lineHeight: "1.0" }}
+                    >
+                      Sign up &amp; shop now!
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full md:w-2/5 md:ml-6">
+                  <form
+                   
+                    className="flex flex-col gap-8  py-5  bg-white rounded-2xl max-w-[30rem] mx-auto md:px-5 md:mt-12"
+                  >
+                    <div className="text-4xl font-bold text-neutral-900 tracking-[4.9px] mb-8 text-center">
+                      Login
+                    </div>
+                    <input
+                      className="px-5 py-3 bg-stone-50 rounded-[100px] lime-border-focus focus:ring-2 focus:ring-green-600 focus:ring-opacity-30 outline-none transition-all duration-500"
+                      type="email"
           placeholder='Email'
           required
           value={email}
           onChange={(e) => { setemail(e.target.value) }}
-        className="w-full px-4 py-3 rounded-full bg-white/20 border border-gray-300 placeholder-white placeholder-opacity-50 focus:ring-white/50"
-      />
-      <input
-        type="password"
-        placeholder='Password'
-        required
-        value={password}
-        onChange={(e) => { setpassword(e.target.value) }}
-        className="w-full px-4 py-3 rounded-full bg-white/20 border border-gray-300 placeholder-white placeholder-opacity-50 focus:ring-white/50"
-      />
-    </div>
-    <div className="text-sm text-center cursor-pointer hover:text-white/70 mb-6"
-        
-    >
-      Lost Password? <span className="font-semibold">Click Here</span>
-    </div>
-    <button
-      className="w-full py-3 rounded-full border border-white font-light text-lg tracking-wider hover:bg-white/20"
-      onClick={Login}
-    >
-      Login
-    </button>
-  </div>
-</div>
+                    />
+                    <input
+                      className="px-5 py-3 bg-stone-50 rounded-[100px] lime-border-focus focus:ring-2 focus:ring-green-600 focus:ring-opacity-30 outline-none transition-all duration-500"
+                      type="password"
+                      placeholder='Password'
+                      required
+                      value={password}
+                      onChange={(e) => { setpassword(e.target.value) }}
+                      
+              
+                    />
+                   
 
-</div>
+                   <div className="text-base text-stone-950 mt-5 text-center">
+               <span className="text-zinc-400">Fogot password? </span> <a href=''> Click
+                Here
+                </a>
+              </div>
+
+                    
+
+                    <button
+                      type="submit" onClick={Login}
+                      className="px-4 py-3 mt-7 text-md text-white bg-lime-600 border border-solid border-neutral-200 rounded-[36.683px] tracking-[2.52px] max-md:px-5 transition duration-500 ease-in-out transform hover:bg-lime-700 hover:scale-100"
+                    >
+                      Login
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   )
 }
 
