@@ -78,7 +78,7 @@ function App() {
       <Route path="/c_displayitem" element={<C_displayitem/>}/>
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
-      <Route path="/u_userprofile" element={<Userprofile/>}/>
+      <Route path="/u_userprofile/:uuid" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
