@@ -461,7 +461,7 @@ function Allusers() {
                 </thead>
 
                 <tbody>
-                  {/*user details table*/}
+
 
                   {users.length > 0 ? (
                     users.map((user) => (

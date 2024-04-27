@@ -18,7 +18,8 @@ const shoppingCartRoute = require("./Routes/shoppingCartRoute");
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
 const machinesRoute = require("./Routes/machineRoute");
-
+const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
+const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
 
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json());
@@ -39,7 +40,8 @@ app.use("/api/target", targetRoutes)
 
 app.use(require("./Routes/financialRoute.js"));
 app.use("/api/leaves",leavesRoutes);
-
+app.use("/api/attendanceIn",attendanceInRoute);
+app.use("/api/attendanceOut",attendanceOutRoute);
 
 const port = process.env.PORT || 5000;
 

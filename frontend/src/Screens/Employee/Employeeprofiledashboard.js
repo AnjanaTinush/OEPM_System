@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import AdprofileNavbar from "./Component/AdprofileNavbar";
@@ -41,6 +42,58 @@ const fetchLeaveCounts = async (userId) => {
     setLoading(false);
   }
 };
+
+//Attendance mark In
+const handleMarkIn = async () => {
+  setLoading(true);
+  try {
+  
+    const currentUser = JSON.parse(localStorage.getItem("currentuser"));
+
+    const response = await axios.post("http://localhost:5000/api/attendanceIn/mark_in", {
+      userid: currentUser._id,
+      time: currentTime.toLocaleTimeString(),
+      date: new Date().toLocaleDateString(),
+    });
+
+    if (response.status !== 201) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    console.log(response.data); // Log response data for debugging
+    setLoading(false);
+  } catch (error) {
+    console.error("Error marking in:", error);
+    setLoading(false);
+  }
+};
+
+//Attendance mark out
+const handleMarkOut = async () => {
+  setLoading(true);
+  try {
+    const currentUser = JSON.parse(localStorage.getItem("currentuser"));
+
+    const response = await axios.post("http://localhost:5000/api/attendanceOut/mark_out", {
+      userid: currentUser._id,
+      time: currentTime.toLocaleTimeString(),
+      date: new Date().toLocaleDateString(),
+    });
+
+    if (response.status !== 201) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    console.log(response.data); // Log response data for debugging
+    setLoading(false);
+  } catch (error) {
+    console.error("Error marking in:", error);
+    setLoading(false);
+  }
+};
+
+
+
 
 
 
@@ -138,14 +191,15 @@ const fetchLeaveCounts = async (userId) => {
                     <hr className="border-gray-200" />
 
                     <div className="flex items-center ml-6 ">
-                      <button className="w-24 mt-12 ml-3 transition-transform duration-300 ease-in-out transform hover:scale-110">
+                      <button  onClick={handleMarkIn} className="w-24 mt-12 ml-3 transition-transform duration-300 ease-in-out transform hover:scale-110">
                         <p className="mt-2 ml-2 text-whatsapp-green">
                           {currentTime.toLocaleTimeString()}
                         </p>
                         <p className="ml-3 ">Current In</p>
+                       
                         <img src={clock} alt="Logo" />
                       </button>
-                      <button className="w-24 mt-12 ml-36 transition-transform duration-300 ease-in-out transform hover:scale-110">
+                      <button  onClick={handleMarkOut} className="w-24 mt-12 ml-36 transition-transform duration-300 ease-in-out transform hover:scale-110">
                         <p className="mt-2 ml-2 text-whatsapp-green">
                           {currentTime.toLocaleTimeString()}
                         </p>
