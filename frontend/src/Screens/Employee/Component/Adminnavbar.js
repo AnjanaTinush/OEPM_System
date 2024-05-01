@@ -1,200 +1,53 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Adminnavbar from "./Component/Adminnavbar";
-import Navbar from "../Component/Navbar";
-import Loader from "../../Component/Loader";
-import Swal from "sweetalert2";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { Tag } from "antd";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { GiExitDoor } from "react-icons/gi";
+import { FaUsers } from "react-icons/fa";
+import Navbar from "../../Component/Navbar";
 
-AOS.init({
-  duration: 2500,
-});
+import logo from "../../../Images/logo.png";
 
-function Approveleave() {
-  const [approveleaves, setapproveleaves] = useState([]);
-  const [loading, setloading] = useState(false);
-  const [usersMap, setUsersMap] = useState({}); // State to store user details
-
-  // Read all requested
-  const fetchData = async () => {
-    try {
-      setloading(true);
-      const data = await axios.get(
-        "http://localhost:5000/api/leaves/getallleaves"
-      );
-      setapproveleaves(data.data);
-      setloading(false);
-      await fetchUsers(); // Fetch user details once leave requests are fetched
-    } catch (error) {
-      console.log(error);
-      setloading(false);
-    }
-  };
-
-  // Fetch user details based on userid
-  const fetchUsers = async () => {
-    try {
-      const usersData = await axios.get("http://localhost:5000/api/users/getallusers");
-      const users = usersData.data.reduce((acc, user) => {
-        acc[user._id] = user.name; // Map userid to user's name
-        return acc;
-      }, {});
-      setUsersMap(users);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // create request disaprove function
-  async function disapprove(requestid) {
-    try {
-      setloading(true);
-      const result = await axios.post("/api/leaves/cancelrequest", {
-        requestid,
-      });
-      console.log(result.data);
-      setloading(false);
-      Swal.fire(
-        "Congratulations",
-        "Your Leave Request  Rejected  Successfully",
-        "success"
-      ).then((result) => {
-        window.location.reload();
-      });
-    } catch (error) {
-      console.log(error);
-      setloading(false);
-      Swal.fire("OOps", "Something went wrong", "error");
-    }
-  }
-  //create request approve function
-
-  async function approve(requestid) {
-    try {
-      setloading(true);
-      const result = await axios.post("/api/leaves/approverequest", {
-        requestid,
-      });
-      console.log(result.data);
-      setloading(false);
-      Swal.fire(
-        "Congratulations",
-        "Your Leave Request  Approved  Successfully",
-        "success"
-      ).then((result) => {
-        window.location.reload();
-      });
-    } catch (error) {
-      console.log(error);
-      setloading(false);
-      Swal.fire("OOps", "Something went wrong", "error");
-    }
-  }
+function Adminnavbar() {
+  const location = useLocation();
 
   return (
-    <div>
-      {loading ? (
-        <Loader />
-      ) : (
-        <>
-          <Adminnavbar />
+    <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col justify-between shadow-xl">
 
-          <h1 className="flex justify-center text-4xl italic mt-8 ml-20 text-green-900">
-            Employee leave Request
-          </h1>
-          <div className="flex justify-center items-center ml-48 mr-10 mb-4 h-full mt-5">
-            <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
-              <table
-                data-aos="zoom out"
-                className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-              >
-                <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-center">
-                      User name
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-center">
-                      From Date
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-center">
-                      To Date
-                    </th>
-                    <th scope="col" className="px-6 py-3 text-center">
-                      Reason
-                    </th>
+    <div className="p-1 mt-2">
+    <Navbar/>
+        <Link            to="/employeeDashboard"
+            className={`flex items-center w-full mt-6 py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
-                    <th scope="col" className="px-6 py-3 text-center">
-                      Manage
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {approveleaves.length > 0 &&
-                    approveleaves.map((leave,user) => (
-                      <tr
-                        key={leave._id}
-                        className="bg-white dark:bg-table-row  hover:tablerow-hover dark:hover:bg-tablerow-hover"
-                      >
-                        <td className="px-6 py-4 font-medium text-green-900 text-center">
-                        {usersMap[leave.userid] }
-                        </td>
-                        <td className="px-6 py-4 text-green-900 text-center">
-                          {leave.fromdate}
-                        </td>
-                        <td className="px-6 py-4 text-green-900 text-center">
-                          {leave.todate}
-                        </td>
-                        <td className="px-6 py-4 text-green-900 text-center ">
-                          {leave.desription}
-                        </td>
+     
+        >
+          <LuLayoutDashboard className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Dash Board</span>
+        </Link>
+        <Link
 
-                        <td className="px-6 py-4 text-green-900 text-center ">
-                          {leave.status == "Pending" ? (
-                            //if request not get action display action button
-                            <>
-                              <button
-                                className="ml-2 bg-white hover:bg-gray-100 text-gray-800 font-light py-0 px-2 border  rounded-3xl h-6 shadow transition-transform duration-300 ease-in-out transform hover:scale-110"
-                                onClick={() => approve(leave._id)}
-                              >
-                                Approve
-                              </button>
+            to="/e_allusers"
+            className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
-                              <button
-                                className="ml-2 bg-white hover:bg-gray-100 text-gray-800 font-light py-0 px-2 border  rounded-3xl h-6 shadow transition-transform duration-300 ease-in-out transform hover:scale-110"
-                                onClick={() => disapprove(leave._id)}
-                              >
-                                Disapprove
-                              </button>
-                            </>
-                          ) : (
-                            //after get approve ble display status
-                            <>
-                              {leave.status === "Pending" ? (
-                                <Tag color="blue">Pending</Tag>
-                              ) : leave.status === "Approved" ? (
-                                <Tag color="green">Approve</Tag>
-                              ) : (
-                                <Tag color="red">Rejected</Tag>
-                              )}
-                            </>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </>
-      )}
+        >
+          <FaUsers className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Users</span>
+        </Link>
+        <Link
+
+            to="/e_approveleave"
+            className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_approveleave" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+
+        >
+          <GiExitDoor className="mr-5 text-lg" />
+          <span className="font-bold text-lg">leaves</span>
+        </Link>
+      </div>
+      <div className="flex justify-center items-center mt-20 mr-5">
+        <img src={logo} alt="Logo" />
+      </div>
+      <p className="text-gray-400 ml-10 mt-0">&copy; 2024 PolyCrop</p>
     </div>
   );
 }
 
-export default Approveleave;
+export default Adminnavbar;
