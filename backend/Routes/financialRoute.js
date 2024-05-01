@@ -3,6 +3,7 @@ const financialroute = require("express").Router();
 const controller = require("../controller/Financial_controller");
 const expencecontroller = require("../controller/exepence_controller");
 const sallarycontroller = require("../controller/sallary_controller");
+const messagecontroller  = require("../controller/message_controller")
 
 //  all the income base api request
 financialroute
@@ -40,5 +41,15 @@ financialroute
 financialroute
   .route("/api/expencelabels")
   .get(expencecontroller.get_ExpenceLabels);
+
+
+  financialroute.route("/api/conversation").post(messagecontroller.createConversation);
+  financialroute.route("/api/conversations/:userId").get(messagecontroller.getConversation);
+  financialroute.route("/api/message").post(messagecontroller.createMessage);
+  financialroute.route("/api/message/:conversationId").get(messagecontroller.getMessage);
+  financialroute.route("/api/users/:userId").get(messagecontroller.getUsersByid);
+
+
+  
 
 module.exports = financialroute;
