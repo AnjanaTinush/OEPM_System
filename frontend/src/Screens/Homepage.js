@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import Navbar from "./../Component/Navbar.js";
 import first from "./../Images/home.jpg";
 import AOS from "aos";
@@ -42,6 +41,27 @@ function Homepage() {
                   Shop Now
                 </button>
               </Link>
+
+              {/* Driver code input field */}
+              <form>
+                <input
+                  type="text"
+                  placeholder="Enter Driver Code"
+                  className=" ml-58 border-2 text-black border-gray-300 rounded-md px-4 py-2 mt-4 focus:outline-none focus:border-blue-500"
+                  
+                />           
+
+                                                                                                                                                                                                                                                                                                                                                                     
+                <button
+                  type="submit"
+                  value="Submit"
+                  className="bg-blue-500 text-white px-6 py-2 rounded-md mt-4 cursor-pointer hover:bg-blue-600 transition duration-300"
+
+                >
+
+                </button>
+              </form>
+
             </div>
           </div>
         </div>

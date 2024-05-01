@@ -30,7 +30,7 @@ import CheckoutPage from "./Screens/Customerorder/checkout";
 import PaymentPage from "./Screens/Customerorder/payment";
 
 import Approveleave from "./Screens/Employee/Approveleave";
-
+import Feedback from "./Screens/Curiorservice/Feedback";
 
 
 
@@ -97,6 +97,7 @@ function App() {
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
       <Route path="j_driverprofile" element={<Driverprofile/>}/>
+      <Route path="j_feedback" element={<Feedback/>}/>
       
       <Route path="/t_tunnelprofile" element={<Tunnelprofile/>}/>
       <Route path="/t_tunnels" element={<Tunnels/>}/>

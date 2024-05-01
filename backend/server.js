@@ -12,6 +12,7 @@ const deliveriesRoute = require("./Routes/deliveriesRoute");
 const leavesRoutes = require("./Routes/leavesRoutes");
 const customerOrderRoute = require("./Routes/customerOrderRoute");
 const shoppingCartRoute = require("./Routes/shoppingCartRoute");
+const driverfeedbackRoute = require("./Routes/driverfeedbackRoute");
 
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
@@ -28,6 +29,7 @@ app.use("/api/shoppingCart", shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
 app.use("/api/deliveries", deliveriesRoute);
 app.use("/api/machines", machinesRoute);
+app.use("/api/driverfeedback", driverfeedbackRoute);
 
 
 app.use("/api/inventory", inventoryRoutes);

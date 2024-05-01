@@ -63,6 +63,7 @@ function AddDriver() {
             <input
               type="text"
               placeholder="Name"
+              required
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -81,11 +82,12 @@ function AddDriver() {
             />
           </div>
 
-          {/* input drivers */}
+          {/* input phone number */}
           <div className="mb-4">
             <input
               type="tel"
               placeholder="Phone Number"
+              required
               maxLength="10"
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               value={phone}
@@ -98,6 +100,7 @@ function AddDriver() {
             <input
               type="text"
               placeholder="Vehicle Number"
+              required
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               value={vehicalnum}
               onChange={(e) => setVehicalnum(e.target.value)}

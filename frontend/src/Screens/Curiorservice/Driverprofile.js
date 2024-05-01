@@ -5,6 +5,8 @@ import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineStarRate } from "react-icons/md";
 
 function Driverprofile() {
+
+  
   // State driver availability
   const [availability, setAvailability] = useState("available");
   // State order status
@@ -20,9 +22,10 @@ function Driverprofile() {
       className="flex flex-col items-center justify-center min-h-screen bg-gray-100 font-sans"
     >
       <div className=" bg-white p-8">
+      
         {/* Profile welcome message */}
         <h1 className="text-center text-5xl font-semibold p-8 font-serif text-green-800">
-          Hi Janith, Welcome to your Profile page
+          Hi *DriverName*, Welcome to your Profile page
         </h1>
 
         {/* Dashboard cards */}
@@ -63,16 +66,16 @@ function Driverprofile() {
                 </h2>
                 {/* Personal details */}
                 <p className="text-lg mb-4">
-                  <strong>Name:</strong> Janith Wijethunga
+                  <strong>Name:</strong> *Driver name*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Email:</strong> janith@gmail.com
+                  <strong>Email:</strong> *Driver email*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Phone Number:</strong> 04500256699
+                  <strong>Phone Number:</strong> *Driver phone number*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Vehicle Number:</strong> 123456
+                  <strong>Vehicle Number:</strong> *driver vehical number*
                 </p>
                 <p className="text-lg mb-4">
                   <strong className="text-lg mb-4 ">Availability:</strong>{" "}
@@ -107,16 +110,19 @@ function Driverprofile() {
                 </h1>
                 {/* Ongoing delivery details */}
                 <p className="text-lg mb-4">
-                  <strong>OrderID-</strong> Janith Wijethunga
+                  <strong>OrderID-</strong> *Order id*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Tracking Code-</strong> 6473920384
+                  <strong>Tracking Code-</strong> *Tracking numer*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Customer Name-</strong> 04500256699
+                  <strong>Customer Name-</strong> *Customer name*
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Phone Number-</strong> 075 087 9865
+                  <strong>Phone Number-</strong> *customer phone number*
+                </p>
+                <p className="text-lg mb-4">
+                  <strong>Address-</strong> *customer Address*
                 </p>
                 <p className="text-lg mb-4">
                   <strong>Status-</strong> {orderstatus}
