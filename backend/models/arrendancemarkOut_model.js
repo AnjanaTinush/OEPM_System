@@ -12,7 +12,7 @@ const attendanceOutSchema = mongoose.Schema(
       require: true,
     },
 
-    time: {
+    outtime: {
       type: String,
       require: true,
     },

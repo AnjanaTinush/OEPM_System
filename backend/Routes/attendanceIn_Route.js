@@ -3,12 +3,12 @@ const router = express.Router();
 const attendance = require('../models/attendantmarkin_model');
 
 router.post("/mark_in", async (req, res) => {
-    const { userid, time, date } = req.body; 
+    const { userid, intime, date } = req.body; 
 
     try {
         const newmarkin = new attendance({ 
             userid,
-            time,
+            intime,
             date,
         });
 
@@ -18,6 +18,16 @@ router.post("/mark_in", async (req, res) => {
     } catch (error) {
         console.error("Error marking in:", error);
         return res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+router.get("/getalllmarkIn",async(req,res)=>{
+
+    try {
+        const markIn  = await attendance.find()
+        return res.json(markIn);
+    } catch (error) {
+        return res.status(400).json({massage : error})
     }
 });
 
