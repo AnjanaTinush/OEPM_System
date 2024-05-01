@@ -52,7 +52,7 @@ const handleMarkIn = async () => {
 
     const response = await axios.post("http://localhost:5000/api/attendanceIn/mark_in", {
       userid: currentUser._id,
-      time: currentTime.toLocaleTimeString(),
+      intime: currentTime.toLocaleTimeString(),
       date: new Date().toLocaleDateString(),
     });
 
@@ -76,7 +76,7 @@ const handleMarkOut = async () => {
 
     const response = await axios.post("http://localhost:5000/api/attendanceOut/mark_out", {
       userid: currentUser._id,
-      time: currentTime.toLocaleTimeString(),
+      outtime: currentTime.toLocaleTimeString(),
       date: new Date().toLocaleDateString(),
     });
 

@@ -7,7 +7,7 @@ const attendanceinSchema = mongoose.Schema(
         require: true,
     },
     
-    time: {
+    intime: {
       type: String,
       require: true,
     },

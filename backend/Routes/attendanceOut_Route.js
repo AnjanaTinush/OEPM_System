@@ -3,12 +3,12 @@ const router = express.Router();
 const attendance = require('../models/arrendancemarkOut_model')
 
 router.post("/mark_out", async (req, res) => {
-    const { userid, time, date } = req.body; 
+    const { userid, outtime, date } = req.body; 
 
     try {
         const newmarkout = new attendance({ 
             userid,
-            time,
+            outtime,
             date,
         });
 
@@ -21,5 +21,15 @@ router.post("/mark_out", async (req, res) => {
     }
 });
 
+
+router.get("/getalllmarkOut",async(req,res)=>{
+
+    try {
+        const markOut  = await attendance.find()
+        return res.json(markOut);
+    } catch (error) {
+        return res.status(400).json({massage : error})
+    }
+});
 
 module.exports=router;
