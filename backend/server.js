@@ -1,6 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
+
+
+
+const JWT_SECRET =
+  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
+
 
 
 const app = express();
@@ -20,7 +29,14 @@ const targetRoutes = require("./Routes/targetsRoute")
 const machinesRoute = require("./Routes/machineRoute");
 const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
 const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
+const forgotpasswordRoute=require("./Routes/forgotpasswordRout.js")
+const path = require("path");
 
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json());
 app.use(bodyParser.json());
@@ -42,6 +58,7 @@ app.use(require("./Routes/financialRoute.js"));
 app.use("/api/leaves",leavesRoutes);
 app.use("/api/attendanceIn",attendanceInRoute);
 app.use("/api/attendanceOut",attendanceOutRoute);
+app.use("/api/resetpassword", forgotpasswordRoute);
 
 const port = process.env.PORT || 5000;
 
