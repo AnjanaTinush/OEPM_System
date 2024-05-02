@@ -44,7 +44,8 @@ import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
-import Employeeattendance from "./Screens/Employee/Employeeattendance"
+import Employeeattendance from "./Screens/Employee/Employeeattendance";
+import Forgopassword from './Screens/Employee/Forgopassword'
 
 
 
@@ -118,6 +119,7 @@ function App() {
           <Route path="/expence" element={<Expence />} />
           <Route path="/empsallary" element={<EMPSallary />} />
           <Route path="/e_atendance" element={<Employeeattendance/>}/>
+          <Route path="/forgot-password" element={<Forgopassword/>}/>
 
       </Routes>
    
