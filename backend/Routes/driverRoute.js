@@ -80,6 +80,39 @@ router.route("/delete/:id").delete(async (req, res) => {
 });
 
 
+//DLogin driver
+router.post("/dlogin", async (req, res) => {
+  const { drivercode } = req.body;
+  
+  try {
+    const driver = await drivers.findOne({ vehicalnum: drivercode });
+    if (driver) {
+
+      const temp = {
+        name : driver.name,
+        _id :  driver._id,
+        email : driver.email,
+        phone : driver.phone,
+        vehicalnum : driver.vehicalnum,
+        availability : driver.availability,
+        
+      }
+
+
+      res.send(temp);
+    } else {
+      return res.status(400).json({ message: "Login failed" });
+    }
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
+
+
+
+
+
 
 
 module.exports = router;

@@ -3,18 +3,40 @@ import Flexbox from "flexbox-react";
 import { TbTruckDelivery } from "react-icons/tb";
 import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineStarRate } from "react-icons/md";
+import axios from "axios"; // Import axios
 
 function Driverprofile() {
+  const driver = JSON.parse(localStorage.getItem("currentdriver"));
 
-  
   // State driver availability
   const [availability, setAvailability] = useState("available");
   // State order status
   const [orderstatus, setOrderstatus] = useState("orderstatus");
 
+  async function Updatedriver(e) {
+    e.preventDefault();
+
+    const updatedriver = {
+      availability,
+    };
+
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/api/drivers/updatedriver/${driver.data._id}`, // Use driver.data._id instead of _id
+        updatedriver
+      );
+
+      console.log(response);
+
+      window.location.href = "/j_driverprofile";
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div
-      // Background 
+      // Background
       style={{
         backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
         backgroundSize: "cover",
@@ -22,10 +44,9 @@ function Driverprofile() {
       className="flex flex-col items-center justify-center min-h-screen bg-gray-100 font-sans"
     >
       <div className=" bg-white p-8">
-      
         {/* Profile welcome message */}
         <h1 className="text-center text-5xl font-semibold p-8 font-serif text-green-800">
-          Hi *DriverName*, Welcome to your Profile page
+          Hi {driver.data.name}, Welcome to your Profile page
         </h1>
 
         {/* Dashboard cards */}
@@ -66,20 +87,20 @@ function Driverprofile() {
                 </h2>
                 {/* Personal details */}
                 <p className="text-lg mb-4">
-                  <strong>Name:</strong> *Driver name*
+                  <strong>Name:</strong> {driver.data.name}
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Email:</strong> *Driver email*
+                  <strong>Email:</strong> {driver.data.email}
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Phone Number:</strong> *Driver phone number*
+                  <strong>Phone Number:</strong> {driver.data.phone}
                 </p>
                 <p className="text-lg mb-4">
-                  <strong>Vehicle Number:</strong> *driver vehical number*
+                  <strong>Vehicle Number:</strong> {driver.data.vehicalnum}
                 </p>
                 <p className="text-lg mb-4">
                   <strong className="text-lg mb-4 ">Availability:</strong>{" "}
-                  {availability}
+                  {driver.data.availability}
                 </p>
                 {/* Update Availability */}
                 <div className="p-4  bg-white">
@@ -95,7 +116,10 @@ function Driverprofile() {
                     <option value="Available">Available</option>
                     <option value="Unavailable">Unavailable</option>
                   </select>
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4">
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4"
+                    onClick={Updatedriver}
+                  >
                     Update Availability
                   </button>
                 </div>

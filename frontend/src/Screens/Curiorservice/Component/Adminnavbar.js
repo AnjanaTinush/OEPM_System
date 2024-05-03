@@ -54,17 +54,6 @@ function Adminnavbar() {
           <span className="font-bold text-lg">Drivers</span>
         </Link>
 
-        <Link
-          to="/j_driverprofile"
-          className={`flex items-center w-full py-3 px-4 ${
-            location.pathname === "/j_driverprofile"
-              ? "bg-whatsapp-green text-white"
-              : "hover:bg-whatsapp-green text-green-900"
-          } font-custom rounded-md text-decoration-none mb-2`}
-        >
-          <GiSteeringWheel className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Driver Profile</span>
-        </Link>
 
         <Link
           to="/j_feedback"

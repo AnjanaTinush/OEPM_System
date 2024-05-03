@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./../Component/Navbar.js";
 import first from "./../Images/home.jpg";
+import Error from "./Curiorservice/Component/Error.js";
 import AOS from "aos";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
+import axios from "axios";
 
 AOS.init({
   duration: "2500",
@@ -11,6 +13,29 @@ AOS.init({
 
 function Homepage() {
   const FirstSection = () => {
+    const [drivercode, setdrivercode] = useState("");
+    const [error, seterror] = useState("");
+
+    async function DLogin() {
+      const driver = {
+        drivercode,
+      };
+      
+      try {
+        const result = await axios.post('/api/drivers/dlogin', driver);
+        localStorage.setItem('currentdriver', JSON.stringify(result));
+        window.location.href = '/j_driverprofile'
+        
+      } catch (error) {
+        console.log(error);
+        seterror(true)
+      }
+      
+    }
+    
+    
+    
+
     return (
       <div>
         <div className="flex flex-col justify-center text-white bg-white ">
@@ -36,32 +61,33 @@ function Homepage() {
               <Link to="/c_displayitem">
                 <button
                   data-aos="zoom out"
-                  className="relative justify-center px-12 py-4 mt-10 mb-52 text-xl tracking-widest text-center rounded-3xl border-solid bg-white bg-opacity-40 border-neutral-200 max-md:px-5 max-md:my-10"
+                  className="relative justify-center px-12 py-4 mt-10 text-xl tracking-widest text-center rounded-3xl border-solid bg-white bg-opacity-40 border-neutral-200 max-md:px-5 max-md:my-10"
                 >
                   Shop Now
                 </button>
               </Link>
 
               {/* Driver code input field */}
-              <form>
+              <div>
+                {error &&  (<Error message = 'Invalid driver code'/>)}
                 <input
                   type="text"
                   placeholder="Enter Driver Code"
                   className=" ml-58 border-2 text-black border-gray-300 rounded-md px-4 py-2 mt-4 focus:outline-none focus:border-blue-500"
-                  
-                />           
+                  value={drivercode}
+                  onChange={(e) => {
+                    setdrivercode(e.target.value);
+                  }}
+                />
 
-                                                                                                                                                                                                                                                                                                                                                                     
                 <button
                   type="submit"
-                  value="Submit"
                   className="bg-blue-500 text-white px-6 py-2 rounded-md mt-4 cursor-pointer hover:bg-blue-600 transition duration-300"
-
+                  onClick={DLogin}
                 >
-
+                  Submit
                 </button>
-              </form>
-
+              </div>
             </div>
           </div>
         </div>
@@ -220,18 +246,18 @@ function Homepage() {
           <div className="flex">
             <div
               data-aos="fade-right"
-              class=" mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className=" mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <a href="#">
-                <img class="rounded-t-lg" src={first} alt="dddd" />
+                <img className="rounded-t-lg" src={first} alt="dddd" />
               </a>
-              <div class="p-5">
+              <div className="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Collaborative Team Dynamics
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Explore how our cohesive team works together seamlessly,
                   leveraging each other's strengths to overcome challenges and
                   deliver exceptional results at every stage of the operation.
@@ -240,18 +266,18 @@ function Homepage() {
             </div>
             <div
               data-aos="zoom in"
-              class="mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className="mr-12 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <a href="#">
-                <img class="rounded-t-lg" src={first} alt="dddd" />
+                <img className="rounded-t-lg" src={first} alt="dddd" />
               </a>
-              <div class="p-5">
+              <div className="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Customer Care Excellence
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Discover how we prioritize customer satisfaction through
                   prompt assistance and personalized service, ensuring every
                   customer feels valued and supported.
@@ -260,18 +286,18 @@ function Homepage() {
             </div>
             <div
               data-aos="fade-left"
-              class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <a href="#">
-                <img class="rounded-t-lg" src={first} alt="dddd" />
+                <img className="rounded-t-lg" src={first} alt="dddd" />
               </a>
-              <div class="p-5">
+              <div className="p-5">
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     Efficient Delivery Solutions
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   Learn about our streamlined delivery process, which optimizes
                   routes and schedules to guarantee timely transportation of
                   fresh produce from our polytunnels to customers' doorsteps.
