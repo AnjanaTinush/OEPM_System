@@ -57,7 +57,7 @@ import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
 
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
-
+import Editeuserprofile from "./Screens/User/Editeuserprofile";
 
 
 function App() {
@@ -120,6 +120,7 @@ function App() {
           <Route path="/empsallary" element={<EMPSallary />} />
           <Route path="/e_atendance" element={<Employeeattendance/>}/>
           <Route path="/forgot-password" element={<Forgopassword/>}/>
+          <Route path="/u_update/:u_id" element={<Editeuserprofile/>}/>
 
       </Routes>
    
