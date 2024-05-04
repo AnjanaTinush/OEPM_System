@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Flexbox from "flexbox-react";
 import { TbTruckDelivery } from "react-icons/tb";
-import { MdCalendarMonth } from "react-icons/md";
 import { MdOutlineStarRate } from "react-icons/md";
 import axios from "axios"; // Import axios
 
@@ -15,24 +14,30 @@ function Driverprofile() {
 
   async function Updatedriver(e) {
     e.preventDefault();
-
+  
     const updatedriver = {
       availability,
     };
-
+  
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/drivers/updatedriver/${driver.data._id}`, // Use driver.data._id instead of _id
+        `http://localhost:5000/api/drivers/updatedriver/${driver.data._id}`,
         updatedriver
       );
-
+  
       console.log(response);
-
-      window.location.href = "/j_driverprofile";
+  
+      // Update driver data in local storage
+      const updatedDriver = { ...driver, data: { ...driver.data, availability } };
+      localStorage.setItem("currentdriver", JSON.stringify(updatedDriver));
+  
+      // Reload the page to reflect the updated availability
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
   }
+  
 
   return (
     <div
@@ -59,14 +64,7 @@ function Driverprofile() {
             50
             <TbTruckDelivery className="w-20 h-20 ml-12 opacity-70 " />
           </Flexbox>
-          {/* Total Deliveries This Month card*/}
-          <Flexbox className=" p-5 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
-            Total Deliveries This Month
-            <br />
-            <br />
-            20
-            <MdCalendarMonth className="w-20 h-20 ml-12 opacity-70 " />
-          </Flexbox>
+          
           {/* Average Rating card*/}
           <Flexbox className="p-5 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
             Average Rating
@@ -108,11 +106,14 @@ function Driverprofile() {
                     Update Availability
                   </h2>
                   {/* Dropdown availability */}
+                  
                   <select
+                  
                     className="border p-2 mb-4 rounded-lg border-black"
                     value={availability}
                     onChange={(e) => setAvailability(e.target.value)}
                   >
+                    <option>Select Availability</option>
                     <option value="Available">Available</option>
                     <option value="Unavailable">Unavailable</option>
                   </select>
