@@ -51,7 +51,7 @@ router.post("/cancelrequest",async (req,res)=>{
     }
 })
 
-//cancell leaves
+//approve leaves
 router.post("/approverequest",async (req,res)=>{
 
     const {requestid }=req.body

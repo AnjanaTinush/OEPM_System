@@ -1,4 +1,4 @@
-import { BrowserRouter , Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Looginscreen from "./Screens/Login/Looginscreen";
 import Signupscreen from "./Screens/Login/Signupscreen";
@@ -41,6 +41,13 @@ import Itemfaq from "./Screens/Inventory/Faq";
 import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
 import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
 
+import Income from "./Screens/Financial/page/income";
+import Expence from "./Screens/Financial/page/expence";
+import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
+import Employeeattendance from "./Screens/Employee/Employeeattendance";
+import Forgopassword from './Screens/Employee/Forgopassword'
+
+
 
 import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
@@ -53,21 +60,13 @@ import { MachinePdf } from "./Screens/Machine/MachinePdf";
 
 
 
-
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
+        <Toaster position="top-center" reverseOrder={false} />
 
-    
-
-    <BrowserRouter>
-
-    <Toaster
-  position="top-center"
-  reverseOrder={false}
-/>
-          
-      <Routes>
+     <Routes>
       
       <Route path="/" element={<Homepage/>}/>
       <Route path="/login" element={<Looginscreen/>}/>
@@ -80,7 +79,7 @@ function App() {
       <Route path="/c_displayitem" element={<C_displayitem/>}/>
       <Route path="/financialdashboard" element={<Financialdasgboard/>}/>
       <Route path="/targetsdashboard" element={<Targetsdashboard/>}/>
-      <Route path="/u_userprofile" element={<Userprofile/>}/>
+      <Route path="/u_userprofile/:uuid" element={<Userprofile/>}/>
       <Route path="/e_allusers" element={<Allusers/>}/>
       <Route path="/e_updates/:userid" element={<Userupdate/>}/>
       <Route path="/j_drivers" element={<Drivers/>}/>
@@ -115,6 +114,14 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+        
+        
+         <Route path="/income" element={<Income />} />
+          <Route path="/expence" element={<Expence />} />
+          <Route path="/empsallary" element={<EMPSallary />} />
+          <Route path="/e_atendance" element={<Employeeattendance/>}/>
+          <Route path="/forgot-password" element={<Forgopassword/>}/>
+
       </Routes>
    
     </BrowserRouter>

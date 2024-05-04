@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Change Password</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirm-password");
+      const errorMessage = document.createElement("p");
+      errorMessage.style.color = "red";
+  
+      confirmPasswordInput.addEventListener("input", function () {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          errorMessage.textContent = "Passwords do not match!";
+          form.appendChild(errorMessage);
+          document.querySelector('input[type="submit"]').disabled = true;
+        } else {
+          errorMessage.textContent = "";
+          form.removeChild(errorMessage);
+          document.querySelector('input[type="submit"]').disabled = false;
+        }
+      });
+  
+      form.addEventListener("submit", function (event) {
+        if (passwordInput.value !== confirmPasswordInput.value) {
+          event.preventDefault(); // Prevent form submission if passwords don't match
+          errorMessage.textContent = "Passwords do not match!";
+          form.appendChild(errorMessage);
+        }
+      });
+    });
+
+    var status = '<%- JSON.stringify(status) %>';
+
+if (JSON.parse(status) == "verified") {
+  if (confirm("Do u want to login?")) {
+    window.location.href = "http://localhost:3000/login";
+  }
+}
+  </script>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f4f4f4;
+      /* Set background image */
+      background-image: url('path_to_your_image.jpg');
+      background-size: cover; /* Cover the entire background */
+      background-position: center; /* Center the background */
+    }
+
+    .container {
+      margin-top:40px;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px 20px; /* Increased vertical padding */
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="password"] {
+      border: 1px solid green; /* Change border color to green */
+      margin-top: 25px;
+      margin-bottom: 15px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #86eb34;
+      color: #fff;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #70eb11;
+    }
+  </style>
+</head>
+<body>
+  <br></br>
+  <br></br>
+  <br></br>
+  <div class="container">
+    <h1><%= email %></h1>
+    <form action="" method="post">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+      />
+      <input
+        type="password"
+        name="confirm-password"
+        id="confirm-password"
+        placeholder="Confirm Password"
+      />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+</body>
+</html>
