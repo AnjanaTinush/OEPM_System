@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import Loader from '../../Component/Loader';
 import logo from '../Login/Componenet/logo.png' // Corrected spelling of Component
 import bgimg1 from '../Login/Componenet/bgimg1.png'; // Corrected spelling of Component bgimg1.png
+import Swal from "sweetalert2";
 
 AOS.init({
   duration: 1000,
@@ -13,8 +14,7 @@ AOS.init({
 
 function Forgopassword() { // Corrected function name to start with uppercase
   const [loading, setLoading] = useState(false);
-  const [email, setemail] = useState('');
-  
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     setLoading(false);
@@ -22,16 +22,32 @@ function Forgopassword() { // Corrected function name to start with uppercase
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      setLoading(true); // Start loading indicator
+      setLoading(true);
       const response = await axios.post('http://localhost:5000/api/resetpassword/forgot-password', { email });
-      setLoading(false); // Stop loading indicator after successful response
-      alert(response.data.status); // Show response status
+      setLoading(false);
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: response.data.status,
+      });
     } catch (error) {
-      setLoading(false); // Stop loading indicator if there's an error
-      console.log(error);
-      alert('Failed to send reset password link');
+      setLoading(false);
+      if (error.response && error.response.status === 404) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'User with this email does not exist',
+        });
+      } else {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to send reset password link',
+        });
+      }
     }
   };
   
@@ -98,7 +114,7 @@ function Forgopassword() { // Corrected function name to start with uppercase
                       className="px-5 py-3 bg-stone-50 rounded-[100px] lime-border-focus focus:ring-2 focus:ring-green-600 focus:ring-opacity-30 outline-none transition-all duration-500"
                       type="email"
                       placeholder="Email"
-                      onChange={(e) => { setemail(e.target.value) }}
+                      onChange={(e) => { setEmail(e.target.value) }}
                       required
                     />
 
