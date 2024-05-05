@@ -31,6 +31,7 @@ const machinesRoute = require("./Routes/machineRoute");
 const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
 const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
 const forgotpasswordRoute=require("./Routes/forgotpasswordRout.js")
+const orderdetailsRoute = require("./Routes/orderdetailsRoute.js")
 const path = require("path");
 
 
@@ -50,10 +51,12 @@ app.use("/api/drivers", driverRoute);
 app.use("/api/deliveries", deliveriesRoute);
 app.use("/api/machines", machinesRoute);
 app.use("/api/driverfeedback", driverfeedbackRoute);
+app.use("/api/orderdetails", orderdetailsRoute)
+
 
 app.use("/api/leaves", leavesRoutes);
 app.use("/api/inventory", inventoryRoutes);
-app.use("/api/target", targetRoutes)
+app.use("/api/target", targetRoutes);
 
 
 app.use(require("./Routes/financialRoute.js"));
