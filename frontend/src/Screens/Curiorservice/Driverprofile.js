@@ -184,39 +184,23 @@ function Driverprofile() {
             <table className="min-w-full border-collapse border border-gray-300">
               <thead>
                 <tr>
-                  <th className="border border-gray-300 px-4 py-2">
-                    Delivery ID
-                  </th>
-                  <th className="border border-gray-300 px-4 py-2">Status</th>
-                  <th className="border border-gray-300 px-4 py-2">
-                    Tracking code
-                  </th>
-                  <th className="border border-gray-300 px-4 py-2">
-                    Delivery Address
-                  </th>
+                <th className="border border-gray-300 px-4 py-2">Index</th>
                   <th className="border border-gray-300 px-4 py-2">Date</th>
+                  <th className="border border-gray-300 px-4 py-2">Tracking code</th>
+                  <th className="border border-gray-300 px-4 py-2">Delivery Address</th>
+                  <th className="border border-gray-300 px-4 py-2">Status</th>
                   <th className="border border-gray-300 px-4 py-2">Rating</th>
                 </tr>
               </thead>
               <tbody>
                 {/* Sample delivery history row */}
                 <tr>
-                  <td className="border border-gray-300 px-4 py-2">D001</td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    Delivered
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    1123456789
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    456 Road, Town
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    2024-04-10
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2">
-                    4 Out Of 5
-                  </td>
+                <td className="border border-gray-300 px-4 py-2">001</td>
+                  <td className="border border-gray-300 px-4 py-2">2024-04-10</td>
+                  <td className="border border-gray-300 px-4 py-2">1123456789</td>
+                  <td className="border border-gray-300 px-4 py-2">456 Road, Town</td>
+                  <td className="border border-gray-300 px-4 py-2">Delivered</td>
+                  <td className="border border-gray-300 px-4 py-2">4 Out Of 5</td>
                 </tr>
               </tbody>
             </table>

@@ -4,62 +4,35 @@ const orderdetailsmodel = require('../models/orderdetailsModel');
 
 // Route for creating a new order
 router.post("/neworder", async (req, res) => {
+  const neworder = new orderdetailsmodel({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    contactNumber: req.body.contactNumber,
+    streetAddress: req.body.streetAddress,
+    city: req.body.city,
+    district: req.body.district,
+    postalCode: req.body.postalCode,
+    itemName: req.body.itemName,
+    itemid: req.body.itemid,
+    userid: req.body.userid,
+    quantity: req.body.quantity,
+    price: req.body.price,
+    totalprice: req.body.totalprice,
+    imageurl: req.body.imageurl
+  });
+  
+
   try {
-    const {
-      firstName,
-      lastName,
-      email,
-      contactNumber,
-      streetAddress,
-      city,
-      district,
-      postalCode,
-      total,
-      cartItems
-    } = req.body;
-
-    
-
-    // Map cartItems to orderItems
-    const orderItems = cartItems.map(item => ({
-      itemName: item.itemName,
-      itemid: item._id, 
-      userid: 'user123', 
-      quantity: item.quantity,
-      price: item.price,
-      totalprice: item.price * item.quantity,
-      imageurl: item.imageurl
-    }));
-
-    // Create a new order
-    const newOrder = new orderdetailsmodel({
-      firstName,
-      lastName,
-      email,
-      contactNumber,
-      streetAddress,
-      city,
-      district,
-      postalCode,
-      cartItems: orderItems,
-      total
-    });
-
-    // Save the order to the database
-    await newOrder.save();
-
-    res.status(201).json({ success: true, message: 'Order placed successfully', order: newOrder });
+    await neworder.save();
+    res.send("Order registered Successfully");
   } catch (error) {
-    // Differentiate between validation errors and other errors
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map(err => err.message);
-      res.status(400).json({ success: false, message: 'Validation failed', errors: validationErrors });
-    } else {
-      console.error('Error during order placement: ', error);
-      res.status(500).json({ success: false, message: 'Failed to place order', error: error.message });
-    }
+    return res.status(400).json({ error });
   }
 });
+
+
+
 
 //get deliveries
 router.get("/getalldeliveries", async (req, res) => {

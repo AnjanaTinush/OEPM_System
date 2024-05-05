@@ -4,33 +4,22 @@ import AdminNavbar from "./Component/Adminnavbar";
 import Navbar from "./Component/Navbar";
 
 function Deliveries() {
-  const [orderDetails, setOrderDetails] = useState([]);
-  const [driverDetails, setDriverDetails] = useState([]);
+  const [deliveryDetails, setDeliveryDetails] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchOrderDetails();
-    fetchDriverDetails();
+    fetchDeliveryDetails();
   }, []);
 
-  const fetchOrderDetails = async () => {
+  const fetchDeliveryDetails = async () => {
     try {
-      const response = await axios.get("/api/orderdetails/getalldeliveries");
-      setOrderDetails(response.data);
+      const response = await axios.get("/api/deliveries/getalldeliveries");
+      setDeliveryDetails(response.data);
     } catch (error) {
       console.error("Error fetching deliveries:", error);
+      setError("Error fetching deliveries. Please try again later.");
     }
   };
-
-  const fetchDriverDetails = async () => {
-    try {
-      const response = await axios.get("/api/drivers/getalldrivers");
-      setDriverDetails(response.data);
-    } catch (error) {
-      console.error("Error fetching drivers:", error);
-    }
-  };
-
-  
 
   return (
     <div
@@ -54,7 +43,7 @@ function Deliveries() {
             <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Delivery ID
+                  Order ID
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Tracking Code
@@ -74,39 +63,40 @@ function Deliveries() {
                 <th scope="col" className="px-6 py-3">
                   Vehicle Number
                 </th>
+                <th scope="col" className="px-6 py-3">
+                  Delivery Status
+                </th>
               </tr>
             </thead>
             <tbody>
-              {orderDetails.map((order) => {
-                const driver = driverDetails.find(
-                  (driver) => driver.availability === "Available"
-                );
-                return (
-                  <tr key={order._id}>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      {order._id}
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      765876
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      {order.firstName}
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      {order.contactNumber}
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      {order.streetAddress}
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                    {driver ? driver.name : ""}
-                    </td>
-                    <td className="px-6 py-4 font-medium text-green-900">
-                      {driver ? driver.vehicalnum : ""}
-                    </td>
-                  </tr>
-                );
-              })}
+              {deliveryDetails.map((order) => (
+                <tr key={order._id}>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order._id}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.trackingCode}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.customerName}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.customerPhone}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.deliveryAddress}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.driverName}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.vehicalNumber}
+                  </td>
+                  <td className="px-6 py-4 font-medium text-green-900">
+                    {order.deliveryStatus}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
