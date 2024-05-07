@@ -6,7 +6,7 @@ import Swal from "sweetalert2"; // Import SweetAlert
 import AdprofileNavbar from "./Component/AdprofileNavbar";
 import Loader from "../../Component/Loader";
 import { GiExitDoor } from "react-icons/gi";
-import { LuAlarmClock } from "react-icons/lu";
+import { FaRegTimesCircle } from "react-icons/fa";
 import { FaPersonCircleQuestion } from "react-icons/fa6";
 import clock from "./image/clock.png";
 
@@ -17,6 +17,7 @@ function Employeeprofiledashboard() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [pendingLeaves, setPendingLeaves] = useState(0);
   const [approvedLeaves, setApprovedLeaves] = useState(0);
+  const [rejectLeaves, setRejectLeaves] = useState(0);
 
   const user = JSON.parse(localStorage.getItem("currentuser"));
   const userId = user._id;
@@ -34,9 +35,10 @@ function Employeeprofiledashboard() {
       );
       const data = await response.json();
       console.log("API response:", data);
-
       setPendingLeaves(data.pending);
       setApprovedLeaves(data.approved);
+      setRejectLeaves(data.dissapproved)
+
       setLoading(false);
     } catch (error) {
       console.error("Error fetching leave counts:", error);
@@ -155,15 +157,15 @@ function Employeeprofiledashboard() {
                 </div>
                 <div className="block w-50 h-32 p-5 bg-white border border-gray-200 rounded-lg shadow-xl transition-transform duration-300 ease-in-out transform hover:scale-110 ">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-whatsapp-green">
-                    Works Hours
+                    Rejected leaves
                   </h5>
                   <div className="flex mt-5">
                     <div>
-                      <LuAlarmClock className="w-10 h-10" />
+                      <FaRegTimesCircle className="w-10 h-10" />
                     </div>
                     <div>
                       <p className="text-2xl font-normal text-gray-700 dark:text-gray-400 ml-10 mt-1 ">
-                        60
+                       {rejectLeaves}
                       </p>
                     </div>
                   </div>
