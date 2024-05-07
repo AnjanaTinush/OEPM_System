@@ -8,10 +8,12 @@ function Targetsdashboard() {
   const [typeCounts, setTypeCounts] = useState({});
   const [totalTargets, setTotalTargets] = useState(0);
 
+
   useEffect(() => {
     fetchData();
   }, []);
 
+  //  fetch targets data
   const fetchData = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/target/getalltargets');
@@ -24,6 +26,7 @@ function Targetsdashboard() {
     }
   };
 
+  //  calculate type counts
   const calculateTypeCounts = (data) => {
     const counts = {};
     data.forEach((item) => {
@@ -32,10 +35,12 @@ function Targetsdashboard() {
     setTypeCounts(counts);
   };
 
+  //  calculate total targets
   const calculateTotalTargets = (data) => {
     setTotalTargets(data.length);
   };
 
+  //  render the bar graph
   const renderBarGraph = (data) => {
     const typeCounts = {};
     data.forEach((item) => {
@@ -51,7 +56,7 @@ function Targetsdashboard() {
       data: {
         labels: labels,
         datasets: [{
-          label: 'Target typs',
+          label: 'Target types',
           data: counts,
           backgroundColor: 'rgba(144, 238, 144, 0.5)',
           borderColor: 'rgba(144, 238, 144, 1)',
@@ -72,6 +77,7 @@ function Targetsdashboard() {
     });
   };
 
+  //  target cards
   const renderTargetCards = () => {
     return Object.entries(typeCounts).map(([type, count]) => (
       <div key={type} className="p-4 border border-gray-200 rounded-md shadow-md m-4">
@@ -81,32 +87,25 @@ function Targetsdashboard() {
     ));
   };
 
-
-
+  // Render the component
   return (
     <div className="bg-wight-green">
       <div className="flex">
         <Adminnavbar />
 
-      
-
-        <div className="flex flex-col ml-48 mt-16 " style={{ zIndex: 900 } }>
-         
-         <canvas id="barGraph" width="400" height="170"></canvas>
-         <div className="flex flex-wrap justify-center mt-8 bg-white rounded-3xl shadow-xl p-6">
-          {renderTargetCards()}
-        </div>
-
-        <div className="flex flex-wrap justify-center mt-8 bg-white rounded-xl shadow-xl p-3">
+        <div className="flex flex-col ml-16 mr-8 mt-8 mb-8" style={{ zIndex: 900 }}>
+          <canvas id="barGraph" width="400" height="170"></canvas>
+          <div className="flex flex-wrap justify-center mt-8 bg-white rounded-3xl shadow-xl p-6">
+            {renderTargetCards()}
+          </div>
+          {/* Total targets*/}
+          <div className="flex flex-wrap justify-center mt-8 bg-white rounded-xl shadow-xl p-3">
             <h2 className="text-lg font-semibold">Total Targets </h2>
             <p className="text-gray-600 mt-1"> : {totalTargets}</p>
           </div>
-          
         </div>
       </div>
     </div>
-
-    
   );
 }
 

@@ -52,6 +52,8 @@ import Forgopassword from './Screens/Employee/Forgopassword'
 import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
 import UpdateTarget from "./Screens/Targets/UpdateTarget";
+import AdminTargetApproval from "./Screens/Targets/AdminTargetApproval";
+
 
 import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
@@ -113,6 +115,8 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+      <Route path="/t_adminTargetApproval" element={<AdminTargetApproval/>}/>
+
         
         
          <Route path="/income" element={<Income />} />
