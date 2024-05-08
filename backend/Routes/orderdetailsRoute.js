@@ -7,6 +7,7 @@ const ShippingDetails = require('../models/orderdetailsModel');
 // Create Shipping Details
 router.post('/shippingDetails', async (req, res) => {
   try {
+<<<<<<< HEAD
     const {
       firstName,
       lastName,
@@ -21,6 +22,7 @@ router.post('/shippingDetails', async (req, res) => {
     } = req.body;
 
 
+    
 
     // Assuming cartItems is an array of items to be saved in the order details
     const orderItems = cartItems.map(item => ({
@@ -55,6 +57,11 @@ router.post('/shippingDetails', async (req, res) => {
     await newOrder.save();
 
     res.status(201).json({ success: true, message: 'Order placed successfully', order: newOrder });
+=======
+    const shippingDetails = new ShippingDetails(req.body);
+    await shippingDetails.save();
+    res.status(201).send(shippingDetails);
+>>>>>>> main
   } catch (error) {
     res.status(400).send(error);
   }
