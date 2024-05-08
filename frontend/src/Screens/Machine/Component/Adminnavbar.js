@@ -27,6 +27,14 @@ function Adminnavbar() {
           <GiGreenhouse className="mr-5 text-lg" />
           <span className="font-bold text-lg">Machine</span>
         </Link>
+
+        <Link
+          to="/m_MVehical"
+          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+        >
+          <GiGreenhouse className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Vehicles</span>
+        </Link>
         
       </div>
       <div className="p-4">

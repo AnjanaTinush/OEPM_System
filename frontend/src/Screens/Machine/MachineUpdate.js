@@ -4,6 +4,8 @@ import Adminnavbar from "./Component/Adminnavbar";
 import Swal from "sweetalert2";
 import Loader from "../../Component/Loader";
 import { useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const MachineUpdate = () => {
   const { mid } = useParams();
@@ -15,6 +17,8 @@ const MachineUpdate = () => {
   const [discription, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [location, setLocation] = useState("");
+  const [lastRepairDate, setLastRepairDate] = useState(new Date());
+  const[repairTimePeriod,setperiod] = useState('');
 
   useEffect(() => {
     async function getMachine() {
@@ -28,6 +32,8 @@ const MachineUpdate = () => {
         setParts(response.machine.parts);
         setDescription(response.machine.discription);
         setLocation(response.machine.location);
+        setLastRepairDate(response.machine.lastRepairDate);
+        setperiod(response.machine.repairTimePeriod);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -44,7 +50,9 @@ const MachineUpdate = () => {
       cost,
       parts,
       discription,
-      location 
+      location ,
+      lastRepairDate,
+      repairTimePeriod
     };
     try {
       setLoading(true);
@@ -131,6 +139,25 @@ const MachineUpdate = () => {
                     required
                   />
                 </div>
+
+                <div>
+<DatePicker
+  selected={lastRepairDate}
+  onChange={(date) => setLastRepairDate(date)}
+  dateFormat="dd/MM/yyyy" // Adjust the date format as needed
+/>
+</div>
+
+<div>
+      <input
+        type="text"
+        placeholder="repair time period"
+        value={repairTimePeriod}
+        onChange={(e) => setperiod(e.target.value)}
+        className="mt-1 p-2 block w-full rounded-3xl dark:bg-table-row border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
+        required
+      />
+    </div>
   <div className="flex justify-center">
     <button
       type="submit"
