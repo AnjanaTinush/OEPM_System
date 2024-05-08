@@ -14,7 +14,8 @@ const JWT_SECRET =
 
 const app = express();
 
-const dbcongfig = require("./db");
+
+const dbconfig = require("./db");;
 
 const usersRoutes = require("./Routes/usersRoute");
 const tunnelRoutes = require("./Routes/tunnelRoute");
@@ -30,6 +31,9 @@ const machinesRoute = require("./Routes/machineRoute");
 const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
 const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
 const forgotpasswordRoute=require("./Routes/forgotpasswordRout.js")
+const paymentRoute = require("./Routes/paymentRoute");
+const orderDetailsRoute = require("./Routes/orderdetailsRoute"); 
+const ScheduleOrderRoute = require("./Routes/scheduleorderRoute");
 const path = require("path");
 
 
@@ -40,6 +44,12 @@ app.use(express.json());
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json());
 app.use(bodyParser.json());
+
+
+
+
+app.use(cors());
+app.use(express.json());
 
 app.use("/api/users", usersRoutes);
 app.use("/api/tunnel", tunnelRoutes);
@@ -55,10 +65,14 @@ app.use("/api/target", targetRoutes)
 
 
 app.use(require("./Routes/financialRoute.js"));
-app.use("/api/leaves",leavesRoutes);
+app.use("/api/leaves", leavesRoutes);
 app.use("/api/attendanceIn",attendanceInRoute);
 app.use("/api/attendanceOut",attendanceOutRoute);
 app.use("/api/resetpassword", forgotpasswordRoute);
+app.use("/api/payment", paymentRoute);
+app.use("/api/orderDetails", orderDetailsRoute); 
+app.use("/api/ScheduleOrder", ScheduleOrderRoute)
+
 
 const port = process.env.PORT || 5000;
 

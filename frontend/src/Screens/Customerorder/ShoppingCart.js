@@ -7,7 +7,7 @@ const Cart = () => {
     // State variables to hold cart items and total price
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
-
+    
     // Fetch cart items when component mounts
     useEffect(() => {
         fetchCartItems();
@@ -100,7 +100,9 @@ const Cart = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
+
+    
     return (
         <div className="h-screen bg-gray-100 ">
             <div>
