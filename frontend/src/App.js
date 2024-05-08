@@ -34,7 +34,7 @@ import CheckoutPage from "./Screens/Customerorder/checkout";
 
 
 import Approveleave from "./Screens/Employee/Approveleave";
-
+import Feedback from "./Screens/Curiorservice/Feedback";
 
 
 
@@ -56,6 +56,9 @@ import Forgopassword from './Screens/Employee/Forgopassword'
 import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
 import UpdateTarget from "./Screens/Targets/UpdateTarget";
+import AdminTargetApproval from "./Screens/Targets/AdminTargetApproval";
+import OrderDetails from "./Screens/Targets/OrderDetails";
+
 
 import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
@@ -101,6 +104,7 @@ function App() {
       <Route path="e_approveleave" element={<Approveleave/>}/>
       <Route path="j_updatedriver/:id" element={<Updatedriver/>}/>
       <Route path="j_driverprofile" element={<Driverprofile/>}/>
+      <Route path="j_feedback" element={<Feedback/>}/>
       
       <Route path="/t_tunnelprofile" element={<Tunnelprofile/>}/>
       <Route path="/t_tunnels" element={<Tunnels/>}/>
@@ -118,6 +122,9 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+      <Route path="/t_adminTargetApproval" element={<AdminTargetApproval/>}/>
+      <Route path="/t_orderDetails" element={<OrderDetails/>}/>
+
         
         
          <Route path="/income" element={<Income />} />
