@@ -150,7 +150,7 @@ function Looginscreen() {
                    
 
                    <div className="text-base text-stone-950 mt-5 text-center">
-               <span className="text-zinc-400">Fogot password? </span> <a href=''> Click
+               <span className="text-zinc-400">Fogot password? </span> <a href='/forgot-password'> Click
                 Here
                 </a>
               </div>
