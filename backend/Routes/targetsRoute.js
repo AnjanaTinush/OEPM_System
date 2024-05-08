@@ -100,4 +100,16 @@ router.get("/getallitems", async (req, res) => {
   }
 });
 
+router.route('/gettarget/:id').get(async (req, res) => {
+  const targetId = req.params.id;
+
+  try {
+    const target = await Target.findById(targetId);
+    return res.status(200).json({ status: "Target is fetched", target });
+  } catch (error) {
+    return res.status(400).json({ status: "Error with fetching Target", message: error });
+  }
+});
+
+
 module.exports = router;
