@@ -50,6 +50,7 @@ import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
 
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
+import Maintain from "./Screens/Tunnel/Maintain";
 
 
 
@@ -100,7 +101,7 @@ function App() {
       
       <Route path="/t_tunnelprofile" element={<Tunnelprofile/>}/>
       <Route path="/t_tunnels" element={<Tunnels/>}/>
-      
+      <Route path="/t_maintain" element={<Maintain/>}/>
       <Route path="/t_tunnelUpdate/:tunnelid" element={<Tunnelupdate/>}/>
       <Route path="/i_manage" element={<Manage/>}/>
       <Route path="/i_update/:itemid" element={<Itemupdate/>}/>

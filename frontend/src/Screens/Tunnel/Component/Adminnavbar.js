@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { GiGreenhouse } from "react-icons/gi";
 import { AiFillProfile } from "react-icons/ai";
+import { PiPottedPlantLight } from "react-icons/pi";
 import Navbar from '../../Component/Navbar';
 import logo from '../../../Images/logo.png';
 
