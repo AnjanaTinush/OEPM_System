@@ -33,7 +33,7 @@ function AdminTargetApproval() {
       // Refetch data to update the UI
       fetchData();
       setLoading(false);
-      Swal.fire("Success", "Target approved successfully", "Success");
+      Swal.fire( "Target approved successfully");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -49,7 +49,7 @@ function AdminTargetApproval() {
       // Refetch data to update the UI
       fetchData();
       setLoading(false);
-      Swal.fire("Success", "Target rejected successfully", "success");
+      Swal.fire( "Target rejected successfully");
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -112,7 +112,7 @@ function AdminTargetApproval() {
                   </button>
                   </>
                 ) : (
-                            //after get approve ble display status
+                            //after get approvele display status
                             <div className="w-700dp">
                               {target.status === "Pending" ? (
                                 <Tag color="blue">Pending</Tag>

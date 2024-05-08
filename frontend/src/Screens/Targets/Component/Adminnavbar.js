@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
-import { GiExitDoor } from "react-icons/gi";
+import { MdBorderColor } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { TbTargetArrow } from "react-icons/tb";
 import Navbar from '../../Component/Navbar';
@@ -48,6 +48,18 @@ function Adminnavbar() {
           style={{ width: '100%', minWidth: '180px' }} // Fixed width for buttons
         >
           <FaUsers className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Manage Targets</span>
+        </Link>
+        <Link
+          to="/t_orderDetails"
+          className={`flex items-center py-3 px-5 ${
+            location.pathname === "/t_orderDetails"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+          style={{ width: '100%', minWidth: '180px' }} // Fixed width for buttons
+        >
+          <MdBorderColor className="mr-5 text-lg" />
           <span className="font-bold text-lg">Manage Targets</span>
         </Link>
       </div>
