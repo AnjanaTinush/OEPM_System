@@ -93,7 +93,11 @@ function Targetsdashboard() {
       <div className="flex">
         <Adminnavbar />
 
-        <div className="flex flex-col ml-16 mr-8 mt-8 mb-8" style={{ zIndex: 900 }}>
+        <div className="flex flex-col ml-16 mr-8 mt-8 mb-8 " style={{ zIndex: 900 }}>
+        <h1 className="text-center text-3xl font-bold text-green-600 mt-4 mb-8 mr-32">
+            Target Dashbord
+          </h1>
+
           <canvas id="barGraph" width="400" height="170"></canvas>
           <div className="flex flex-wrap justify-center mt-8 bg-white rounded-3xl shadow-xl p-6">
             {renderTargetCards()}

@@ -47,6 +47,10 @@ const UpdateTarget = () => {
     <div className="bg-wight-green h-screen flex justify-center items-center">
       <Adminnavbar />
       <div className="max-w-sm mx-auto bg-white shadow-md rounded-3xl p-6">
+      <h1 className="text-center text-3xl font-bold text-green-600 mt-8 mb-12 mr-32">
+            Update Details
+        </h1>
+
         <h2 className="text-xl font-semibold text-dark font-custom">Enter the Tunnel Details</h2>
         <form className="mt-8">
           <div className="mb-4">

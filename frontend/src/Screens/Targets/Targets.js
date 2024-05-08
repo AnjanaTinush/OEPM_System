@@ -89,6 +89,9 @@ function Targets() {
         <Adminnavbar />
 
         <div className="flex flex-col w-full">
+        <h1 className="text-center text-3xl font-bold text-green-600 mt-8  mr-32">
+            Target Details
+          </h1>
           <div className="absolute top-32 right-0  mr-8">
             <button
              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"

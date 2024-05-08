@@ -19,6 +19,7 @@ router.post('/orderDetails', async (req, res) => {
     } = req.body;
 
 
+    
 
     // Assuming cartItems is an array of items to be saved in the order details
     const orderItems = cartItems.map(item => ({
