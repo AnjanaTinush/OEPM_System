@@ -1,17 +1,40 @@
-// routes/shippingDetails.js
-
 const express = require('express');
 const router = express.Router();
-const ShippingDetails = require('../models/orderdetailsModel');
+const orderdetailsmodel = require('../models/orderdetailsModel');
 
-// Create Shipping Details
-router.post('/shippingDetails', async (req, res) => {
+// POST request to create shipping details
+router.post('/create', async (req, res) => {
   try {
-    const shippingDetails = new ShippingDetails(req.body);
-    await shippingDetails.save();
-    res.status(201).send(shippingDetails);
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      streetAddress,
+      city,
+      district,
+      postalCode,
+    } = req.body;
+
+    // Create a new order with shipping details
+    const order = new orderdetailsmodel({
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      streetAddress,
+      city,
+      district,
+      postalCode,
+    });
+
+    // Save the order to the database
+    const savedOrder = await order.save();
+
+    res.status(201).json(savedOrder);
   } catch (error) {
-    res.status(400).send(error);
+    console.error('Error creating order:', error);
+    res.status(500).json({ message: 'Server Error' });
   }
 });
 
