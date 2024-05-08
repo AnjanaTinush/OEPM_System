@@ -17,7 +17,12 @@ const targetsSchema = mongoose.Schema({
         type : String,
         require : true
     },
-    
+    status: {
+        type: String,
+        required: true,
+        default: "Pending"
+    }
+
  
 },{
     // timestamps : true,
