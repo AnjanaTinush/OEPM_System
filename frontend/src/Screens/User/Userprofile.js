@@ -11,6 +11,8 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Component/Loader";
+import SheduleOrders_histry from "./SheduleOrders_histry"
+import Feed_back_For_Curiorservice from "./Feed_back_For_Curiorservice"
 import AOS from "aos";
 import "aos/dist/aos.css";
 const { TabPane } = Tabs;
@@ -269,11 +271,11 @@ function Userprofile() {
     </div>
 
         </TabPane>
-        <TabPane tab="Orders" key="2">
-          
+        <TabPane tab="SheduleOrders_histry" key="2">
+          <SheduleOrders_histry/>
         </TabPane>
-        <TabPane tab="" key="3">
-       
+        <TabPane tab="Feed_back_For_Curiorservice" key="3">
+       <Feed_back_For_Curiorservice/>
         </TabPane>
        
       </Tabs>
