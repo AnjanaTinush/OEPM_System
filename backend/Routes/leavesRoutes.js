@@ -51,7 +51,7 @@ router.post("/cancelrequest",async (req,res)=>{
     }
 })
 
-//cancell leaves
+//approve leaves
 router.post("/approverequest",async (req,res)=>{
 
     const {requestid }=req.body
@@ -120,11 +120,14 @@ router.get("/leaverequestcounts/:userid", async (req, res) => {
     try {
         const pendingCount = await Leaves.countDocuments({ userid, status: 'Pending' });
         const approvedCount = await Leaves.countDocuments({ userid, status: 'Approved' });
+        const dissapprovedCount = await Leaves.countDocuments({ userid, status: 'Dissapproved' });
+
 
         res.json({
             userid,
             pending: pendingCount,
             approved: approvedCount,
+            dissapproved:dissapprovedCount
         });
     } catch (error) {
         res.status(400).json({ error: error.message });

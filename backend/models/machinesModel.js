@@ -6,22 +6,38 @@ const machinesSchema = mongoose.Schema({
         type : String,
         requre : true
     },
-    repairedate : {
-        type : String,
-        require : true
+    parts: {
+        type: [String], // Define name as an array of strings
+        required: true // Corrected typo: "required" instead of "require"
     },
-    quantity :{
-        type : String,
-        require : true
+    cost: {
+        type: [Number], // Define name as an array of numbers
+        required: true
     },
-    Location : {
+    discription : {
         type : String,
-        require : true
+        requre : true
+    },
+    location: {
+        type: String,
+        required: true
     }
+    // repairedate : {
+    //     type : String,
+    //     require : true
+    // },
+    // quantity :{
+    //     type : String,
+    //     require : true
+    // },
+    // Location : {
+    //     type : String,
+    //     require : true
+    // }
 },{
     timestamps : true,
 })
 
-const machinesModel = mongoose.model('machines' , machinesSchema)
+const machinesModel = mongoose.model('machine' , machinesSchema)
 
 module.exports = machinesModel

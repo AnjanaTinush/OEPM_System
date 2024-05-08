@@ -31,21 +31,36 @@ function AddDriver() {
       );
       console.log(result.data);
       alert("Driver added successfully");
-      window.location.href='/j_drivers';
+      window.location.href = "/j_drivers";
     } catch (error) {
       console.log(error);
     }
-    
+  };
+
+  // Function to handle phone number input
+  const handlePhoneChange = (e) => {
+    const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
+    setPhone(input);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
-      <div className="w-96 rounded-lg shadow-lg bg-white p-8">
+    <div 
+    
+    style={{
+      backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      opacity: 50,
+      
+    }}
+
+    className="flex justify-center items-center h-screen ">
+      <div className="w-96 rounded-lg shadow-lg bg-white p-8 ">
         <form onSubmit={handleSubmit}>
           {/* Name input field */}
           <div className="mb-4">
             <h2 className="text-xl font-semibold text-dark font-custom text-center">
-              Enter the Driver Details
+              Enter New Driver Details
             </h2>
             <input
               type="text"
@@ -71,11 +86,12 @@ function AddDriver() {
           {/* Phone number input field */}
           <div className="mb-4">
             <input
-              type="number"
+              type="tel"
               placeholder="Phone Number"
+              maxLength="10"
               className="mt-1 p-2 block w-full rounded-3xl bg-wight-green border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
             />
           </div>
 
