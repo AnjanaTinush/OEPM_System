@@ -1,8 +1,10 @@
 import React from 'react'
+import Adminnavbar from './Component/Adminnavbar'
+
 
 function Financialdasgboard() {
   return (
-    <div>Financialdasgboard</div>
+    <div><Adminnavbar/></div>
   )
 }
 
