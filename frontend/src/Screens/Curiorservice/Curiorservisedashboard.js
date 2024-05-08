@@ -137,11 +137,26 @@ function Curiorservisedashboard() {
           </Flexbox>
 
           {/* Pie chart=*/}
-          <div className="flex justify-center items-center p-5">
-            <div className=" p-4 overflow-x-auto shadow-2xl sm:rounded-lg bg-white border-2 border-whatsapp-green">
+          <div className="flex justify-center items-center p-20 ml-72 ">
+            <div className=" p-10 overflow-x-auto shadow-2xl sm:rounded-lg bg-white border-2 border-whatsapp-green">
               <canvas ref={chartRef}></canvas>
             </div>
           </div>
+
+          {/* Google Maps iframe */}
+          <div className="absolute inset-0 justify-center items-center left-72 top-80">
+  <iframe
+    width="400dp"
+    height="400dp"
+    title="map"
+    src="https://maps.google.com/maps?q=7.290572,80.633728(My%20Custom%20Location)&hl=en&z=14&amp;output=embed"
+    style={{
+      
+    }}
+  ></iframe>
+</div>
+
+
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ router.post("/newdelivery", async (req, res) => {
       customerPhone: req.body.customerPhone,
       deliveryAddress: req.body.deliveryAddress,
       vehicalNumber: availableDriver.vehicalnum,
-      driverName: availableDriver.name, // Assign the name of the available driver
+      driverName: availableDriver.name, 
       deliveryStatus: req.body.deliveryStatus
     });
 
@@ -46,4 +46,46 @@ router.get("/getalldeliveries", async (req, res) => {
     }
   });
 
-module.exports = router;
+   //get one delivery
+   router.route("/getdelivery/:name").get(async (req, res) => {
+    const deliveryName = req.params.name; // Corrected to req.params.name
+  
+    try {
+      const delivery = await deliveriesModel.findOne({ driverName: deliveryName }); // Find by driverName
+      if (!delivery) {
+        return res.status(404).json({ status: "Delivery not found" });
+      }
+      return res.status(200).json({ status: "Delivery is fetched", delivery });
+    } catch (error) {
+      return res.status(400).json({ status: "Error with fetching Delivery", message: error });
+    }
+  });
+
+  // Update delivery status
+  router.put("/updatedeliverystatus/:name", async (req, res) => {
+    const deliveryName = req.params.name; // Corrected to req.params.name
+    const { deliveryStatus } = req.body; // Corrected to match the frontend
+
+    try {
+        // Find the delivery by name and update its status
+        const updatedDelivery = await deliveriesModel.findOneAndUpdate(
+            { driverName: deliveryName },
+            { deliveryStatus: deliveryStatus }, // Corrected to match the frontend
+            { new: true }
+        );
+
+        if (!updatedDelivery) {
+            return res.status(404).json({ error: "Delivery not found" });
+        }
+
+        return res.status(200).json({ message: "Delivery status updated successfully", updatedDelivery });
+    } catch (error) {
+        return res.status(500).json({ error: "Internal server error", message: error.message });
+    }
+});
+
+  
+
+  
+  module.exports = router;
+  

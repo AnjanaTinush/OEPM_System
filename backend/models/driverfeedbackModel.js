@@ -4,30 +4,23 @@ const driverfeedbackSchema = mongoose.Schema(
   {
     fdrname: {
       type: String,
-      require: true,
-    },
-
-    fcusname: {
-      type: String,
-      require: true,
+      required: true,
     },
 
     frating: {
       type: String,
-      require: true,
+      required: true,
     },
 
     fcomment: {
       type: String,
-      require: true,
+      required: true,
     },
-
   },
   {
     timestamps: true,
   }
 );
 
-const driverfeedbackModel = mongoose.model("driverfeedbac   k", driverfeedbackSchema);
-
+const driverfeedbackModel = mongoose.model("driverfeedback", driverfeedbackSchema);
 module.exports = driverfeedbackModel;

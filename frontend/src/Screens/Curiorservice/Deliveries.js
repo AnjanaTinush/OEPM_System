@@ -43,7 +43,7 @@ function Deliveries() {
             <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Order ID
+                  Delivery ID
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Tracking Code

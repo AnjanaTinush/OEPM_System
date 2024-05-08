@@ -22,7 +22,7 @@ function AddDriver() {
     // Create object with form data
     const driver = { name, email, phone, vehicalnum, availability };
     console.log(driver);
-
+    
     try {
       // add driver post request
       const result = await axios.post(
