@@ -24,8 +24,8 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "moment": "^2.30.1",
-    "npm": "^10.7.0",
     "nodemailer": "^6.9.13",
+    "npm": "^10.7.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-calendar": "^4.8.0",
@@ -41,10 +41,11 @@
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
     "react-to-print": "^2.15.1",
-    "stream-browserify": "^3.0.0",
     "react-toastify": "^10.0.5",
+    "stream-browserify": "^3.0.0",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.10.7",
+    "sweetalert2": "^11.10.8",
+    "sweetalert2-react-content": "^5.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -7,12 +7,15 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Adminnavbar from "./Component/Adminnavbar";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function Tunnels() {
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
   const [tunnels, setTunnels] = useState([]);
   const modalRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     fetchData();
@@ -35,9 +38,19 @@ function Tunnels() {
         `http://localhost:5000/api/tunnel/delete/${id}`
       );
       console.log(response);
-      window.location.reload();
+      MySwal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Tunnel deleted successfully',
+      });
+      fetchData();
     } catch (error) {
       console.log(error);
+    MySwal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Failed to delete tunnel',
+    });
     }
   }
 
@@ -88,12 +101,20 @@ function Tunnels() {
   async function addTunnel() {
     // Check if any input field is empty
     if (!temperature || !humidity || !capacity || !plantType) {
-      alert("Please fill in all fields.");
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please fill in all fields.',
+      });
       return;
     }
 
     if (temperature > 100 || humidity < 0 || humidity > 100) {
-      alert("Please enter valid values for temperature and humidity.");
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Please enter valid values for temperature and humidity.',
+      });
       return;
     }
 
@@ -111,11 +132,20 @@ function Tunnels() {
         "http://localhost:5000/api/tunnel/t_register",
         tunnelData
       );
-      window.location.reload();
       console.log(result.data);
-      alert("Tunnel added Successfully");
+    MySwal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Tunnel added successfully',
+    });
+    window.location.reload();
     } catch (error) {
       console.log(error);
+      MySwal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to add tunnel',
+      });
     }
   }
 
