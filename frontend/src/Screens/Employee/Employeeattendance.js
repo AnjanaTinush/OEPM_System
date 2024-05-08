@@ -73,7 +73,7 @@ function Employeeattendance() {
                     Employee Attendance
                   </h1>
                 </thead>
-                <table className="w-full text-sm text-left mb-5 rtl:text-right text-gray-500 dark:text-gray-400">
+                <table className="w-full text-sm text-left  rtl:text-right text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green">
                     <tr>
                       <th scope="col" className="px-6 py-3">
