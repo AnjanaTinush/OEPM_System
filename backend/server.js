@@ -1,9 +1,19 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
+
+
+
+const JWT_SECRET =
+  "hvdvay6ert72839289()aiyg8t87qt72393293883uhefiuh78ttq3ifi78272jbkj?[]]pou89ywe";
+
+
 
 const app = express();
+
 
 const dbconfig = require("./db");;
 
@@ -21,6 +31,9 @@ const machinesRoute = require("./Routes/machineRoute");
 const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
 const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
 const forgotpasswordRoute=require("./Routes/forgotpasswordRout.js")
+const paymentRoute = require("./Routes/paymentRoute");
+const orderDetailsRoute = require("./Routes/orderdetailsRoute"); 
+const ScheduleOrderRoute = require("./Routes/scheduleorderRoute");
 const path = require("path");
 
 
@@ -31,15 +44,8 @@ app.use(express.json());
 app.use(cors()); // Add this line to enable CORS
 app.use(express.json());
 app.use(bodyParser.json());
-const usersRoutes = require("./Routes/usersRoute");
-const tunnelRoutes = require("./Routes/tunnelRoute");
-const driverRoute = require("./Routes/driverRoute");
-const leavesRoutes = require("./Routes/leavesRoutes");
-const customerOrderRoute = require("./Routes/customerOrderRoute");
-const shoppingCartRoute = require("./Routes/shoppingCartRoute");
-const paymentRoute = require("./Routes/paymentRoute");
-const orderDetailsRoute = require("./Routes/orderdetailsRoute"); 
-const ScheduleOrderRoute = require("./Routes/scheduleorderRoute");
+
+
 
 
 app.use(cors());
