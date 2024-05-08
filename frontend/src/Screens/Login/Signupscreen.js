@@ -15,7 +15,7 @@ AOS.init({
 });
 
 function Signupscreen() {
-  const [name, setname] = useState("");
+  const [fullName, setname] = useState("");
   const [email, setemail] = useState("");
   const [phone, setphone] = useState("");
   const [password, setpassword] = useState("");
@@ -34,7 +34,7 @@ function Signupscreen() {
       }
 
       const user = {
-        name,
+        fullName,
         email,
         phone,
         password,
@@ -126,7 +126,7 @@ function Signupscreen() {
                       className="px-5 py-2 bg-stone-50 rounded-[100px] lime-border-focus focus:ring-2 focus:ring-green-600 focus:ring-opacity-30 outline-none transition-all duration-500"
                       type="text"
                       placeholder="Username"
-                      value={name}
+                      value={fullName}
                       onChange={(e) => {
                         setname(e.target.value);
                       }}

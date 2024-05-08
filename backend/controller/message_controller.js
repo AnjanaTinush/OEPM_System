@@ -1,4 +1,4 @@
-const Conversations = require("../models/Financial model.js/ConversationsModel");
+const Conversations = require("../models/Financial model.js/Conversations");
 const Users = require("../models/usersModel")
 const  Messages = require("../models/Financial model.js/messagesModel")
 
