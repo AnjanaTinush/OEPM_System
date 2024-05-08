@@ -14,6 +14,7 @@ const customerOrderRoute = require("./Routes/customerOrderRoute")
 const shoppingCartRoute = require("./Routes/shoppingCartRoute")
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
+const itemhistoryRoutes = require("./Routes/ItemhistoryRoute")
 
 
 
@@ -27,6 +28,7 @@ app.use("/api/shoppingCart",shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
 app.use("/api/inventory", inventoryRoutes);
 app.use("/api/target", targetRoutes)
+app.use("/api/inventory", itemhistoryRoutes);
 
 
 
