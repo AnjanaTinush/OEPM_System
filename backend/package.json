@@ -12,6 +12,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "chart.js": "^4.4.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.2",
     "ejs": "^3.1.10",
@@ -20,8 +21,8 @@
     "mongoose": "^8.1.2",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.13",
-    "uuid": "^9.0.1",
-    "uuidv4": "^6.2.13"
+    "react-chartjs-2": "^5.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
