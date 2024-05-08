@@ -25,7 +25,7 @@ const leavesRoutes = require("./Routes/leavesRoutes");
 const customerOrderRoute = require("./Routes/customerOrderRoute");
 const shoppingCartRoute = require("./Routes/shoppingCartRoute");
 const driverfeedbackRoute = require("./Routes/driverfeedbackRoute");
-
+const itemhistoryRoutes = require("./Routes/ItemhistoryRoute")
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
 const machinesRoute = require("./Routes/machineRoute");
@@ -43,7 +43,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-const itemhistoryRoutes = require("./Routes/ItemhistoryRoute")
+
 
 
 
