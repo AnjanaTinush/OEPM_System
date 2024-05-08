@@ -60,7 +60,7 @@ app.use("/api/drivers", driverRoute);
 app.use("/api/deliveries", deliveriesRoute);
 app.use("/api/machines", machinesRoute);
 app.use("/api/driverfeedback", driverfeedbackRoute);
-app.use("/api/orderdetails", orderdetailsRoute)
+
 
 
 app.use("/api/leaves", leavesRoutes);
