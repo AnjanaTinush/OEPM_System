@@ -10,15 +10,28 @@ import {
 import Adminnavbar from "../Component/Adminnavbar";
 import AddEMPSalary from "../Component/form/AddEmpSallary";
 import { default as api } from "../../Financial/store/apiSlice";
+import EditExpence from "../Component/form/EditSllary";
+import EditSallary from "../Component/form/EditSllary";
 
 function EMPSallary() {
   const { data, isFetching, isSuccess, isError } = api.useGetSallaryQuery();
   const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog1, setOpenDialog1] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-
+  const [deleteSallary] = api.useDeleteSallaryMutation();
   const handleOpen = () => {
     setOpenDialog(true);
+  };
+
+  const handleOpenEdit = () => {
+    setOpenDialog1(true);
+  };
+
+  console.log("date set", data);
+  const handlerClick = (e) => {
+    if (!e.target.dataset.id) return 0;
+    deleteSallary({ _id: e.target.dataset.id });
   };
 
   // Function to handle changes in the search input
@@ -91,7 +104,7 @@ function EMPSallary() {
                 >
                   Amount
                 </Text>
-              
+
                 <Text
                   style={[
                     styles.tableHeaderCell,
@@ -101,7 +114,6 @@ function EMPSallary() {
                 >
                   Date
                 </Text>
-                
               </View>
               {data &&
                 data.map((item) => (
@@ -257,7 +269,7 @@ function EMPSallary() {
                         Date
                       </th>
                       <th className="px-6 py-3 text-center text-[17px] font-sans font-semibold text-blue-950 uppercase tracking-wider">
-                       Action
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -290,23 +302,30 @@ function EMPSallary() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                        <button className="px-3" >
-        <box-icon
-         
-          color={"#b91c1c"}
-          size="20px"
-          name="trash"
-        ></box-icon>
-      </button>
+                          <button className="px-3" onClick={handlerClick}>
+                            <box-icon
+                              data-id={item._id ?? ""}
+                              color={"#b91c1c"}
+                              size="20px"
+                              name="trash"
+                            ></box-icon>
+                          </button>
 
-      <button className="px-3">
-        <box-icon
-         
-          color= "#030712"
-          size="20px"
-          name="edit-alt"
-        ></box-icon>
-      </button>
+                          <button className="px-3" onClick={handleOpenEdit}>
+                            <box-icon
+                              data-id={item._id ?? ""}
+                              color="#030712"
+                              size="20px"
+                              name="edit-alt"
+                            ></box-icon>
+                          </button>
+                          {openDialog1 && (
+                            <EditSallary
+                              open={openDialog1}
+                              setOpen={setOpenDialog1}
+                              productData={item}
+                            />
+                          )}
                         </td>
                       </tr>
                     ))}

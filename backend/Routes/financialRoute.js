@@ -36,7 +36,10 @@ financialroute
 financialroute
   .route("/api/empsallary")
   .post(sallarycontroller.create_sallary)
-  .get(sallarycontroller.get_Sallary);
+  .get(sallarycontroller.get_Sallary)
+financialroute.route("/api/empsallary").delete(sallarycontroller.delete_Sallary);
+financialroute.route("/api/empsallary/:_id").put(sallarycontroller.edit_Sallary);
+
 
 financialroute
   .route("/api/expencelabels")

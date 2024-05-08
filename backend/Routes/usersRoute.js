@@ -9,6 +9,8 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     phone: req.body.phone,
     password: req.body.password,
+    imageurl:req.body.imageurl,
+    
   });
 
   try {

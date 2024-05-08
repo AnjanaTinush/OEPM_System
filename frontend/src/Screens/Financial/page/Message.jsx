@@ -128,10 +128,9 @@ const Message = () => {
         <div className="flex items-center my-4 mx-14">
           <div>
             <img
-              src={tutorialsdev}
-              width={75}
-              height={75}
-              className="border border-primary p-[2px] rounded-full"
+              src={user?.imageurl}
+             
+              className="w-[100px] h-[100px] rounded-full p-[2px] border border-primary"
             />
           </div>
           <div className="ml-8">
@@ -153,7 +152,7 @@ const Message = () => {
                     >
                       <div>
                         <img
-                          src={Img1}
+                          src= {user?.imageurl}
                           className="w-[60px] h-[60px] rounded-full p-[2px] border border-primary"
                         />
                       </div>
@@ -187,7 +186,7 @@ const Message = () => {
         {messages?.receiver?.fullName && (
           <div className="w-[75%] bg-green-300 h-[80px] my-14 rounded-full flex items-center px-14 py-2">
             <div className="cursor-pointer">
-              <img src={Img1} width={60} height={60} className="rounded-full" />
+              <img src={messages?.receiver?.imageurl} className="w-[60px] h-[60px] rounded-full p-[2px] border border-primary" />
             </div>
             <div className="ml-6 mr-auto font-bold font-serif">
               <h3 className="text-lg">{messages?.receiver?.fullName}</h3>
@@ -295,7 +294,7 @@ const Message = () => {
                   >
                     <div>
                       <img
-                        src={Img1}
+                        src={user?.imageurl}
                         className="w-[60px] h-[60px] rounded-full p-[2px] border border-primary"
                       />
                     </div>

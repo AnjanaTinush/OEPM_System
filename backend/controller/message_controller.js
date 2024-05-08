@@ -33,6 +33,7 @@ async function getConversation(req,res){
                 receiverId: user._id,
                 email: user.email,
                 fullName: user.fullName,
+                imageurl:user.imageurl
               },
               conversationId: conversation._id,
             };
@@ -82,7 +83,7 @@ async function getMessage(req,res){
             messages.map(async (message) => {
               const user = await Users.findById(message.senderId);
               return {
-                user: { id: user._id, email: user.email, fullName: user.fullName },
+                user: { id: user._id, email: user.email, fullName: user.fullName, imageurl:user.imageurl },
                 message: message.message,
               };
             })
@@ -117,6 +118,7 @@ async function getUsersByid(req,res){
               user: {
                 email: user.email,
                 fullName: user.fullName,
+                imageurl: user.imageurl,
                 receiverId: user._id,
               },
             };
