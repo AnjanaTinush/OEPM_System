@@ -1,35 +1,34 @@
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require("uuid");
 
 const deliveriesSchema = mongoose.Schema(
   {
-    cname: {
+    orderID: {
       type: String,
-      require: true,
+      unique: true,
     },
-
-    cphone: {
+    trackingCode: {
       type: String,
-      require: true,
+      unique: true,
+      default: uuidv4, // Generates a unique tracking code using UUID v4
     },
-
-    caddress: {
+    customerName: {
       type: String,
-      require: true,
     },
-
-    dname: {
+    customerPhone: {
       type: String,
-      require: true,
     },
-
-    dvehicalnum: {
+    deliveryAddress: {
       type: String,
-      require: true,
     },
-
-    status: {
+    vehicalNumber: {
       type: String,
-      require: true,
+    },
+    driverName: {
+      type: String,
+    },
+    deliveryStatus: {
+      type: String,
     },
   },
   {

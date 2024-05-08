@@ -14,6 +14,7 @@ function Navbar() {
 
   function Logout() {
     localStorage.removeItem("currentuser");
+    localStorage.removeItem("user:detail");
     window.location.href = "/login";
   }
 
@@ -51,11 +52,13 @@ function Navbar() {
                     {/* Dropdown Menu */}
                     {isOpen && (
                       <div className="absolute right-0 mt-0 flex w-40 flex-col bg-wight-green gap-2 rounded-xl p-2 text-green-900 shadow-xl">
-                        <a href="/u_userprofile">
+                       
                           {" "}
                           <div class="flex flex-col">
+                            <Link
+                            to={`/u_userprofile/${user._id}`}>
                             <button
-                              href="/u_userprofile"
+                             
                               class="flex justify-center gap-3 rounded-md py-2 px-3 hover:text-white hover:bg-whatsapp-green no-underline"
                             >
                               <svg
@@ -72,8 +75,9 @@ function Navbar() {
                               </svg>
                               <span>Profile</span>
                             </button>
+                            </Link>
                           </div>
-                        </a>
+                      
                         <button
                           class="flex justify-center gap-1 rounded-md bg-red-600 py-1 px-3 font-semibold hover:bg-red-500 focus:ring-2 focus:ring-red-400 hover:text-white"
                           onClick={Logout}
@@ -107,7 +111,8 @@ function Navbar() {
                 </Link>
                 <Link to={`/register`}>
                   <button
-className="text-white text-base font-semibold border border-solid border-transparent p-3"                    onClick={() => console.log("Navigate to sign-up page")}
+                    className="text-white text-base font-semibold border border-solid border-transparent p-3"
+                    onClick={() => console.log("Navigate to sign-up page")}
                   >
                     Sign Up
                   </button>

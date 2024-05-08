@@ -6,7 +6,7 @@ import axios from "axios";
 function Updatedriver() {
   const driverid = useParams().id;
 
-  // State variables to store form input values
+  // Store variables
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -22,8 +22,8 @@ function Updatedriver() {
           `http://localhost:5000/api/drivers/getdriver/${driverid}`
         );
 
-        console.log(response.data.user);
-        const res = response.data.user;
+       
+        const res = response.data.driver;
 
         setName(res.name);
         setEmail(res.email);
@@ -37,13 +37,13 @@ function Updatedriver() {
     getdriver();
   }, [driverid]);
 
-  // Function to handle phone number input
+  // handle phone number function
   const handlePhoneChange = (e) => {
     const input = e.target.value.replace(/\D/g, "").slice(0, 10); // Remove non-numeric characters and limit to 10 digits
     setPhone(input);
   };
 
-  // Function to handle form submission
+  // handle form submission
   async function Updatedriver(e) {
     e.preventDefault();
 

@@ -21,19 +21,27 @@ const machinesSchema = mongoose.Schema({
     location: {
         type: String,
         required: true
-    }
-    // repairedate : {
-    //     type : String,
-    //     require : true
-    // },
-    // quantity :{
-    //     type : String,
-    //     require : true
-    // },
+    },
+    lastRepairDate : {
+        type : Date,
+        require : true
+    },
+    repairTimePeriod :{
+        type : Number,
+        require : true
+    },
     // Location : {
     //     type : String,
     //     require : true
-    // }
+    vehicleNo: {
+    type: String, 
+    required: false // Not necessarily required for all locations
+  },
+  capacity: {
+    type: Number, 
+    required: false // Not necessarily required for all locations
+  }
+
 },{
     timestamps : true,
 })
