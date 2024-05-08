@@ -1,4 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import React from "react";
 
 import Looginscreen from "./Screens/Login/Looginscreen";
 import Signupscreen from "./Screens/Login/Signupscreen";
@@ -13,8 +16,8 @@ import Targetsdashboard from "./Screens/Targets/Targetsdashboard";
 import Userprofile from "./Screens/User/Userprofile";
 import Allusers from "./Screens/Employee/Allusers";
 import Userupdate from "./Screens/Employee/Userupdate";
-import Drivers from "./Screens//Curiorservice/Drivers"
-import AddDriver from "./Screens/Curiorservice/AddDriver"
+import Drivers from "./Screens//Curiorservice/Drivers";
+import AddDriver from "./Screens/Curiorservice/AddDriver";
 import Updatedriver from "./Screens/Curiorservice/Updatedriver";
 import Curiorservisedashboard from "./Screens/Curiorservice/Curiorservisedashboard";
 import Deliveries from "./Screens/Curiorservice/Deliveries";
@@ -26,8 +29,9 @@ import Tunnelupdate from "./Screens/Tunnel/Tunnelupdate";
 import Euserprofile from "./Screens/Employee/Euserprofile";
 import Requestedleave from "./Screens/Employee/Requestedleave";
 import ShoppingCart from "./Screens/Customerorder/ShoppingCart";
-import CheckoutPage from "./Screens/Customerorder/checkout";
 import PaymentPage from "./Screens/Customerorder/payment";
+import CheckoutPage from "./Screens/Customerorder/checkout";
+
 
 import Approveleave from "./Screens/Employee/Approveleave";
 
@@ -52,6 +56,9 @@ import Forgopassword from './Screens/Employee/Forgopassword'
 import ManageTargets from "./Screens/Targets/ManageTargets";
 import Targets from "./Screens/Targets/Targets";
 import UpdateTarget from "./Screens/Targets/UpdateTarget";
+import AdminTargetApproval from "./Screens/Targets/AdminTargetApproval";
+import OrderDetails from "./Screens/Targets/OrderDetails";
+
 
 import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
@@ -59,7 +66,8 @@ import MachineUpdate from "./Screens/Machine/MachineUpdate";
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
 import Maintain from "./Screens/Tunnel/Maintain";
 import Editeuserprofile from "./Screens/User/Editeuserprofile";
-
+import SheduleOrders_histry from "./Screens/User/SheduleOrders_histry"
+import Feed_back_For_Curiorservice from "./Screens/User/Feed_back_For_Curiorservice"
 
 function App() {
   return (
@@ -114,6 +122,9 @@ function App() {
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+      <Route path="/t_adminTargetApproval" element={<AdminTargetApproval/>}/>
+      <Route path="/t_orderDetails" element={<OrderDetails/>}/>
+
         
         
          <Route path="/income" element={<Income />} />
@@ -122,9 +133,9 @@ function App() {
           <Route path="/e_atendance" element={<Employeeattendance/>}/>
           <Route path="/forgot-password" element={<Forgopassword/>}/>
           <Route path="/u_update/:u_id" element={<Editeuserprofile/>}/>
-
-      </Routes>
-   
+          <Route path="/c_sheduleorderhistry" element={<SheduleOrders_histry/>}/>
+          <Route path="/Feed_back_For_Curiorservice" element={<Feed_back_For_Curiorservice/>}/>
+          </Routes>
     </BrowserRouter>
     
    

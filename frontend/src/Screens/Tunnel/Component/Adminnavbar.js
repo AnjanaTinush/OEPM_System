@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { LuLayoutDashboard } from "react-icons/lu";
 import { GiGreenhouse } from "react-icons/gi";
 import { AiFillProfile } from "react-icons/ai";
-import { PiPottedPlantLight } from "react-icons/pi";
+import { TbTargetArrow } from "react-icons/tb";
 import Navbar from '../../Component/Navbar';
 import logo from '../../../Images/logo.png';
 
@@ -49,6 +49,18 @@ function Adminnavbar() {
         >
           <AiFillProfile className="mr-5 text-lg" />
           <span className="font-bold text-lg">Profiles</span>
+        </Link>
+        <Link
+          to="/t_adminTargetApproval"
+          className={`flex items-center py-3 px-5 ${
+            location.pathname === "/t_adminTargetApproval"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+          style={{ width: '100%', minWidth: '180px' }} // Fixed width for buttons
+        >
+          <TbTargetArrow className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Target Approvals</span>
         </Link>
       </div>
       <div className="flex justify-center items-center mt-20 mr-5">

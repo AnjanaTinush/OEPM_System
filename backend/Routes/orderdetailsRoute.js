@@ -1,9 +1,11 @@
+// routes/shippingDetails.js
+
 const express = require('express');
 const router = express.Router();
-const orderdetailsmodel = require('../models/orderdetailsModel');
+const ShippingDetails = require('../models/orderdetailsModel');
 
-// Route for creating a new order
-router.post('/orderDetails', async (req, res) => {
+// Create Shipping Details
+router.post('/shippingDetails', async (req, res) => {
   try {
     const {
       firstName,
@@ -19,6 +21,7 @@ router.post('/orderDetails', async (req, res) => {
     } = req.body;
 
 
+    
 
     // Assuming cartItems is an array of items to be saved in the order details
     const orderItems = cartItems.map(item => ({
@@ -53,12 +56,12 @@ router.post('/orderDetails', async (req, res) => {
     await newOrder.save();
 
     res.status(201).json({ success: true, message: 'Order placed successfully', order: newOrder });
+    const shippingDetails = new ShippingDetails(req.body);
+    await shippingDetails.save();
+    res.status(201).send(shippingDetails);
   } catch (error) {
-    console.error('Error during order placement: ', error);
-    res.status(500).json({ success: false, message: 'Failed to place order', error: error.message });
+    res.status(400).send(error);
   }
 });
-
-
 
 module.exports = router;
