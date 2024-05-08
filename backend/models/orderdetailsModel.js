@@ -1,67 +1,18 @@
-const mongoose = require("mongoose");
+// models/ShippingDetails.js
 
-const orderdetailsSchema = mongoose.Schema({
-    firstName: {
-        type: String,           
-        requred: true,
-    },
-    lastName: {
-        type: String,
-        requred: true,
-    },
-    email: {
-        type: String,
-        requred: true,
-    },
-    contactNumber: {
-        type: Number,
-        requred: true,
-    },
-    streetAddress: {
-        type: String,
-        requred: true,
-    },
-    city: {
-        type: String,
-        requred: true,
-    },
-    district: {
-        type: String,
-        requred: true,
-    },
-    postalCode: {
-        type: String,
-        requred: true,
-    },
-    itemName: {
-        type: String,
-        requred: true,
-    },
-    itemid: {
-        type: String,
-        requred: true,
-    },
-    userid: {
-        type: String,
-        requred: true,
-    },
-    quantity: {
-        type: Number,
-        requred: true,
-    },
-    price: {
-        type: Number,
-        requred: true,
-    },
-    totalprice: {
-        type: Number, 
-        requred: true,
-    },
-    imageurl: []
-}, {
-    timestamps: true
+const mongoose = require('mongoose');
+
+const shippingDetailsSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  email: String,
+  contactNumber: String,
+  streetAddress: String,
+  city: String,
+  district: String,
+  postalCode: String,
 });
 
-const orderdetailsmodel = mongoose.model('orderdetails', orderdetailsSchema);
+const ShippingDetails = mongoose.model('ShippingDetails', shippingDetailsSchema);
 
-module.exports = orderdetailsmodel;
+module.exports = ShippingDetails;

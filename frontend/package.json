@@ -30,7 +30,7 @@
     "react-calendar": "^4.8.0",
     "react-chartjs-2": "^5.2.0",
     "react-circular-progressbar": "^2.1.0",
-    "react-datepicker": "^6.8.0",
+    "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
     "react-hot-toast": "^2.4.1",
@@ -41,6 +41,7 @@
     "react-spinners": "^0.13.8",
     "react-to-print": "^2.15.1",
     "stream-browserify": "^3.0.0",
+    "react-toastify": "^10.0.5",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.10.7",
     "web-vitals": "^2.1.4"
