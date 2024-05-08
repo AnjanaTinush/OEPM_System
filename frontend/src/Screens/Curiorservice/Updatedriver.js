@@ -22,8 +22,8 @@ function Updatedriver() {
           `http://localhost:5000/api/drivers/getdriver/${driverid}`
         );
 
-        console.log(response.data.user);
-        const res = response.data.user;
+       
+        const res = response.data.driver;
 
         setName(res.name);
         setEmail(res.email);
