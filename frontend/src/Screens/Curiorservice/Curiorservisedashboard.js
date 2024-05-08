@@ -16,8 +16,15 @@ function Curiorservisedashboard() {
   // hold counts of available and unavailable drivers
   const [availableCount, setAvailableCount] = useState(0);
   const [unavailableCount, setUnavailableCount] = useState(0);
+  const [pendingDeliveriesCount, setPendingDeliveriesCount] = useState(0);
+  const [completedDeliveriesCount, setCompletedDeliveriesCount] = useState(0);
 
-  // Fetch driver data component
+  
+
+
+  
+
+  // Fetch  data component
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,24 +32,31 @@ function Curiorservisedashboard() {
   // Fetch driver data from database
   const fetchData = async () => {
     try {
-      const response = await axios.get("/api/drivers/getalldrivers");
-      const availableDrivers = response.data.filter(
-        (driver) => driver.availability === "Available"
-      );
-      const unavailableDrivers = response.data.filter(
-        (driver) => driver.availability === "Unavailable"
-      );
+      const driversResponse = await axios.get("/api/drivers/getalldrivers");
+      const deliveriesResponse = await axios.get("/api/deliveries/getalldeliveries");
+
+      const availableDrivers = driversResponse.data.filter(driver => driver.availability === "Available");
+      const unavailableDrivers = driversResponse.data.filter(driver => driver.availability === "Unavailable");
+
       setAvailableCount(availableDrivers.length);
       setUnavailableCount(unavailableDrivers.length);
+
+      const pendingDeliveries = deliveriesResponse.data.filter(delivery => delivery.deliveryStatus !== "Completed");
+      const completedDeliveries = deliveriesResponse.data.filter(delivery => delivery.deliveryStatus === "Completed");
+
+      setPendingDeliveriesCount(pendingDeliveries.length);
+      setCompletedDeliveriesCount(completedDeliveries.length);
     } catch (error) {
-      console.error("Error fetching drivers:", error);
+      console.error("Error fetching data:", error);
     }
   };
+
+ 
 
   //  when available or unavailable change Render pie chart
   useEffect(() => {
     renderPieChart();
-  }, [availableCount, unavailableCount]);
+  }, [pendingDeliveriesCount, completedDeliveriesCount]);
 
   // render the pie chart
   const renderPieChart = () => {
@@ -104,10 +118,10 @@ function Curiorservisedashboard() {
           <Flexbox className="flex justify-evenly p-5 gap-2 bg-justify-between ">
             {/* New Deliveries Card */}
             <Flexbox className="p-4 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
-              New Deliveries
+              All Deliveries
               <br />
               <br />
-              50
+              {pendingDeliveriesCount + completedDeliveriesCount}
               <BsCartPlus className="w-20 h-20 ml-12 opacity-70 " />
             </Flexbox>
             {/* Pending Deliveries Card */}
@@ -115,15 +129,15 @@ function Curiorservisedashboard() {
               Pending Deliveries
               <br />
               <br />
-              20
+              {pendingDeliveriesCount}
               <PiClockCountdown className="w-20 h-20 ml-12" />
             </Flexbox>
             {/* Delivered Card */}
             <Flexbox className="p-4 border-solid border-2 border-whatsapp-green rounded-lg shadow-2xl bg-white">
-              Delivered
+              Completed Deliveries
               <br />
               <br />
-              5
+              {completedDeliveriesCount}
               <BsCartCheck className="w-20 h-20 ml-12" />
             </Flexbox>
             {/* Available Drivers Card */}
