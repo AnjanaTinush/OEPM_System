@@ -87,7 +87,7 @@ function Requestedleave() {
             <div className="flex">
               <AdprofileNavbar />
               <div className="flex flex-col w-full" style={{ zIndex: 900 }}>
-                <div className="flex max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-16 ">
+                <div className="flex max-w-2xl bg-gray-200 border rounded-3xl px-2 mx-auto mt-12 ">
                   <form
                     className="flex items-center w-full"
                     action="leaverequest"
@@ -116,13 +116,13 @@ function Requestedleave() {
                   </form>
                 </div>
 
-                <div className="flex justify-center items-center  h-full mt-10 mb-4">
-                  <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-5">
+                <div className="flex justify-center items-center  mt-5 ">
+                  <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-3">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
                       <thead className="text-xs text-whatsapp-green uppercase bg-wight-green dark:bg-whatsapp-green dark:text-wight-green ">
                         <tr>
                           <th scope="col" className="px-6 py-3">
-                            id
+                            No
                           </th>
                           <th scope="col" className="px-6 py-3">
                             From Date
@@ -139,13 +139,13 @@ function Requestedleave() {
                         </tr>
                       </thead>
                       <tbody>
-                        {leaves.map((leave) => (
+                        {leaves.map((leave, index) => (
                           <tr
                             key={leave.id}
                             className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover mb-4"
                           >
                             <td className="px-6 py-4 font-medium text-green-900">
-                              {leave._id}
+                              {index + 1}
                             </td>
                             <td className="px-6 py-4 text-green-900">
                               {leave.fromdate}

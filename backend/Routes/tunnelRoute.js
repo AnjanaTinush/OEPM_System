@@ -1,6 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const tunnel = require("../models/tunelsModel");
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com', // Your SMTP host
+  port: 587, // Your SMTP port
+  secure: false, // true for 465, false for other ports
+  auth: {
+    user: 'tunnelmanage@gmail.com', // Your email address
+    pass: 'gitm czlm lchp geno' // Your email password or app-specific password
+  }
+});
+
 
 router.post("/t_register", async (req, res) => {
   const newtunnel = new tunnel({
@@ -136,6 +148,34 @@ router.put("/updatecurrentcapacity/:id", async (req, res) => {
     if (isNaN(newCapacity) || newCapacity < 0) {
       return res.status(400).json({ message: "Invalid current capacity value" });
     }
+
+    const emailContent = `
+    Dear Machinery Manager,
+    
+    Plant Type: ${existingTunnel.plantType}
+    Temperature: ${existingTunnel.temperature}°C
+    Humidity: ${existingTunnel.humidity}%
+    Maximum Capacity: ${existingTunnel.capacity}
+    Current Capacity: ${newCapacity}
+    -------------------------------------
+    The capacity of tunnel ${existingTunnel.plantType} has been updated.
+  `;
+
+    // Send email notification to user
+    const mailOptions = {
+      from: 'tunnelmanage@gmail.com', // Sender's email address
+      to: 'sulanapeiris@gmail.com', // Recipient's email address
+      subject: 'Tunnel Capacity Update', // Email subject
+      text: emailContent // Email content
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+      } else {
+        console.log('Email sent:', info.response);
+      }
+    });
 
     if (newCapacity > existingTunnel.capacity) {
       return res.status(400).json({ message: "Current capacity exceeds maximum capacity" });

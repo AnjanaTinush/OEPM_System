@@ -4,17 +4,14 @@ import Navbar from '../../Component/Navbar';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    // State variables to hold cart items and total price
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [addedItemIds, setAddedItemIds] = useState([]);
 
-    // Fetch cart items when component mounts
     useEffect(() => {
         fetchCartItems();
     }, []);
 
-
-    // Function to fetch cart items from the server
     const fetchCartItems = async () => {
         try {
             const response = await axios.get('/api/shoppingCart/getitem');
@@ -25,19 +22,26 @@ const Cart = () => {
         }
     };
 
-
-    // Function to remove item from cart
-    const removeFromCart = async (id) => {
+    const addToCart = async (id) => {
+        // Check if the item already exists in the cart
+        const isItemInCart = cartItems.some(item => item._id === id);
+        if (isItemInCart) {
+            alert('Item has already been added to the cart');
+            return;
+        }
+    
         try {
-            await axios.delete(`/api/shoppingCart/${id}`);
+            // Add the item to the cart by making a request to the server
+            await axios.post(`/api/shoppingCart/add/${id}`);
+            // Fetch updated cart items
             fetchCartItems();
         } catch (error) {
-            console.error('Error removing item from cart: ', error);
+            console.error('Error adding item to cart: ', error);
         }
     };
+    
+    
 
-
-    // Function to calculate total price of cart items
     const calculateTotalPrice = (items) => {
         let totalPrice = 0;
         items.forEach(item => {
@@ -46,19 +50,6 @@ const Cart = () => {
         setTotalPrice(totalPrice);
     };
 
-
-    // Function to update quantity of an item in cart
-    const updateQuantity = async (id, quantity) => {
-        try {
-            await axios.put(`/api/shoppingCart/${id}`, { quantity: quantity });
-            fetchCartItems();
-        } catch (error) {
-            console.error('Error updating quantity: ', error);
-        }
-    };
-
-
-    // Handler function for quantity change
     const handleQuantityChange = (id, newQuantity) => {
         const updatedCartItems = cartItems.map(item => {
             if (item._id === id) {
@@ -70,24 +61,36 @@ const Cart = () => {
         calculateTotalPrice(updatedCartItems);
     };
 
+    const removeFromCart = async (id) => {
+        try {
+            await axios.delete(`/api/shoppingCart/${id}`);
+            fetchCartItems();
+        } catch (error) {
+            console.error('Error removing item from cart: ', error);
+        }
+    };
 
-    // Function to increment quantity of an item in cart
+    const updateQuantity = async (id, quantity) => {
+        try {
+            await axios.put(`/api/shoppingCart/${id}`, { quantity: quantity });
+            fetchCartItems();
+        } catch (error) {
+            console.error('Error updating quantity: ', error);
+        }
+    };
+
     const incrementQuantity = (id, currentQuantity) => {
         const newQuantity = currentQuantity + 1;
         handleQuantityChange(id, newQuantity);
         updateQuantity(id, newQuantity);
     };
 
-
-     // Function to decrement quantity of an item in cart
     const decrementQuantity = (id, currentQuantity) => {
         const newQuantity = Math.max(1, currentQuantity - 1);
         handleQuantityChange(id, newQuantity);
         updateQuantity(id, newQuantity);
     };
 
-
-    // Function to update cart item
     async function Updatecart(itemid, quantity, totalprice) {
         const updatecart = {
             quantity,
@@ -100,7 +103,8 @@ const Cart = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
+
     return (
         <div className="h-screen bg-gray-100 ">
             <div>
