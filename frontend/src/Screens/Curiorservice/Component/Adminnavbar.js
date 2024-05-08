@@ -5,6 +5,8 @@ import logo from "../../../Images/logo.png";
 import { GiSteeringWheel } from "react-icons/gi";
 import Navbar from "../../Component/Navbar";
 import { TbTruckDelivery } from "react-icons/tb";
+import { VscFeedback } from "react-icons/vsc";
+
 
 function Adminnavbar() {
   const location = useLocation();
@@ -28,7 +30,7 @@ function Adminnavbar() {
           <span className="font-bold text-lg">Dash Board</span>
         </Link>
 
-        {/* <Link
+        <Link
           to="/j_deliveries"
           className={`flex items-center w-full py-3 px-4 ${
             location.pathname === "/j_deliveries"
@@ -38,7 +40,7 @@ function Adminnavbar() {
         >
           <TbTruckDelivery className="mr-5 text-lg" />
           <span className="font-bold text-lg">Deliveries</span>
-        </Link> */}
+        </Link>
 
         <Link
           to="/j_drivers"
@@ -52,17 +54,18 @@ function Adminnavbar() {
           <span className="font-bold text-lg">Drivers</span>
         </Link>
 
-        {/* <Link
-          to="/j_driverprofile"
+
+        <Link
+          to="/j_feedback"
           className={`flex items-center w-full py-3 px-4 ${
-            location.pathname === "/j_driverprofile"
+            location.pathname === "/j_feedback"
               ? "bg-whatsapp-green text-white"
               : "hover:bg-whatsapp-green text-green-900"
           } font-custom rounded-md text-decoration-none mb-2`}
         >
-          <GiSteeringWheel className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Driver Profile</span>
-        </Link> */}
+          <VscFeedback  className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Feedback</span>
+        </Link>
 
 
       </div>
