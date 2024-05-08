@@ -81,7 +81,7 @@ function Allusers() {
   }, []);
 
   //add users for the System
-  const [name, setname] = useState("");
+  const [fullName, setfullName] = useState("");
   const [email, setemail] = useState("");
   const [phone, setphone] = useState("");
   const [password, setpassword] = useState("");
@@ -97,7 +97,7 @@ function Allusers() {
       }
 
       const user = {
-        name,
+        fullName,
         email,
         phone,
         password,
@@ -159,17 +159,12 @@ function Allusers() {
     }
   };
 
-
-
-  
-
   //search user using name
-
 
   // Search user using name and filter by type
   function filterBySearch() {
     const filteredBySearch = duplicateusers.filter((user) =>
-      user.name.toLowerCase().includes(searchkey.toLowerCase())
+      user.fullName.toLowerCase().includes(searchkey.toLowerCase())
     );
 
     if (type !== "all") {
@@ -258,7 +253,7 @@ function Allusers() {
         ];
 
         const data = users.map((user) => [
-          user.name,
+          user.fullName,
           user.email,
           user.phone,
           user.role,
@@ -304,8 +299,8 @@ function Allusers() {
                       <input
                         type="text"
                         placeholder="Enter user name"
-                        value={name}
-                        onChange={(e) => setname(e.target.value)}
+                        value={fullName}
+                        onChange={(e) => setfullName(e.target.value)}
                         className="mt-1 p-2 block w-full rounded-3xl dark:bg-table-row border-none focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md"
                         required
                       />
@@ -461,7 +456,7 @@ function Allusers() {
                 </thead>
 
                 <tbody>
-
+                  {/*user details table*/}
 
                   {users.length > 0 ? (
                     users.map((user) => (
@@ -470,7 +465,7 @@ function Allusers() {
                         className="bg-white dark:bg-table-row hover:tablerow-hover dark:hover:bg-tablerow-hover"
                       >
                         <td className="px-6 py-4 text-green-900 left-0">
-                          {user.name}
+                          {user.fullName}
                         </td>
                         <td className="px-6 py-4 text-green-900 left-0">
                           {user.email}

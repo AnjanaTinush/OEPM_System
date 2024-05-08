@@ -33,8 +33,11 @@ import PaymentPage from "./Screens/Customerorder/payment";
 import CheckoutPage from "./Screens/Customerorder/checkout";
 
 
+
+
 import Approveleave from "./Screens/Employee/Approveleave";
 import Feedback from "./Screens/Curiorservice/Feedback";
+
 
 
 
@@ -43,13 +46,16 @@ import Itemupdate from "./Screens/Inventory/Itemupdate";
 import Itemhistory from "./Screens/Inventory/History";
 import Itemfaq from "./Screens/Inventory/Faq";
 import Tunnelprofile from "./Screens/Tunnel/Tunnelprofile";
-import Edidemployeeprofile from './Screens/Employee/Edidemployeeprofile'
+import Edidemployeeprofile from "./Screens/Employee/Edidemployeeprofile";
 
 import Income from "./Screens/Financial/page/income";
 import Expence from "./Screens/Financial/page/expence";
 import EMPSallary from "./Screens/Financial/page/EmplyeeSallary";
 import Employeeattendance from "./Screens/Employee/Employeeattendance";
 import Forgopassword from './Screens/Employee/Forgopassword'
+
+
+
 
 
 
@@ -60,10 +66,13 @@ import AdminTargetApproval from "./Screens/Targets/AdminTargetApproval";
 import OrderDetails from "./Screens/Targets/OrderDetails";
 
 
-import Machine from './Screens/Machine/Machine'
+import Machine from "./Screens/Machine/Machine";
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
 
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
+
+import Message from "./Screens/Financial/page/Message";
+
 // import {MachineMap} from "./Screens/Machine/MachineMap";
 import {MVehical} from "./Screens/Machine/MVehical"
 
@@ -73,6 +82,7 @@ import Maintain from "./Screens/Tunnel/Maintain";
 import Editeuserprofile from "./Screens/User/Editeuserprofile";
 import SheduleOrders_histry from "./Screens/User/SheduleOrders_histry"
 import Feed_back_For_Curiorservice from "./Screens/User/Feed_back_For_Curiorservice"
+
 
 function App() {
   return (
@@ -140,6 +150,7 @@ function App() {
          <Route path="/income" element={<Income />} />
           <Route path="/expence" element={<Expence />} />
           <Route path="/empsallary" element={<EMPSallary />} />
+           <Route path="/message" element={<Message />} />
           <Route path="/e_atendance" element={<Employeeattendance/>}/>
           <Route path="/forgot-password" element={<Forgopassword/>}/>
           <Route path="/u_update/:u_id" element={<Editeuserprofile/>}/>
@@ -149,6 +160,7 @@ function App() {
     </BrowserRouter>
     
    
+
     </div>
   );
 }

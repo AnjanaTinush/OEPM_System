@@ -14,6 +14,7 @@ function Navbar() {
 
   function Logout() {
     localStorage.removeItem("currentuser");
+    localStorage.removeItem("user:detail");
     window.location.href = "/login";
   }
 
@@ -110,7 +111,8 @@ function Navbar() {
                 </Link>
                 <Link to={`/register`}>
                   <button
-className="text-white text-base font-semibold border border-solid border-transparent p-3"                    onClick={() => console.log("Navigate to sign-up page")}
+                    className="text-white text-base font-semibold border border-solid border-transparent p-3"
+                    onClick={() => console.log("Navigate to sign-up page")}
                   >
                     Sign Up
                   </button>

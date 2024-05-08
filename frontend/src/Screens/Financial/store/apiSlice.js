@@ -7,14 +7,14 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     // get categories
     getCategories: builder.query({
-      // get: 'http://localhost:8080/api/categories'
+     
       query: () => "/api/incomecategories",
       providesTags: ["categories"],
     }),
 
     // get labels
     getLabels: builder.query({
-      // get: 'http://localhost:8080/api/labels'
+     
       query: () => "/api/labels",
       providesTags: ["transaction"],
     }),
@@ -22,7 +22,7 @@ export const apiSlice = createApi({
     // add new Transaction
     addTransaction: builder.mutation({
       query: (initialTransaction) => ({
-        // post: 'http://localhost:8080/api/transaction'
+       
         url: "/api/income",
         method: "POST",
         body: initialTransaction,
@@ -33,7 +33,7 @@ export const apiSlice = createApi({
     // delete record
     deleteTransaction: builder.mutation({
       query: (recordId) => ({
-        // delete: 'http://localhost:8080/api/transaction'
+        
         url: "/api/income",
         method: "DELETE",
         body: recordId,
@@ -42,10 +42,10 @@ export const apiSlice = createApi({
     }),
     editIncome: builder.mutation({
       query: (recordId) => ({
-        // put: http://localhost:8082/api/product/${updateProduct.id}
+       
         url: `/api/income/${recordId._id}`,
         method: "PUT",
-        body: { recordId },
+        body: { recordId }, // Pass the updated properties in the body
       }),
       invalidatesTags: ["transaction"],
     }),
@@ -68,7 +68,7 @@ export const apiSlice = createApi({
     // add new Transaction
     addExpence: builder.mutation({
       query: (initialTransaction) => ({
-        // post: 'http://localhost:8080/api/transaction'
+        
         url: "/api/expence",
         method: "POST",
         body: initialTransaction,
@@ -79,7 +79,7 @@ export const apiSlice = createApi({
     // delete record
     deleteExpence: builder.mutation({
       query: (recordId) => ({
-        // delete: 'http://localhost:8080/api/transaction'
+       
         url: "/api/expence",
         method: "DELETE",
         body: recordId,
@@ -88,8 +88,8 @@ export const apiSlice = createApi({
     }),
     editExpence: builder.mutation({
       query: (recordId) => ({
-        // put: http://localhost:8082/api/product/${updateProduct.id}
-        url:` /api/expence/${recordId._id}`,
+        
+        url: `/api/expence/${recordId._id}`,
         method: "PUT",
         body: { recordId }, // Pass the updated properties in the body
       }),
@@ -110,6 +110,26 @@ export const apiSlice = createApi({
       query: () => "/api/empsallary",
       providesTags: ["sallary"],
     }),
+
+    editSallary: builder.mutation({
+      query: (recordId) => ({
+        
+        url: `/api/empsallary/${recordId._id}`,
+        method: "PUT",
+        body: { recordId }, // Pass the updated properties in the body
+      }),
+      invalidatesTags: ["sallary"],
+    }),
+    deleteSallary: builder.mutation({
+      query: (recordId) => ({
+       
+        url: "/api/empsallary",
+        method: "DELETE",
+        body: recordId,
+      }),
+      invalidatesTags: ["sallary"],
+    }),
+
   }),
 });
 

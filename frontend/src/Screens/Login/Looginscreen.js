@@ -36,6 +36,7 @@ function Looginscreen() {
       setloading(false);
 
       localStorage.setItem("currentuser", JSON.stringify(result.data.user));
+      localStorage.setItem("user:detail", JSON.stringify(result.data.user));
 
       // Check the success property in the response
       if (result.data.success) {
@@ -82,7 +83,7 @@ function Looginscreen() {
             data-aos="zoom in"
             className="flex flex-col justify-center items-center bg-zinc-800 min-h-screen"
             style={{
-              backgroundImage: `url(${bgimg1})`,
+              backgroundImage: url(${bgimg1}),
               backgroundSize: "cover",
               backgroundPosition: "center",
               fontFamily: "Poppins, sans-serif",
@@ -173,4 +174,4 @@ function Looginscreen() {
   );
 }
 
-export default Looginscreen;
+export default Looginscreen;
