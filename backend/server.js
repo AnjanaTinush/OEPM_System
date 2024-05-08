@@ -24,10 +24,12 @@ const deliveriesRoute = require("./Routes/deliveriesRoute");
 const leavesRoutes = require("./Routes/leavesRoutes");
 const customerOrderRoute = require("./Routes/customerOrderRoute");
 const shoppingCartRoute = require("./Routes/shoppingCartRoute");
+const driverfeedbackRoute = require("./Routes/driverfeedbackRoute");
 
 const inventoryRoutes = require("./Routes/InventoryRoute")
 const targetRoutes = require("./Routes/targetsRoute")
 const machinesRoute = require("./Routes/machineRoute");
+const MVehicalRoute = require("./Routes/MVehicalRoute")
 const attendanceInRoute=require("./Routes/attendanceIn_Route.js")
 const attendanceOutRoute=require("./Routes/attendanceOut_Route.js")
 const forgotpasswordRoute=require("./Routes/forgotpasswordRout.js")
@@ -58,10 +60,15 @@ app.use("/api/shoppingCart", shoppingCartRoute);
 app.use("/api/drivers", driverRoute);
 app.use("/api/deliveries", deliveriesRoute);
 app.use("/api/machines", machinesRoute);
+app.use("/api/driverfeedback", driverfeedbackRoute);
+
+app.use("/api/machines", machinesRoute);
+app.use("/api/MVehical", MVehicalRoute);
+
 
 app.use("/api/leaves", leavesRoutes);
 app.use("/api/inventory", inventoryRoutes);
-app.use("/api/target", targetRoutes)
+app.use("/api/target", targetRoutes);
 
 
 app.use(require("./Routes/financialRoute.js"));

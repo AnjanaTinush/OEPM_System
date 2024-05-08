@@ -9,17 +9,28 @@ import { CiSearch } from "react-icons/ci";
 import Swal from "sweetalert2";
 
 function Drivers() {
+  // storing all drivers
   const [drivers, setDrivers] = useState([]);
+
+  // State for search query
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Reference PDF component
   const componentPDF = useRef();
+
+  // State for availability filter
   const [availabilityFilter, setAvailabilityFilter] = useState("All");
+
+  // Current date and time
   const currentDate = new Date().toLocaleDateString();
   const currentTime = new Date().toLocaleTimeString();
 
+  // Fetch all drivers from database
   useEffect(() => {
     fetchData();
   }, []);
 
+  // fetch all drivers
   const fetchData = async () => {
     try {
       const response = await axios.get("/api/drivers/getalldrivers");
@@ -29,8 +40,10 @@ function Drivers() {
     }
   };
 
+  // delete a driver
   const deleteDriver = async (id) => {
     try {
+      // Confirmation alert before deleting
       const result = await Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -43,8 +56,10 @@ function Drivers() {
 
       if (result.isConfirmed) {
         await axios.delete(`/api/drivers/delete/${id}`);
+        // Update drivers page after deletion
         setDrivers(drivers.filter((driver) => driver._id !== id));
 
+        // Success alert
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -56,9 +71,11 @@ function Drivers() {
     }
   };
 
+  //generate PDF report
   const generatePDF = () => {
     const printWindow = window.open("", "_blank", "width=1600,height=750");
 
+    //print the PDF
     printWindow.document.write(`
       <html>
         <head>
@@ -135,10 +152,10 @@ function Drivers() {
       </html>
     `);
 
-    
     printWindow.print();
   };
 
+  // Filter drivers from search and availability
   const filteredDrivers = drivers.filter(
     (driver) =>
       driver.name &&
@@ -154,14 +171,18 @@ function Drivers() {
         backgroundSize: "cover",
       }}
     >
+      {/* Navigation bar */}
       <AdminNavbar />
       <Navbar />
 
+      {/* Title */}
       <h1 className="flex justify-center text-5xl font-semibold ml-44 p-8 font-serif text-green-800">
         Driver details
       </h1>
 
+      {/* Search and filter*/}
       <div className="flex justify-center ml-64 m-auto gap-8 p-5 ">
+        {/* Search input */}
         <div className="relative">
           <CiSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500" />
           <input
@@ -173,6 +194,7 @@ function Drivers() {
           />
         </div>
 
+        {/* Availability filter */}
         <select
           className="p-2 rounded-3xl bg-wight-green border-solid border-2 border-gray focus:outline-whatsapp-green placeholder-gray-500 placeholder-opacity-50 font-custom text-md shadow-xl"
           value={availabilityFilter}
@@ -182,6 +204,8 @@ function Drivers() {
           <option value="Available">Available</option>
           <option value="Unavailable">Unavailable</option>
         </select>
+
+        {/* Generate PDF report button */}
 
         <div className="flex justify-center items-center">
           <button
@@ -193,6 +217,7 @@ function Drivers() {
           </button>
         </div>
 
+        {/* Add driver button */}
         <Link to="/j_AddDriver">
           <button
             type="button"
@@ -203,6 +228,7 @@ function Drivers() {
         </Link>
       </div>
 
+      {/* Drivers table */}
       <div className="flex justify-center items-center h-full">
         <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-60">
           <div ref={componentPDF} style={{ width: "100%" }}>

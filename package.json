@@ -3,6 +3,7 @@
     "@types/aos": "^3.0.7"
   },
   "dependencies": {
-    "chart.js": "^4.4.2"
+    "chart.js": "^4.4.2",
+    "nodemailer": "^6.9.13"
   }
 }
