@@ -30,22 +30,19 @@ const machinesSchema = mongoose.Schema({
         type : Number,
         require : true
     },
-    // Location : {
-    //     type : String,
-    //     require : true
-    vehicleNo: {
-    type: String, 
-    required: false // Not necessarily required for all locations
-  },
-  capacity: {
-    type: Number, 
-    required: false // Not necessarily required for all locations
-  }
-
+    VehicalNO :{
+        type : Number,
+        require : true
+    },
+    Capacity :{
+        type : Number,
+        require : true
+    },
+    
 },{
     timestamps : true,
 })
 
-const machinesModel = mongoose.model('machine' , machinesSchema)
+const MVehicalModel = mongoose.model('vehical' , machinesSchema)
 
-module.exports = machinesModel
+module.exports = MVehicalModel

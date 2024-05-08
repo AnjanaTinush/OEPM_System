@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import jsPDF from 'jspdf';
+import Navbar from "../../Component/Navbar";
+
 
 
 function ShippingDetailsForm() {
@@ -90,40 +91,12 @@ function ShippingDetailsForm() {
       console.error('Error creating order: ', error);
     }
   };
-  // Function to generate PDF report
-  const generateReport = (firstName, lastName, phoneNumber, totalPrice, cartItems) => {
-    const doc = new jsPDF();
-
-    let y = 20; // Initial Y position
-
-    // Header
-    doc.setFontSize(16);
-    doc.text('Order Summary', 105, y, { align: 'center' });
-    y += 10; // Increase Y position
-
-    // Customer information
-    doc.setFontSize(12);
-    doc.text(`Name: ${firstName} ${lastName}`, 20, y);
-    doc.text(`Phone Number: ${phoneNumber}`, 20, y + 10);
-    y += 20; // Increase Y position
-
-    // Order items
-    doc.setFontSize(14);
-    cartItems.forEach(item => {
-      doc.text(`${item.itemName}: Qty ${item.quantity} - Rs.${item.price.toFixed(2)}`, 20, y);
-      y += 10; // Increase Y position
-    });
-
-    // Total price
-    doc.setFontSize(16);
-    doc.text(`Total Price: Rs.${totalPrice.toFixed(2)}`, 20, y + 10);
-
-    // Save PDF
-    doc.save('order_summary.pdf');
-  };
+ 
 
 
   return (
+    <div>
+    <Navbar />
     <div className="checkoutScreen  ">
       <div className="checkoutScreen flex justify-start ml-16 mt-20 ">
         <div className='screen__left border border-green-500 px-10 '>
@@ -224,13 +197,9 @@ function ShippingDetailsForm() {
         </div>
 
       </div>
-      <div className="flex items-center justify-center mt-10">
-        <button type="submit" className="rounded-md bg-red-600 px-12 py-3 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
-          onClick={() => generateReport(firstName, lastName, phoneNumber, totalPrice, cartItems)} >
-          Download Invoice
-        </button>
-      </div>
+      
 
+    </div>
     </div>
   );
 }

@@ -64,6 +64,11 @@ import Machine from './Screens/Machine/Machine'
 import MachineUpdate from "./Screens/Machine/MachineUpdate";
 
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
+// import {MachineMap} from "./Screens/Machine/MachineMap";
+import {MVehical} from "./Screens/Machine/MVehical"
+
+
+
 import Maintain from "./Screens/Tunnel/Maintain";
 import Editeuserprofile from "./Screens/User/Editeuserprofile";
 import SheduleOrders_histry from "./Screens/User/SheduleOrders_histry"
@@ -120,9 +125,13 @@ function App() {
       <Route path="/m_targets" element={<ManageTargets/>}/>
       <Route path="/t_targets" element={<Targets/>}/>
       <Route path="/t_targetupdate/:targetid" element={<UpdateTarget/>}/>
+
       <Route path='/m_machine' element={<Machine/>}/>
       <Route path="m_update/:mid" element={<MachineUpdate/>}/>
       <Route path="/m_MachinePdf" element={<MachinePdf/>}/>
+      <Route path="m_MVehical" element={<MVehical/>}/>
+      
+   
       <Route path="/t_adminTargetApproval" element={<AdminTargetApproval/>}/>
       <Route path="/t_orderDetails" element={<OrderDetails/>}/>
 
