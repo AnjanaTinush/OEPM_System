@@ -58,7 +58,8 @@ import MachineUpdate from "./Screens/Machine/MachineUpdate";
 
 import { MachinePdf } from "./Screens/Machine/MachinePdf";
 import Editeuserprofile from "./Screens/User/Editeuserprofile";
-
+import SheduleOrders_histry from "./Screens/User/SheduleOrders_histry"
+import Feed_back_For_Curiorservice from "./Screens/User/Feed_back_For_Curiorservice"
 
 function App() {
   return (
@@ -121,9 +122,9 @@ function App() {
           <Route path="/e_atendance" element={<Employeeattendance/>}/>
           <Route path="/forgot-password" element={<Forgopassword/>}/>
           <Route path="/u_update/:u_id" element={<Editeuserprofile/>}/>
-
-      </Routes>
-   
+          <Route path="/c_sheduleorderhistry" element={<SheduleOrders_histry/>}/>
+          <Route path="/Feed_back_For_Curiorservice" element={<Feed_back_For_Curiorservice/>}/>
+          </Routes>
     </BrowserRouter>
     
    
