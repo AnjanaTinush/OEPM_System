@@ -17,8 +17,7 @@ const Products = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null); // State to hold selected item
-  const [quantity, setQuantity] = useState(1); // State to hold item quantity, initialized to 1
+  const [selectedItem, setSelectedItem] = useState(null); 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
@@ -89,27 +88,38 @@ const Products = () => {
     });
   };
 
-  const scheduleOrder = async () => {
-    try {
-      console.log("Sending request with payload:", {
-        itemName: selectedItem.name,
-        price: selectedItem.price,
-        quantity: selectedItem.quantity,
-        date: selectedDate,
-      }); // Log the payload being sent
-      const response = await axios.post("http://localhost:5000/api/scheduleorder", {
-        itemName: selectedItem.name,
-        price: selectedItem.price,
-        quantity: selectedItem.quantity,
-        date: selectedDate,
-      });
-      console.log("Order scheduled successfully:", response.data);
-      setShowModal(false);
-    } catch (error) {
-      console.error("Error scheduling order:", error.response || error.message);
-      alert("Failed to schedule order.");
-    }
-  };
+  const[userid,setuserid]=useState();
+  const [itemName,setitemName]=useState();
+  const [price,setprice]=useState()
+  const [quantity,setquantity]=useState();
+  const[date,setdate]=useState();
+
+
+
+const scheduleOrder = async () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentuser"));
+
+  const result={
+    
+      userid:currentUser._id, // Assuming you have a way to get the user ID
+      itemName: selectedItem.name,
+      price: selectedItem.price,
+      quantity: selectedItem.quantity,
+      date: selectedDate.toISOString() // Convert date to ISO string format
+    
+  }
+  try {
+    
+    const response = await axios.post("http://localhost:5000/api/ScheduleOrder/newScheduleOrder", result);
+    console.log("Order scheduled successfully:", response.data);
+    setShowModal(false);
+    alert("schedule order successfully ");
+  } catch (error) {
+    console.error("Error scheduling order:", error.response || error.message);
+    alert("Failed to schedule order.");
+  }
+};
+
   
   
 
