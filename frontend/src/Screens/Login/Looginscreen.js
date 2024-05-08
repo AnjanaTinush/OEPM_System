@@ -15,6 +15,7 @@ AOS.init({
   duration: "1000",
 });
 
+
 function Looginscreen() {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -35,7 +36,6 @@ function Looginscreen() {
       setloading(false);
 
       localStorage.setItem("currentuser", JSON.stringify(result.data.user));
-
       localStorage.setItem("user:detail", JSON.stringify(result.data.user));
 
       // Check the success property in the response
@@ -83,7 +83,7 @@ function Looginscreen() {
             data-aos="zoom in"
             className="flex flex-col justify-center items-center bg-zinc-800 min-h-screen"
             style={{
-              backgroundImage: `url(${bgimg1})`,
+              backgroundImage: url(${bgimg1}),
               backgroundSize: "cover",
               backgroundPosition: "center",
               fontFamily: "Poppins, sans-serif",
@@ -148,10 +148,13 @@ function Looginscreen() {
                       }}
                     />
 
-                    <div className="text-base text-stone-950 mt-5 text-center">
-                      <span className="text-zinc-400">Fogot password? </span>{" "}
-                      <a href=""> Click Here</a>
-                    </div>
+                   <div className="text-base text-stone-950 mt-5 text-center">
+               <span className="text-zinc-400">Fogot password? </span> <a href='/forgot-password'> Click
+                Here
+                </a>
+              </div>
+
+                    
 
                     <button
                       type="submit"
@@ -171,4 +174,4 @@ function Looginscreen() {
   );
 }
 
-export default Looginscreen;
+export default Looginscreen;

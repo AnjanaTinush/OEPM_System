@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Adminnavbar from './Component/Adminnavbar';
 import { Link } from 'react-router-dom';
+import TunnelDetails from './Component/Tunneldetails';
 
 function Tunnelprofile() {
   const [tunnels, setTunnels] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTunnel, setSelectedTunnel] = useState(null);
+
 
   useEffect(() => {
     fetchData();
@@ -58,6 +62,22 @@ function Tunnelprofile() {
     }
   };
 
+  const filteredTunnels = tunnels.filter(
+    (tunnel) =>
+      tunnel.plantType.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tunnel.temperature.toString().includes(searchQuery) ||
+      tunnel.humidity.toString().includes(searchQuery) ||
+      tunnel.capacity.toString().includes(searchQuery)
+  );
+
+  const data = filteredTunnels.map((tunnel, index) => [
+    index + 1,
+    tunnel.temperature,
+    tunnel.humidity,
+    tunnel.capacity,
+    tunnel.plantType,
+  ]);
+
   return (
     <div className="bg-wight-green">
       <div className="flex">
@@ -67,11 +87,11 @@ function Tunnelprofile() {
             Tunnel Profiles
           </h1><div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 ">
 
-                      {tunnels.map((tunnel) => (
+          {filteredTunnels.map((tunnel, index) =>  (
               <div key={tunnel._id} className="bg-white shadow-lg rounded-xl transition-transform duration-300 ease-in-out transform hover:scale-105 overflow-hidden">
                 <div className="p-4">
                   <h3 className="text-lg font-semibold text-green-900">{tunnel.plantType}</h3>
-                  <p className="text-gray-500">ID: {tunnel._id}</p>
+                  <p className="text-gray-500">ID: {index + 1}</p>
                   <p className="text-gray-500">Temperature: {tunnel.temperature}°C</p>
                   <p className="text-gray-500">Humidity: {tunnel.humidity}%</p>
                   <p className="text-gray-500">Maximum Capacity: {tunnel.capacity}</p>
@@ -119,10 +139,19 @@ function Tunnelprofile() {
                       Update Capacity
                     </button>
                   </div>
+                  <button
+        className="bg-whatsapp-green text-white px-3 py-1 mt-3 rounded-lg hover:bg-green-700 transition-transform duration-300 ease-in-out transform hover:scale-110"
+        onClick={() => setSelectedTunnel(tunnel)}
+      >
+        View Details
+      </button>
                 </div>
               </div>
             ))}
           </div>
+          {selectedTunnel && (
+  <TunnelDetails tunnel={selectedTunnel} onClose={() => setSelectedTunnel(null)} />
+)}
         </div>
       </div>
     </div>

@@ -23,7 +23,11 @@ const tunnelSchema = mongoose.Schema({
         type: String,
         require :true
     },
-    wataringTimesPerDay : {
+    wateringTimesPerDay : {
+        type : Number,
+        require :true
+    },
+    fertizingTimesPerWeek : {
         type : Number,
         require :true
     }
