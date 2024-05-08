@@ -32,7 +32,7 @@ function SheduleOrders_histry() {
   return (
     <div>
       <h1 className="flex justify-center ml-10 text-4xl italic text-green-900">
-        Employee leave Request
+        My Orders
       </h1>
       <div className="flex justify-center items-center h-full mt-3">
         <div className="overflow-x-auto shadow-2xl sm:rounded-lg ml-16">
