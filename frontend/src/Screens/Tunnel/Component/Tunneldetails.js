@@ -22,11 +22,11 @@ const TunnelDetails = ({ tunnel, onClose }) => {
             {/* Progress bar */}
             <div
               style={{ width: '80%', /* Adjust width percentage as needed */ }}
-              className="absolute bottom-7 left-9 h-32 text-xs flex rounded bg-green-200 bg-opacity-35"
+              className="absolute bottom-7 left-9 h-32 text-xs flex rounded bg-white bg-opacity-85"
             >
               <div
-                style={{ width: `${Math.round(calculateProgress())}%` , opacity: '0.8' }}
-                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"
+                style={{ width: `${Math.round(calculateProgress())}%`  }}
+                className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-whatsapp-green"
               ></div>
             </div>
           </div>
