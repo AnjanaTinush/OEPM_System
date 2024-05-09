@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { GiGreenhouse } from "react-icons/gi";
 import { IoMdContacts } from "react-icons/io";
 import logo from "../../../Images/logo.png";
+import Navbar from "../../Component/Navbar";
 
 function Adminnavbar() {
   const location = useLocation();
@@ -12,6 +13,7 @@ function Adminnavbar() {
       <div className="p-4">
         <br></br>
         <br></br>
+        
         <Link
           to="/income"
           className={`flex items-center w-full py-3 px-4 ${

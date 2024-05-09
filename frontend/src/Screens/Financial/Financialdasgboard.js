@@ -2,10 +2,10 @@ import React from 'react'
 import Adminnavbar from './Component/Adminnavbar'
 
 
-function Financialdasgboard() {
+function Financialdashboard() {
   return (
     <div><Adminnavbar/></div>
   )
 }
 
-export default Financialdasgboard
+export default Financialdashboard

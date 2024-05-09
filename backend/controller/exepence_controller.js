@@ -1,7 +1,7 @@
 const model = require("../models/Financial model.js/expenceModel");
 
 const typeColors = {
-  unnel_Construction: "#F73905",
+  tunnel_Construction: "#F73905",
   Crop_and_Fertilizers: "#14F705",
   Employee_Salaries: "#0CE2E9",
   Repairs: "#0F33E7",
