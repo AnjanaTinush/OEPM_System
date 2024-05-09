@@ -82,6 +82,7 @@ import Maintain from "./Screens/Tunnel/Maintain";
 import Editeuserprofile from "./Screens/User/Editeuserprofile";
 import SheduleOrders_histry from "./Screens/User/SheduleOrders_histry"
 import Feed_back_For_Curiorservice from "./Screens/User/Feed_back_For_Curiorservice"
+import FinancialDashbord from "./Screens/Financial/page/financialdashbord";
 
 
 function App() {
@@ -156,6 +157,8 @@ function App() {
           <Route path="/u_update/:u_id" element={<Editeuserprofile/>}/>
           <Route path="/c_sheduleorderhistry" element={<SheduleOrders_histry/>}/>
           <Route path="/Feed_back_For_Curiorservice" element={<Feed_back_For_Curiorservice/>}/>
+
+          <Route path="/financialDashbord" element={<FinancialDashbord/>}/>
           </Routes>
     </BrowserRouter>
     

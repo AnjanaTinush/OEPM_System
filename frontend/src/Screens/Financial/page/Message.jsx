@@ -117,7 +117,7 @@ const Message = () => {
   return (
     <div className="w-screen flex">
       <div className="w-[25%] h-screen bg-white overflow-scroll">
-        <Link to={"/expence"}>
+        <Link to={"/financialDashbord"}>
           <div className="flex cursor-pointer">
             <div className="ml-32">
               <box-icon name="undo" size="40px"></box-icon>
