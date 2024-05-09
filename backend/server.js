@@ -14,7 +14,7 @@ const JWT_SECRET =
 const app = express();
 
 
-const io = require("socket.io")(8080, {
+const io = require("socket.io")(8081, {
   cors: {
     origin: "http://localhost:3002",
   },

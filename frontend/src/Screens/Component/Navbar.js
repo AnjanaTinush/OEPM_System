@@ -29,7 +29,7 @@ function Navbar() {
             alt="Profile"
           />
         </button>
-
+         
         {/* Dropdown Menu */}
         {isOpen && (
           <div className="absolute right-0 mt-10 flex flex-col bg-wight-green gap-2 rounded-xl p-2 text-green-900 shadow-xl">
@@ -71,7 +71,9 @@ function Navbar() {
               </svg>
               <span>Logout</span>
             </button>
+            
           </div>
+          
         )}
         
       </div>

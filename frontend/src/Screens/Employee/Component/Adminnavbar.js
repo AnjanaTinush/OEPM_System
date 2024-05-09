@@ -17,7 +17,7 @@ function Adminnavbar() {
     <div className="p-1 mt-2">
     <Navbar/>
         <Link            to="/employeeDashboard"
-            className={flex items-center w-full mt-6 py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2}
+            className={`flex items-center w-full mt-6 py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
      
         >
@@ -27,7 +27,7 @@ function Adminnavbar() {
         <Link
 
             to="/e_allusers"
-            className={flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2}
+            className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
         >
           <FaUsers className="mr-5 text-lg" />
@@ -36,7 +36,7 @@ function Adminnavbar() {
         <Link
 
             to="/e_approveleave"
-            className={flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_approveleave" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2}
+            className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_approveleave" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
         >
           <GiExitDoor className="mr-5 text-lg" />
@@ -45,7 +45,7 @@ function Adminnavbar() {
         <Link
 
 to="/e_atendance"
-className={flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_atendance" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2}
+className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_atendance" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
 
 >
 <FaUserClock className="mr-5 text-lg" />

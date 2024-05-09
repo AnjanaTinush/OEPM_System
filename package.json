@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "chart.js": "^4.4.2",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "socket.io-client": "^4.7.5"
   }
 }
