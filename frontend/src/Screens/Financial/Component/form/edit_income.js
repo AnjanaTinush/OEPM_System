@@ -4,6 +4,7 @@ import { default as api } from "../../store/apiSlice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import CloseIcon from "@mui/icons-material/Close";
+import toast from "react-hot-toast"; // Import toast
 
 export default function EditIncome({ open, setOpen, productData }) {
   const { register } = useForm();
@@ -25,7 +26,12 @@ export default function EditIncome({ open, setOpen, productData }) {
   };
 
   const handleAmount = (event) => {
-    setFormData({ ...formData, amount: event.target.value });
+    const amount = event.target.value;
+    if (amount > 0) {
+      setFormData({ ...formData, amount });
+    } else {
+      toast.error("Amount must be greater than 0");
+    }
   };
 
   const handleName = (event) => {
@@ -112,7 +118,7 @@ export default function EditIncome({ open, setOpen, productData }) {
                       Type
                     </label>
                     <select
-                       className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
                       {...register("type")}
                       value={formData.type}
                       onChange={handleType}
@@ -132,7 +138,7 @@ export default function EditIncome({ open, setOpen, productData }) {
                       Amount
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       {...register("amount")}
                       placeholder="Amount"
                       className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"

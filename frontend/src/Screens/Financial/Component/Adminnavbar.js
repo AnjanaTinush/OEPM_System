@@ -13,6 +13,17 @@ function Adminnavbar() {
         <br></br>
         <br></br>
         <Link
+          to="/financialDashbord"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/financialDashbord"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+        >
+          <GiGreenhouse className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Dashbord</span>
+        </Link>
+        <Link
           to="/income"
           className={`flex items-center w-full py-3 px-4 ${
             location.pathname === "/income"

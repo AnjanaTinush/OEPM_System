@@ -60,4 +60,4 @@ className={`flex items-center w-full mt-3 py-3 px-4 ${location.pathname === "/e_
   );
 }
 
-export default Adminnavbar;
+export default Adminnavbar;
