@@ -1,9 +1,12 @@
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
-import { GiGreenhouse } from "react-icons/gi";
-import { IoMdContacts } from 'react-icons/io';
-import logo from '../../../Images/logo.png';
+import logo from "../../../Images/logo.png";
+import { GiSteeringWheel } from "react-icons/gi";
+import Navbar from "../../Component/Navbar";
+import { TbTruckDelivery } from "react-icons/tb";
+import { VscFeedback } from "react-icons/vsc";
+
 
 function Adminnavbar() {
   const location = useLocation();
@@ -11,31 +14,62 @@ function Adminnavbar() {
   return (
     <div className="bg-wight-green text-white h-screen w-1/6 fixed top-0 left-0 flex flex-col justify-between shadow-xl">
       <div className="p-4">
+       
+        <Navbar />
         <br></br>
         <br></br>
         <Link
-          to="/employeeDashboard"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/employeeDashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          to="/Curiorservisedashboard"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/Curiorservisedashboard"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
           <LuLayoutDashboard className="mr-5 text-lg" />
           <span className="font-bold text-lg">Dash Board</span>
         </Link>
+
         <Link
-          to="/e_allusers"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/e_allusers" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          to="/j_deliveries"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/j_deliveries"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
-          <GiGreenhouse className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Tunnels</span>
+          <TbTruckDelivery className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Deliveries</span>
         </Link>
+
         <Link
-          to="/"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          to="/j_drivers"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/j_drivers"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
         >
-          <IoMdContacts className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Contact</span>
+          <GiSteeringWheel className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Drivers</span>
         </Link>
+
+
+        <Link
+          to="/j_feedback"
+          className={`flex items-center w-full py-3 px-4 ${
+            location.pathname === "/j_feedback"
+              ? "bg-whatsapp-green text-white"
+              : "hover:bg-whatsapp-green text-green-900"
+          } font-custom rounded-md text-decoration-none mb-2`}
+        >
+          <VscFeedback  className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Feedback</span>
+        </Link>
+
+
       </div>
-      <div className="p-4">
+      <div className="p-4 ml">
         <div className="flex justify-center items-center mt-4 mr-5">
           <img src={logo} alt="Logo" />
         </div>

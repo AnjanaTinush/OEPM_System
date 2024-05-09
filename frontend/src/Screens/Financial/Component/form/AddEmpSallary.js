@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 import { default as api } from "../../store/apiSlice";
+import toast from "react-hot-toast";
 
 export default function AddEMPSalary({ open, setOpen }) {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [addSallary] = api.useAddSallaryMutation();
 
   const [basic, setBasic] = useState("");
@@ -19,10 +20,14 @@ export default function AddEMPSalary({ open, setOpen }) {
 
   const onSubmit = async (data) => {
     if (!data) return {};
-    await addSallary(data).unwrap();
-    setAmount(0); // Reset amount to 0
-    reset();
-    console.log("daef", data);
+    try {
+      await addSallary(data).unwrap();
+      setAmount(0); // Reset amount to 0
+      reset();
+      toast.success("Salary added successfully");
+    } catch (error) {
+      toast.error("Error adding salary");
+    }
   };
 
   return (
@@ -67,10 +72,15 @@ export default function AddEMPSalary({ open, setOpen }) {
                     </label>
                     <input
                       type="text"
-                      {...register("empno")}
+                      {...register("empno", { required: "Employee No. is required" })}
                       placeholder="Employee No"
-                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                      className={`bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 ${
+                        errors.empno ? "border-red-500" : ""
+                      }`}
                     />
+                    {errors.empno && (
+                      <div className="text-red-500 mb-4">{errors.empno.message}</div>
+                    )}
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
                     <div className="w-full">
@@ -82,10 +92,15 @@ export default function AddEMPSalary({ open, setOpen }) {
                       </label>
                       <input
                         type="text"
-                        {...register("empname")}
+                        {...register("empname", { required: "Employee Name is required" })}
                         placeholder="Employee Name"
-                        className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                        className={`bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 ${
+                          errors.empname ? "border-red-500" : ""
+                        }`}
                       />
+                      {errors.empname && (
+                        <div className="text-red-500 mb-4">{errors.empname.message}</div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -100,9 +115,14 @@ export default function AddEMPSalary({ open, setOpen }) {
                     </label>
                     <input
                       type="date"
-                      {...register("date")}
-                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                      {...register("date", { required: "Date is required" })}
+                      className={`bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 ${
+                        errors.date ? "border-red-500" : ""
+                      }`}
                     />
+                    {errors.date && (
+                      <div className="text-red-500 mb-4">{errors.date.message}</div>
+                    )}
                   </div>
                   <div className="mt-3 sm:mt-0 sm:ml-3 sm:w-1/2">
                     <label
@@ -112,13 +132,19 @@ export default function AddEMPSalary({ open, setOpen }) {
                       Department
                     </label>
                     <select
-                      {...register("department")}
-                      className="mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm">
-                    
+                      {...register("department", { required: "Department is required" })}
+                      className={`mt-1 block bg-gray-200 w-full py-2 px-3 border border-green-300  rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm ${
+                        errors.department ? "border-red-500" : ""
+                      }`}
+                    >
+                      <option value="">Select Department</option>
                       <option value="IT">IT</option>
                       <option value="HR">HR</option>
                       <option value="Finance">Finance</option>
                     </select>
+                    {errors.department && (
+                      <div className="text-red-500 mb-4">{errors.department.message}</div>
+                    )}
                   </div>
                 </div>
 
@@ -131,11 +157,16 @@ export default function AddEMPSalary({ open, setOpen }) {
                       Amount
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       placeholder="Amount"
-                      {...register("amount")}
-                      className="bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500"
+                      {...register("amount", { required: "Amount is required", min: { value: 0, message: "Amount must be greater than or equal to 0" } })}
+                      className={`bg-gray-200 appearance-none border-2 border-green-200 rounded w-full py-2 px-4 text-green-700 leading-tight focus:outline-none focus:bg-white focus:border-green-500 ${
+                        errors.amount ? "border-red-500" : ""
+                      }`}
                     />
+                    {errors.amount && (
+                      <div className="text-red-500 mb-4">{errors.amount.message}</div>
+                    )}
                   </div>
                 </div>
               

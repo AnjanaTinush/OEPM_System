@@ -15,11 +15,19 @@ const tunnelSchema = mongoose.Schema({
         type : Number,
         require: true
     },
+    currentCapacity : {
+        type : Number,
+        require: true
+    },
     plantType : {
         type: String,
         require :true
     },
-    wataringTimesPerDay : {
+    wateringTimesPerDay : {
+        type : Number,
+        require :true
+    },
+    fertizingTimesPerWeek : {
         type : Number,
         require :true
     }
@@ -27,6 +35,6 @@ const tunnelSchema = mongoose.Schema({
     timestamps : true,
 })
 
-const tunnelModel = mongoose.model('Tunels',tunnelSchema)
+const tunnelModel = mongoose.model('Tunnels',tunnelSchema)
 
 module.exports=tunnelModel;
