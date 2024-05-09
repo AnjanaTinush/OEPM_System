@@ -83,7 +83,7 @@ function Looginscreen() {
             data-aos="zoom in"
             className="flex flex-col justify-center items-center bg-zinc-800 min-h-screen"
             style={{
-              backgroundImage:`url(${bgimg1})`,
+              backgroundImage: `url(${bgimg1})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               fontFamily: "Poppins, sans-serif",
