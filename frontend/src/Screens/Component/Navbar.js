@@ -28,7 +28,9 @@ function Navbar() {
             src={user.imageurl}
             alt="Profile"
           />
+          
         </button>
+        
 
         {/* Dropdown Menu */}
         {isOpen && (

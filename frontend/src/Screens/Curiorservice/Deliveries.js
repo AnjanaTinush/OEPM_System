@@ -23,12 +23,7 @@ function Deliveries() {
 
   return (
     <div
-      style={{
-        backgroundImage: `url('https://static.vecteezy.com/system/resources/thumbnails/020/645/443/small_2x/light-green-yellow-white-gradient-background-smooth-noise-texture-blurry-backdrop-design-copy-space-photo.jpg')`,
-        backgroundSize: "cover",
-        width: "100vw",
-        height: "100vh",
-      }}
+      
     >
       <AdminNavbar />
       <Navbar />
