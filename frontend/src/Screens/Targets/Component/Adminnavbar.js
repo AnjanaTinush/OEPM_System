@@ -60,7 +60,7 @@ function Adminnavbar() {
           style={{ width: '100%', minWidth: '180px' }} // Fixed width for buttons
         >
           <MdBorderColor className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Manage Targets</span>
+          <span className="font-bold text-lg">Order details</span>
         </Link>
       </div>
       <div className="flex justify-center items-center mt-20 mr-5">

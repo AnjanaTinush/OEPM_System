@@ -45,23 +45,23 @@ function Targets() {
     }
   }
 
-  const handleApprove = async (id) => {
-    try {
-       await axios.put(`http://localhost:5000/api/target/approve/${id}`);
-       fetchData();
-    } catch (error) {
-       console.log(error);
-    }
-   };
+  // const handleApprove = async (id) => {
+  //   try {
+  //      await axios.put(`http://localhost:5000/api/target/approve/${id}`);
+  //      fetchData();
+  //   } catch (error) {
+  //      console.log(error);
+  //   }
+  //  };
    
-   const handleReject = async (id) => {
-    try {
-       await axios.put(`http://localhost:5000/api/target/reject/${id}`);
-       fetchData();
-    } catch (error) {
-       console.log(error);
-    }
-   };
+  //  const handleReject = async (id) => {
+  //   try {
+  //      await axios.put(`http://localhost:5000/api/target/reject/${id}`);
+  //      fetchData();
+  //   } catch (error) {
+  //      console.log(error);
+  //   }
+  //  };
    
   
   
@@ -95,7 +95,6 @@ function Targets() {
           <div className="absolute top-32 right-0  mr-8">
             <button
              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
-              // className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline rounded"
               onClick={generateReport}
             >
               Generate Report

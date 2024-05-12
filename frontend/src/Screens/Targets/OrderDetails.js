@@ -61,9 +61,9 @@ const OrderDetails = () => {
                     <th scope="col" className="px-6 py-3">
                       Item Name
                     </th>
-                    <th scope="col" className="px-6 py-3">
+                    {/* <th scope="col" className="px-6 py-3">
                       Price
-                    </th>
+                    </th> */}
                     <th scope="col" className="px-6 py-3">
                       Quantity
                     </th>
@@ -93,9 +93,9 @@ const OrderDetails = () => {
                       <td className="px-6 py-4 font-medium text-green-900 ">
                         {order.itemName}
                       </td>
-                      <td className="px-6 py-4 font-medium text-green-900 ">
+                      {/* <td className="px-6 py-4 font-medium text-green-900 ">
                         {order.price}
-                      </td>
+                      </td> */}
                       <td className="px-6 py-4 font-medium text-green-900 ">
                         {order.quantity}
                       </td>
