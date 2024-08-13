@@ -16,7 +16,7 @@ const Userupdate = () => {
   const { userid } = useParams();
 
   const [id, setid] = useState("");
-  const [name, setname] = useState("");
+  const [fullName, setfullName] = useState("");
   const [email, setemail] = useState("");
   const [phone,setphone]=useState("");
   const [role, setroll] = useState("");
@@ -34,7 +34,7 @@ const Userupdate = () => {
         setLoading(false);
         console.log(response.user);
         setid(response.user._id);
-        setname(response.user.name);
+        setfullName(response.user.fullName);
         setemail(response.user.email); // Corrected typo here
         setphone(response.user.phone);
         setroll(response.user.role);
@@ -51,7 +51,7 @@ const Userupdate = () => {
     e.preventDefault();
 
     const updateuser = {
-      name,
+      fullName,
       email,
       phone,
       role,
@@ -125,9 +125,9 @@ const Userupdate = () => {
         <input
             className="w-full rounded-md border border-[#e0e0e0] bg-white focus:outline-whatsapp-green py-3 px-6 text-base font-medium text-[#6B7280]"
             type="text"
-            value={name}
+            value={fullName}
             onChange={(e) => {
-                setname(e.target.value);
+                setfullName(e.target.value);
             }}
             required // Added required attribute
         />

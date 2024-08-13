@@ -6,6 +6,7 @@ import { IoMdContacts } from 'react-icons/io';
 import logo from '../../../Images/logo.png';
 import { FaClockRotateLeft } from "react-icons/fa6";
 import { MdAssignmentAdd } from "react-icons/md";
+import { MdQrCodeScanner } from "react-icons/md";
 
 
 function Adminnavbar() {
@@ -23,7 +24,7 @@ function Adminnavbar() {
         <br />
         <Link
           to="/inventorydasgboard"
-          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/inventorydashboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
+          className={`flex items-center w-full py-3 px-4 ${location.pathname === "/inventorydasgboard" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
         >
           <LuLayoutDashboard className="mr-5 text-lg" />
           <span className="font-bold text-lg">Dashboard</span>
@@ -52,8 +53,8 @@ function Adminnavbar() {
           to="/i_faq"
           className={`flex items-center w-full py-3 px-4 ${location.pathname === "/i_faq" ? 'bg-whatsapp-green text-white' : 'hover:bg-whatsapp-green text-green-900'} font-custom rounded-md text-decoration-none mb-2`}
         >
-          <IoMdContacts className="mr-5 text-lg" />
-          <span className="font-bold text-lg">Help</span>
+          <MdQrCodeScanner className="mr-5 text-lg" />
+          <span className="font-bold text-lg">Packaging</span>
         </Link>
       </div>
       <div className="p-4">

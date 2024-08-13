@@ -36,6 +36,7 @@ function Looginscreen() {
       setloading(false);
 
       localStorage.setItem("currentuser", JSON.stringify(result.data.user));
+      localStorage.setItem("user:detail", JSON.stringify(result.data.user));
 
       // Check the success property in the response
       if (result.data.success) {
@@ -173,4 +174,4 @@ function Looginscreen() {
   );
 }
 
-export default Looginscreen;
+export default Looginscreen;

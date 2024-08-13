@@ -2,8 +2,15 @@ const express = require("express");
 const router = express.Router();
 const machine = require('../models/machinesModel');
 
+//add machine
 router.post("/add", async (req, res) => {
-    const { name, cost, parts, discription,location } = req.body;
+    const { name, cost, parts, discription,location,lastRepairDate,repairTimePeriod,vehicleNo,
+        capacity } = req.body;
+
+// Check if cost is a number
+if (isNaN(cost)) {
+    return res.status(400).json({ error: "Cost must be a number" });
+}
 
     try {
         const newMachine = new machine({
@@ -11,7 +18,11 @@ router.post("/add", async (req, res) => {
             cost: cost,
             parts: parts,
             discription: discription,
-            location: location
+            location: location,
+            repairTimePeriod:repairTimePeriod,
+            lastRepairDate:lastRepairDate,
+            ...(location === "Vehicle" && { vehicleNo, capacity })
+
         });
 
         const savedMachine = await newMachine.save();
@@ -57,14 +68,16 @@ router.delete("/deletemachine/:id", async (req, res) => {
 // Update machine
 router.put('/updateMachine/:id', async (req, res) => {
     const machineId = req.params.id;
-    const { name, cost, parts, discription,location } = req.body;
+    const { name, cost, parts, discription,location,lastRepairDate,repairTimePeriod } = req.body;
 
     const updateMachine = {
         name,
         cost,
         parts,
         discription,
-        location
+        location,
+        lastRepairDate,
+        repairTimePeriod,
     };
 
     try {

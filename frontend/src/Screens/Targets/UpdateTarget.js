@@ -12,18 +12,19 @@ const UpdateTarget = () => {
   const [date, setDate] = useState(""); 
     
   useEffect(() => {
-    async function gettarget() {
+    async function getTarget() {
       try {
-        const response = (await axios.post(`http://localhost:5000/api/target/gettarget/${targetid}`)).data;
-        setType(response.Target.type);
-        setQuantity(response.Target.quantity); 
-        setDate(response.Target.date);
+        const response = await axios.get(`http://localhost:5000/api/target/gettarget/${targetid}`);
+        setType(response.data.target.type);
+        setQuantity(response.data.target.quantity);
+        setDate(response.data.target.date);
       } catch (error) {
         console.log(error);
       }
     }
-    gettarget();
-  }, [])
+    getTarget();
+  }, []);
+  
 
   // Update Target
   async function updateTarget(e) {

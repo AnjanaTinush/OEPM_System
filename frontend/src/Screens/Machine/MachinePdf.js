@@ -107,7 +107,7 @@ export function MachinePdf(){
     <Adminnavbar />
 
         
-
+<div className="p-5 b-3 justify-center">
 <table
   data-aos="zoom out"
   className="w-5/6 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 p-4 "
@@ -150,8 +150,9 @@ export function MachinePdf(){
     )}
   </tbody>
 </table>
+</div>
 
-        <div className="flex items-center justify-end h-full mr-20">
+        <div className="flex items-center justify-end h-full  w-1/6 mr-20">
           <button
             onClick={generatePDF}
             className="text-white bg-whatsapp-green hover:bg-Buttongreen focus:outline-none focus:ring-4 focus:ring-Buttongreen font-medium rounded-full text-me px-5 py-2.5 text-center me-2 mb-2 dark:whatsapp-green dark:hover:bg-Buttongreen dark:focus:ring-Buttongreen font-sans shadow-xl max-w-md mx-auto"
