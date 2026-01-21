@@ -71,6 +71,8 @@ function ShippingDetailsForm() {
     setPhoneNumber(input);
   };
 
+  
+
 
   const createOrder = async () => {
     try {
@@ -84,8 +86,15 @@ function ShippingDetailsForm() {
         district,
         postalCode,
       };
-     
-      const response = await axios.post('http://localhost:5000/api/orderdetails/create', data);
+  
+      const deliveryData = {
+        customerName: `${firstName} ${lastName}`,
+        customerPhone: phoneNumber,
+        deliveryAddress: `${streetAddress}, ${city}, ${district}`,
+      };
+  
+      await axios.post('http://localhost:5000/api/orderdetails/create', data);
+      await axios.post('http://localhost:5000/api/deliveries/newdelivery', deliveryData);
       // Remaining code
     } catch (error) {
       console.error('Error creating order: ', error);
@@ -159,7 +168,7 @@ function ShippingDetailsForm() {
                 </div>
               </div>
             </div>
-          </form>
+          </form>    
         </div>
         <div className='screen__right' style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '5px', backgroundColor: '#f9f9f9', marginLeft: '150px', width: '500px' }}>
           <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '10px' }}>Order Summary</h2>

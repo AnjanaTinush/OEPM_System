@@ -3,10 +3,6 @@ const { v4: uuidv4 } = require("uuid");
 
 const deliveriesSchema = mongoose.Schema(
   {
-    orderID: {
-      type: String,
-      unique: true,
-    },
     trackingCode: {
       type: String,
       unique: true,

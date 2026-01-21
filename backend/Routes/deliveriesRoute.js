@@ -3,6 +3,9 @@ const router = express.Router();
 const deliveriesModel = require("../models/deliveriesModel");
 const driversModel = require("../models/driversModel");
 
+
+
+
 router.post("/newdelivery", async (req, res) => {
   try {
     // Retrieve an available driver from the drivers collection

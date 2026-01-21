@@ -25,9 +25,10 @@ function Navbar() {
         >
           <img
             className="w-full h-full object-cover rounded-full border-2 border-whatsapp-green"
-            src={user.imageurl}
+            src="https://cdn3.pixelcut.app/7/20/uncrop_hero_bdf08a8ca6.jpg"
             alt="Profile"
           />
+          
         </button>
          
         {/* Dropdown Menu */}
@@ -78,7 +79,7 @@ function Navbar() {
         
       </div>
      
-      <h1 className=" text-whatsapp-green ml-14 mt-4 ">{user.name}</h1>
+      <h1 className=" text-whatsapp-green ml-14 mt-4 ">janith</h1>
    
    
       </div>  
